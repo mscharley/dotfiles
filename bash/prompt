@@ -1,0 +1,13 @@
+#!/bin/bash
+
+parse_git_branch () {
+	git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# [\1]#'
+}
+
+YELLOW="\[\033[0;33m\]"
+GREEN="\[\033[0;32m\]"
+RED="\[\033[1;31m\]"
+RESET="\[\033[0;0m\]"
+
+export PS1="[$YELLOW\u@\h$RESET $GREEN\W$RESET]$RED\$(parse_git_branch)$RESET\$ "
+

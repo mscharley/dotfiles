@@ -1,0 +1,4 @@
+#!/bin/bash
+
+alias sass="sass -t expanded --no-cache"
+
