@@ -1,5 +1,5 @@
 #!/bin/bash
 
 export GEM_HOME=$HOME/rubygems
-export PATH=$PATH:$GEM_HOME/bin
+export PATH=$PATH:$HOME/bin:$GEM_HOME/bin
 
