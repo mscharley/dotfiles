@@ -2,3 +2,6 @@
 
 alias sass="sass -t expanded --no-cache"
 
+alias ll="ls -la"
+alias la="ls -A"
+
