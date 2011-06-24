@@ -9,8 +9,13 @@ for f in ~/.bash/*; do
 	source $f
 done
 
+# Include a local bashrc if one exists
+if [ -f ~/.bashrc.local ]; then
+  source ~/.bashrc.local
+fi
+
 # Enable bash completion manually if needed.
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+  source /etc/bash_completion
 fi
 
