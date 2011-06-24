@@ -6,7 +6,9 @@ if [ -f /etc/bashrc ]; then
 fi
 
 for f in ~/.bash/*; do
-	source $f
+  if [ -f $f ]; then
+    source $f
+  fi
 done
 
 # Include a local bashrc if one exists
