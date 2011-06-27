@@ -34,7 +34,7 @@ set display=lastline " Show as much of a line as possible even if no room.
 set cursorline   " Highlight current line
 set title        " Automatically set title
 set scrolloff=5  " Attempt to keep 5 lines of context when scrolling
-set formatoptions=rq " Automatically insert comment leader on return
+" set formatoptions=rq " Automatically insert comment leader on return
 set whichwrap+=<,>,[,] " Wrap start to end when using cursor keys
 
 " Case insensitive by default, unless there are caps
