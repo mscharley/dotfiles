@@ -5,8 +5,12 @@ if [[ ($TERM != "screen") && ($TERM != "tmux") ]]; then
     return
   fi
 
-  echo "Starting tmux..."
-  sleep 5
+  # Pause on login to SSH so we can still see any messaages put
+  # out by the system
+  if [[ -n $SSH_TTY ]]; then
+    echo "Starting tmux..."
+    sleep 5
+  fi
 
   # Check if we have a running session already
   tmux has -t login 2> /dev/null
