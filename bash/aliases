@@ -2,6 +2,7 @@
 
 alias sass="sass -t expanded --no-cache"
 
+alias ls="ls --color=auto"
 alias ll="ls -lAh"
 alias la="ls -A"
 
