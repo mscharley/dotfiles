@@ -18,5 +18,5 @@ LC_CTYPE=C
 
 # Setup paths
 GEM_HOME=$HOME/rubygems
-PATH=$PATH:$HOME/bin:$GEM_HOME/bin
+PATH=$PATH:$GEM_HOME/bin:$HOME/bin:$HOME/.bin
 
