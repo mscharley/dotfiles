@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Ensure vim-like keybindings are enabled
+bindkey -v
+
 bindkey "\e[1~" beginning-of-line # Home
 bindkey "\e[4~" end-of-line # End
 bindkey "\e[5~" beginning-of-history # PageUp

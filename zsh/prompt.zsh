@@ -20,4 +20,5 @@ setopt PROMPT_SUBST
 
 # Actual prompt variables
 PROMPT='[$PR_YELLOW%n@%m $PR_GREEN%2c$PR_NO_COLOR]$(parse_git_branch)$PR_NO_COLOR%(!.#.$) '
+RPROMPT='[$PR_YELLOW%?$PR_NO_COLOR]';
 
