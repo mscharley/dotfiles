@@ -4,6 +4,7 @@ if [[ ($TERM != "screen") && ($TERM != "tmux") ]]; then
   if [[ -z $USE_TMUX || -z `which tmux` ]]; then
     return
   fi
+  unset $USE_TMUX
 
   # Pause on login to SSH so we can still see any messaages put
   # out by the system
