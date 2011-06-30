@@ -1,7 +1,11 @@
 #!/bin/zsh
 
 # Check we're running under cygwin
-if [[ $(uname -o) != 'Cygwin' ]]; then
+UNAME=`uname -s`
+[[ $UNAME[0,6] == 'CYGWIN' ]]
+CYGWIN=$?
+unset $UNAME
+if [[ $CYGWIN == 1 ]]; then
   return
 fi
 
