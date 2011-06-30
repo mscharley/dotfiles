@@ -7,7 +7,7 @@ alias la="ls -A"
 
 alias mem="free -m"
 
-alias sass="sass -t expanded"
+alias sass="sass -t expanded --no-cache"
 alias sassw="sass --watch sass:css"
 
 # Open web addresses in the browser if one was set in zshrc.local
