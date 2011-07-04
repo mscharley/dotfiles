@@ -37,7 +37,8 @@ if sass_themes.length == 0
 end
 
 args = sass_themes.map {|theme| ['--watch', theme + "/sass:" + theme + "/css"]}.flatten
-args = [default_args, args].flatten
+args = ['sass', default_args, args].flatten
 
-exec 'sass', *args
+print args.join(" ") + "\n";
+exec *args
 
