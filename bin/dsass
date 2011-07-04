@@ -23,12 +23,7 @@ end
 
 print "Executing SASS in " + Dir.pwd + "\n"
 
-themes = []
-['themes', *Dir.glob('sites/*/themes')].map {|p| Dir.new(p)}.each do |dir|
-  themes.push dir.entries.find_all {|p| p[0,1] != '.'}.map {|theme| File.join(dir.path, theme)}.find_all {|p| File.directory? p}
-end
-
-themes = themes.flatten
+themes = ["themes", *Dir.glob('sites/*/themes')].map {|p| Dir.glob(p + "/**/*.info")}.flatten.map{|info| File.dirname(info)}.uniq
 sass_themes = themes.find_all {|p| File.directory? p + "/sass" }
 
 print "Found " + themes.length.to_s + " themes, " + sass_themes.length.to_s + " of which use SASS.\n"
