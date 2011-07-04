@@ -11,7 +11,7 @@ default_args = ['--no-cache', '-t', 'expanded']
 #####
 
 last_pwd = Dir.pwd
-while not File.exists? "modules/system/system.info"
+while not File.exists? File.join("modules", "system", "system.info")
   if last_pwd == Dir.pwd
     print "Can't find a Drupal installation in this directory.\n"
     exit 1
@@ -33,7 +33,7 @@ if sass_themes.length == 0
   exit
 end
 
-args = sass_themes.map {|theme| ['--watch', File.join(theme, "/sass") + ":" + File.join(theme, "/css")]}.flatten
+args = sass_themes.map {|theme| ['--watch', File.join(theme, "sass") + ":" + File.join(theme, "css")]}.flatten
 args = ['sass', default_args, args].flatten
 
 print args.join(" ") + "\n";
