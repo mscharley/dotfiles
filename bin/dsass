@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+#####
+## CONFIGURATION
+#####
+
+default_args = ['--no-cache', '-t', 'expanded']
+
+#####
+## SCRIPT
+#####
+
+while not File.exists? "modules/system/system.info"
+  if Dir.pwd == "/"
+    print "Can't find a Drupal installation in this directory.\n"
+    exit 1
+  end
+
+  Dir.chdir('..')
+end
+
+print "Executing SASS in " + Dir.pwd + "\n"
+
+themes = []
+['themes', *Dir.glob('sites/*/themes')].map {|p| Dir.new(p)}.each do |dir|
+  themes.push dir.entries.find_all {|p| p[0,1] != '.'}.find_all {|p| File.directory? dir.path + "/" + p}.map {|theme| path = dir.path + '/' + theme}
+end
+
+themes = themes.flatten
+sass_themes = themes.find_all {|p| File.directory? p + "/sass" }
+
+print "Found " + themes.length.to_s + " themes, " + sass_themes.length.to_s + " of which use SASS.\n"
+
+if sass_themes.length == 0
+  print "No themes use SASS, so quitting while we're ahead.\n"
+  exit
+end
+
+args = sass_themes.map {|theme| ['--watch', theme + "/sass:" + theme + "/css"]}.flatten
+args = [default_args, args].flatten
+
+exec 'sass', *args
+
