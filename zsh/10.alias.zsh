@@ -9,6 +9,9 @@ alias mem="free -m"
 
 alias sass="sass -t expanded --no-cache"
 alias sassw="sass --watch sass:css"
+alias touchsass="find ./ -iname \"*.scss\" -exec touch \{\} \;"
+
+alias grep="grep -n"
 
 # Open web addresses in the browser if one was set in zshrc.local
 if [[ -n $BROWSER ]]; then
