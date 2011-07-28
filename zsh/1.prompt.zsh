@@ -11,9 +11,9 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
 done
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
 
-parse_git_branch() {
-  git name-rev HEAD 2> /dev/null | sed "s#HEAD \(.*\)# $PR_LIGHT_BLACK""[$PR_NO_COLOR$PR_RED\1$PR_LIGHT_BLACK]$PR_NO_COLOR#"
-}
+#parse_git_branch() {
+#  git name-rev HEAD 2> /dev/null | sed "s#HEAD \(.*\)# $PR_LIGHT_BLACK""[$PR_NO_COLOR$PR_RED\1$PR_LIGHT_BLACK]$PR_NO_COLOR#"
+#}
 
 # Enable substitutions in the prompt
 setopt PROMPT_SUBST
