@@ -1,11 +1,18 @@
 #!/bin/zsh
 
-# Check we're running under cygwin
-UNAME=`uname -s`
-[[ $UNAME[0,6] == 'CYGWIN' ]]
-CYGWIN=$?
-unset $UNAME
-if [[ $CYGWIN == 1 ]]; then
+is_cygwin() {
+  local uname
+  # Check we're running under cygwin
+  uname=`uname -s`
+  [[ $uname[0,6] == 'CYGWIN' ]]
+}
+
+is_not_cygwin() {
+  is_cygwin
+  [[ "$?" == "1" ]]
+}
+
+if is_not_cygwin; then
   return
 fi
 
