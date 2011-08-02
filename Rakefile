@@ -12,13 +12,18 @@ task :install do
   Dir['*'].each do |file|
     next if %w[Rakefile README.md LICENSE].include? file
     
-    if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
-      if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
-        puts "identical ~/.#{file.sub('.erb', '')}"
+    filename = get_filename(file)
+    is_example = (file =~ /\.example$/)
+
+    if is_example and File.exist?(File.join(ENV['HOME'], ".#{filename}"))
+      # Do nothing if an example was already installed
+    elsif File.exist?(File.join(ENV['HOME'], ".#{filename}"))
+      if File.identical? file, File.join(ENV['HOME'], ".#{filename}")
+        puts "identical ~/.#{filename}"
       elsif replace_all
         replace_file(file)
       else
-        print "overwrite ~/.#{file.sub('.erb', '')}? [ynaq] "
+        print "overwrite ~/.#{filename}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
@@ -28,7 +33,7 @@ task :install do
         when 'q'
           exit
         else
-          puts "skipping ~/.#{file.sub('.erb', '')}"
+          puts "skipping ~/.#{filename}"
         end
       end
     else
@@ -37,16 +42,25 @@ task :install do
   end
 end
 
+def get_filename(file)
+  file.sub(/\.(?:example|erb)$/, '')
+end
+
 def replace_file(file)
-  system %Q{rm -rf "$HOME/.#{file.sub('.erb', '')}"}
+  system %Q{rm -rf "$HOME/.#{get_filename(file)}"}
   link_file(file)
 end
 
 def link_file(file)
-  if file =~ /.erb$/
-    puts "generating ~/.#{file.sub('.erb', '')}"
-    File.open(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"), 'w') do |new_file|
+  if file =~ /\.erb$/
+    puts "generating ~/.#{get_filename(file)}"
+    File.open(File.join(ENV['HOME'], ".#{get_filename(file)}"), 'w') do |new_file|
       new_file.write ERB.new(File.read(file)).result(binding)
+    end
+  elsif file =~ /\.example$/
+    puts "copying ~/.#{get_filename(file)}"
+    File.open(File.join(ENV['HOME'], ".#{get_filename(file)}"), 'w') do |new_file|
+      new_file.write File.read(file)
     end
   else
     puts "linking ~/.#{file}"
