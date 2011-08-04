@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+# Uncomment this variable definition to enable tmux support in
+# your login shell. This will cause tmux to be loaded as part of
+# login and replace the login shell completely, starting up a 
+# subshell in a new window, or reusing an existing one if it
+# has already been created. Perfect for remote SSH servers with
+# multiple connections into it.
+
+#USE_TMUX=true
+
+# Setting BROWSER will enable many applications to use your web
+# browser, but will also cause zshrc to load up some aliases so
+# that you can easily open web addresses from your console.
+#
+# ie. $ google.com # Opens Google in your browser.
+
+#BROWSER=chromium-browser
+#BROWSER=firefox
+
+# Try using the below template to set up zsh functions that act
+# as aliases to cd and allow you to get autocomplete nicely.
+
+#project() { cd /path/to/project/$1; }
+#compctl -W /path/to/project/ -/ project
+
