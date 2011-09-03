@@ -27,3 +27,9 @@ done
 PATH=${(j.:.)NEWPATH}
 unset NEWPATH
 
+# Set up a rebaseall function. This will fire up the ash shell and
+# start a rebaseall. Will kill the current shell when complete out of necesity.
+rebaseall() {
+  exec ash -c "PATH=/bin rebaseall -v;echo '\nDone. Please press enter to continue.';read foo;zsh -l"
+}
+
