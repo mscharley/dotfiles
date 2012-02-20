@@ -55,7 +55,7 @@ def link_file(file)
   if file =~ /\.erb$/
     puts "generating ~/.#{get_filename(file)}"
     File.open(File.join(ENV['HOME'], ".#{get_filename(file)}"), 'w') do |new_file|
-      new_file.write ERB.new(File.read(file)).result(binding)
+      new_file.write ERB.new(File.read(file), nil, '<>').result(binding)
     end
   elsif file =~ /\.example$/
     puts "copying ~/.#{get_filename(file)}"

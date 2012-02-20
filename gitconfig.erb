@@ -13,3 +13,10 @@
 [alias]
 	ff = pull --ff-only
 	recommit = commit --amend
+[mergetool "bc3"]
+  cmd = /usr/bin/bcompare $LOCAL $REMOTE $BASE $MERGED
+  trustExitCode = true
+<% if File.exist?('/usr/bin/bcompare') %>
+[merge]
+  tool = bc3
+<% end %>
