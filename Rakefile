@@ -6,8 +6,14 @@ require 'erb'
 # You may find the original file at:
 # https://raw.github.com/ryanb/dotfiles/350081e48d700210d619c4905078eb7fb0247813/Rakefile
 
+desc "Update git submodules"
+task :git do
+  sh "git submodule init > /dev/null"
+  sh "git submodule update > /dev/null"
+end
+
 desc "Install the dot files into user's home directory."
-task :install do
+task :install => [:git] do
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README.md LICENSE].include? file
@@ -59,12 +65,10 @@ def link_file(file)
     end
   elsif file =~ /\.example$/
     puts "copying ~/.#{get_filename(file)}"
-    File.open(File.join(ENV['HOME'], ".#{get_filename(file)}"), 'w') do |new_file|
-      new_file.write File.read(file)
-    end
+    sh %Q{cp "$PWD/#{file}" "$HOME/.#{get_filename(file)}"}
   else
     puts "linking ~/.#{file}"
-    system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+    sh %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
   end
 end
 
