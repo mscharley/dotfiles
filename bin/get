@@ -2,7 +2,6 @@
 
 use warnings;
 use strict;
-use Data::Dumper;
 
 my $url = pop(@ARGV);
 my $opts = ($#ARGV >= 0 ? '"'.join('" "', @ARGV).'"' : '');
