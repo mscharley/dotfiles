@@ -9,6 +9,15 @@
 
 #USE_TMUX=true
 
+# If you have USE_TMUX enabled above, then specify an XTERM here
+# and when you try to connect to a remote host via SSH, then a new
+# terminal window will be opened using this terminal. You can
+# also specify XTERM_OPTIONS to pass extra options into your
+# terminal of choice.
+
+#XTERM="gnome-terminal"
+#XTERM_OPTIONS="--window"
+
 # Setting BROWSER will enable many applications to use your web
 # browser, but will also cause zshrc to load up some aliases so
 # that you can easily open web addresses from your console.
