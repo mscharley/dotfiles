@@ -6,7 +6,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 # Setup environment
-TZ="Australia/Sydney"
+TZ="Australia/Melbourne"
 HOSTNAME="`hostname`"
 PAGER="less"
 EDITOR="vim"
