@@ -1,0 +1,3 @@
+[submodule "bin/dsass-bin"]
+	path = bin/dsass-bin
+	url = git://github.com/mscharley/dsass.git
