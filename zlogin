@@ -1,10 +1,11 @@
 #!/bin/zsh
 
 if [[ ($TERM != "screen") && ($TERM != "tmux") ]]; then
-  if [[ -z $USE_TMUX || -z `which tmux` ]]; then
+  if [[ $USE_TMUX != true || -z `which tmux` ]]; then
+    unset USE_TMUX
     return
   fi
-  unset $USE_TMUX
+  unset USE_TMUX
 
   # Pause on login to SSH so we can still see any messaages put
   # out by the system

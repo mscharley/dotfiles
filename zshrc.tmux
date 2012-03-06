@@ -10,3 +10,11 @@ function ssh() {
       ;;
   esac
 }
+
+function no_tmux() {
+  case $XTERM in
+    'gnome-terminal')
+      USE_TMUX=false $XTERM $XTERM_OPTIONS
+      ;;
+  esac
+}
