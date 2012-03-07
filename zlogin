@@ -22,6 +22,7 @@ if [[ ($TERM != "screen") && ($TERM != "tmux") ]]; then
     exec tmux new -s login
   fi
 else
+  unset USE_TMUX
   # We're inside tmux, so run our own startup script if there is one
   if [[ -f ~/.zshrc.tmux ]]; then
     source ~/.zshrc.tmux
