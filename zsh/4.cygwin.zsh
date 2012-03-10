@@ -33,3 +33,9 @@ rebaseall() {
   exec ash -c "PATH=/bin rebaseall -v;exec zsh -l"
 }
 
+# Unset GIT_SSH. This variable controls which SSH application git uses for
+# ssh remote repo's, and this can be set to a Windows application (plink)
+# by some installers. If needed in cygwin, you should set this in .zshrc.local
+
+unset GIT_SSH
+
