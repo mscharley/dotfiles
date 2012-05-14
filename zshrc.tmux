@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 function ssh() {
-  [ -Z $DISPLAY ] && unset XTERM
+  [ -z $DISPLAY ] && unset XTERM
   case $XTERM in
     'gnome-terminal')
       $XTERM $XTERM_OPTIONS -e "ssh ${*[*]}"
