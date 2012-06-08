@@ -1,3 +1,0 @@
-[submodule "opt/dsass"]
-	path = opt/dsass
-	url = git://github.com/mscharley/dsass.git
