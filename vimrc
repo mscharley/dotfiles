@@ -37,6 +37,11 @@ set scrolloff=5  " Attempt to keep 5 lines of context when scrolling
 " set formatoptions=rq " Automatically insert comment leader on return
 set whichwrap+=<,>,[,] " Wrap start to end when using cursor keys
 
+" Setup skins
+set t_Co=256
+set background=dark
+colorscheme elflord
+
 " Case insensitive by default, unless there are caps
 set ignorecase
 set smartcase
