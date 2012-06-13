@@ -20,9 +20,9 @@ if [[ $TERM[0,6] != "screen" ]]; then
   # Check if we have a running session already
   tmux has -t login 2> /dev/null
   if [[ $? -eq 0 ]]; then
-    exec tmux attach -t login
+    exec tmux -2 attach -t login
   else
-    exec tmux new -s login
+    exec tmux -2 new -s login
   fi
 else
   unset USE_TMUX
