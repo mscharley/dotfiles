@@ -3,7 +3,7 @@
 # Load RVM into a shell session *as a function* if it exists
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-if [[ ($TERM != "screen") && ($TERM != "tmux") ]]; then
+if [[ $TERM[0,6] != "screen" ]]; then
   if [[ $USE_TMUX != true || -z `which tmux` ]]; then
     unset USE_TMUX
     return
