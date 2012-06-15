@@ -1,17 +1,17 @@
 #!/bin/zsh
 
 function parse_git_branch() {
-  local BRANCH=$(git branch -a 2> /dev/null | grep "^* " | sed -e 's/^\* //')
+  local BRANCH=$(command git branch -a 2> /dev/null | grep "^* " | sed -e 's/^\* //')
 
   if [[ -n "$BRANCH" ]]; then
     if [[ "$BRANCH" == "(no branch)" ]]; then
-      BRANCH=$(git name-rev HEAD 2> /dev/null | sed 's#HEAD \(.*\)#*\1#')
+      BRANCH=$(command git name-rev HEAD 2> /dev/null | sed 's#HEAD \(.*\)#*\1#')
     else
       # Don't display organisation folders
       BRANCH=$(basename $BRANCH)
     fi
 
-    local WORKDIR=$(git workdir | xargs basename)
+    local WORKDIR=$(command git workdir | xargs basename)
 
     echo " ${PR_LIGHT_BLACK}[${PR_RED}${WORKDIR}:${BRANCH}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
   fi
@@ -19,6 +19,12 @@ function parse_git_branch() {
 
 function chpwd() {
   SCM_BRANCH=$(parse_git_branch)
+}
+
+# Catch git commands and force a refresh on the prompt incase we've changed something
+function git() {
+  command git $*
+  chpwd
 }
 
 # Ensure this hook is called to do initial setup if needed
