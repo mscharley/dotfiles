@@ -17,16 +17,3 @@ function parse_git_branch() {
   fi
 }
 
-function chpwd() {
-  SCM_BRANCH=$(parse_git_branch)
-}
-
-# Catch git commands and force a refresh on the prompt incase we've changed something
-function git() {
-  command git $*
-  chpwd
-}
-
-# Ensure this hook is called to do initial setup if needed
-chpwd
-
