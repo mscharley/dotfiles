@@ -6,6 +6,9 @@ function parse_git_branch() {
   if [[ -n "$BRANCH" ]]; then
     if [[ "$BRANCH" == "(no branch)" ]]; then
       BRANCH=$(git name-rev HEAD 2> /dev/null | sed 's#HEAD \(.*\)#*\1#')
+    else
+      # Don't display organisation folders
+      BRANCH=$(basename $BRANCH)
     fi
 
     local WORKDIR=$(git workdir | xargs basename)
