@@ -15,6 +15,6 @@ PR_NO_COLOR="%{$terminfo[sgr0]%}"
 setopt PROMPT_SUBST
 
 # Actual prompt variables
-PROMPT="$PR_LIGHT_BLACK"'[$PR_NO_COLOR$PR_RED%n@%m $PR_GREEN%2c$PR_LIGHT_BLACK]$SCM_BRANCH$PR_NO_COLOR%(!.#.$) '
-RPROMPT="$PR_LIGHT_BLACK"'[%?]'"$PR_NO_COLOR";
+PROMPT="\${PR_LIGHT_BLACK}[\${PR_NO_COLOR}\${PR_RED}%n@%m \${PR_GREEN}%2c\${PR_LIGHT_BLACK}]\${SCM_BRANCH}\${PR_NO_COLOR}%(!.#.\$) "
+RPROMPT="\${PR_LIGHT_BLACK}[%?]\${PR_NO_COLOR}"
 

@@ -10,7 +10,7 @@ function parse_git_branch() {
 
     local WORKDIR=$(git workdir | xargs basename)
 
-    echo " $PR_LIGHT_BLACK""[$PR_NO_COLOR$PR_RED$WORKDIR:$BRANCH$PR_LIGHT_BLACK]$PR_NO_COLOR"
+    echo " ${PR_LIGHT_BLACK}[${PR_NO_COLOR}${PR_RED}${WORKDIR}:${BRANCH}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
   fi
 }
 
