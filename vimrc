@@ -38,7 +38,6 @@ set scrolloff=5  " Attempt to keep 5 lines of context when scrolling
 set whichwrap+=<,>,[,] " Wrap start to end when using cursor keys
 
 " Setup skins
-set t_Co=256
 set background=dark
 colorscheme elflord
 
