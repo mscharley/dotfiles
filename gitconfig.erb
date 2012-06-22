@@ -13,7 +13,8 @@
 [alias]
 	ff = pull --ff-only
 	recommit = commit --amend
-  workdir = !echo $PWD
+  workdir-or-cwd = !echo $PWD
+  workdir = rev-parse --show-toplevel
 [mergetool "bc3"]
   cmd = /usr/bin/bcompare $LOCAL $REMOTE $BASE $MERGED
   trustExitCode = true
