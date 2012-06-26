@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 function parse_git_branch() {
-  local BRANCH=$(command git branch -a 2> /dev/null | grep "^* " | sed -e 's/^\* //')
+  BRANCH=$(command git branch -a 2> /dev/null | grep "^* " | sed -e 's/^\* //')
 
   if [[ -n "$BRANCH" ]]; then
     if [[ "$BRANCH" == "(no branch)" ]]; then
@@ -11,7 +11,7 @@ function parse_git_branch() {
       BRANCH=$(basename $BRANCH)
     fi
 
-    local WORKDIR=$(command git workdir | xargs basename)
+    WORKDIR=$(command git workdir | xargs basename)
 
     echo " ${PR_LIGHT_BLACK}[${PR_RED}${WORKDIR}:${BRANCH}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
   fi
