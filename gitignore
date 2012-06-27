@@ -4,3 +4,6 @@ nbproject
 thumbs.db
 Thumbs.db
 .sass-cache
+
+.~lock.*
+*~
