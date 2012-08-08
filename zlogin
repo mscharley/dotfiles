@@ -20,10 +20,15 @@ if [[ $TERM[0,6] != "screen" ]]; then
   # Check if we have a running session already
   tmux has -t login 2> /dev/null
   if [[ $? -eq 0 ]]; then
-    tmux -2 attach -t login
+    OUTPUT=`tmux -2 attach -t login`
   else
-    tmux -2 new -s login
+    OUTPUT=`tmux -2 new -s login`
   fi
+
+  if [[ $OUTPUT = "[exited]" ]]; then
+    exit
+  fi
+  echo $OUTPUT
 else
   unset USE_TMUX
   # We're inside tmux, so run our own startup script if there is one
