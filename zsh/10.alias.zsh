@@ -7,7 +7,7 @@ alias la="ls -A"
 
 alias mem="free -m"
 
-alias sass="sass -t expanded --no-cache"
+alias sass="sass -t expanded --no-cache --unix-newlines -l --debug-info -E utf-8"
 alias sassw="sass --watch sass:css"
 alias touchsass="find ./ -iname \"*.scss\" -exec touch \{\} \;"
 
