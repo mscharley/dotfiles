@@ -11,7 +11,7 @@ function parse_git_branch() {
       BRANCH=$(basename $BRANCH)
     fi
 
-    WORKDIR=$(command git workdir | xargs basename)
+    WORKDIR=$(basename "$(command git workdir)")
 
     echo " ${PR_LIGHT_BLACK}[${PR_RED}${WORKDIR}:${BRANCH}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
   fi
