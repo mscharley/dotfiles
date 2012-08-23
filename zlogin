@@ -17,10 +17,6 @@ if [[ -z $TMUX ]]; then
     sleep 5
   fi
 
-  if [[ $COLOR_TERM == 'gnome-term' ]]; then
-    # Fudge for gnome terminal
-    export TERM='xterm-256color'
-  fi
   export TMUX_TERM="$TERM"
   # Check if we have a running session already
   tmux has -t login 2> /dev/null
