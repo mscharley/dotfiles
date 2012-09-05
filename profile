@@ -7,7 +7,11 @@ export SAVEHIST=1000
 # Setup environment
 export TZ="Australia/Melbourne"
 export HOSTNAME="`hostname`"
-export PAGER="less"
+if which most > /dev/null 2>&1; then
+  export PAGER="most"
+else
+  export PAGER="less"
+fi
 export EDITOR="vim"
 
 # Language setup
