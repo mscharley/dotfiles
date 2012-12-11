@@ -30,9 +30,14 @@
 #BROWSER=chromium-browser
 #BROWSER=firefox
 
-# Try using the below template to set up zsh functions that act
-# as aliases to cd and allow you to get autocomplete nicely.
+# Setup aliases for our project folders
 
-#project() { cd /path/to/project/$1; }
-#compctl -W /path/to/project/ -/ project
+#for f in $HOME/htdocs/*/; do
+#  f=$(basename $f)
+#  if `which $f > /dev/null`; then
+#  else
+#    $f() { cd $HOME/htdocs/$0/$1; }
+#    compctl -W $HOME/htdocs/$f/ -/ $f
+#  fi
+#done
 
