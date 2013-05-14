@@ -16,8 +16,6 @@ export EDITOR="vim"
 
 # Language setup
 export LANG="en_US.UTF-8"
-export LC_COLLATE=C
-export LC_CTYPE=C
 
 # Setup paths
 export GEM_HOME=$HOME/rubygems
