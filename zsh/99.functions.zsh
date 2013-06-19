@@ -25,10 +25,3 @@ function rvm_prompt() {
   fi
 }
 
-function vagrant() {
-  local curr_rvm=`rvm current`
-  rvm use system
-  command vagrant "$@"
-  rvm use $curr_rvm
-}
-
