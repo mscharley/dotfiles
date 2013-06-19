@@ -17,15 +17,16 @@ function parse_git_branch() {
 function rvm_prompt() {
   if [[ -n "$rvm_version" ]]; then
     local rvm_color="${PR_GREEN}"
-    if [[ -z "$rvm_env_string" ]]; then
-      rvm_color="${PR_RED}system"
+    local rvm_version=`rvm current`
+    if [[ "$rvm_version" == "system" ]]; then
+      rvm_color="${PR_RED}"
     fi
-    echo " ${PR_LIGHT_BLACK}[${rvm_color}${rvm_env_string}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
+    echo " ${PR_LIGHT_BLACK}[${rvm_color}${rvm_version}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
   fi
 }
 
 function vagrant() {
-  local curr_rvm=$rvm_env_string
+  local curr_rvm=`rvm current`
   rvm use system
   command vagrant "$@"
   rvm use $curr_rvm
