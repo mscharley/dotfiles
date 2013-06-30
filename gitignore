@@ -1,6 +1,11 @@
 .idea
 nbproject
 .redcar
+.metadata
+.classpath
+.project
+.settings
+
 _notes
 thumbs.db
 Thumbs.db
@@ -11,6 +16,7 @@ atlassian-ide-plugin.xml
 
 .~lock.*
 *~
+.nfs*
 
 .svn
 .hg
