@@ -1,10 +1,4 @@
 #!/usr/bin/env ruby
 
-#use warnings;
-#use strict;
-#my $url = pop(@ARGV);
-#my $opts = ($#ARGV >= 0 ? '"'.join('" "', @ARGV).'"' : '');
-#`wget -nv -O - "$url" | tar -x $opts`
-
 url = ARGV.pop
-exec ['wget', '-nv', '-O', '-', "\"#{url}\"", "|", "tar", "-x", *ARGV].join(" ")
+exec ['wget', '-nv', '-O', '-', "\"#{url}\"", "|", "tar", "-x", "--no-same-permissions", *ARGV].join(" ")
