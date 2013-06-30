@@ -30,8 +30,10 @@ PR_URCORNER=${altchar[k]:--}
 precmd() {
   if [[ -n "$TMUX" ]]; then
     PR_USER="%n:%l"
+    PR_USER_COLOR="${PR_LIGHT_MAGENTA}"
   else
     PR_USER="%n@%m:%l"
+    PR_USER_COLOR="${PR_LIGHT_YELLOW}"
   fi
 
   local bare_prompt=${(%):-(${PR_USER})-- }
@@ -60,8 +62,6 @@ precmd() {
 
   if [[ "$USER" == "root" ]]; then
     PR_USER_COLOR="${PR_RED}"
-  else
-    PR_USER_COLOR="${PR_LIGHT_MAGENTA}"
   fi
 }
 
