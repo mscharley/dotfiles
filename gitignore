@@ -13,6 +13,7 @@ Thumbs.db
 .sass-cache
 fontconfig
 atlassian-ide-plugin.xml
+*.iml
 
 .~lock.*
 *~
