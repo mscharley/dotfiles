@@ -5,3 +5,5 @@ if [[ `uname` != "Darwin" ]]; then
 fi
 
 alias ls="ls -GF"
+alias ll="ls -lah"
+alias la="ls -A"
