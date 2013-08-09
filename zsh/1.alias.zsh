@@ -1,11 +1,9 @@
 #!/bin/zsh
 
 # Directory listings
-if [[ -z `alias ls` ]]; then
-  alias ls="ls --color=auto -F"
-  alias ll="ls -lah"
-  alias la="ls -A"
-fi
+alias ls="ls --color=auto -F"
+alias ll="ls -lah"
+alias la="ls -A"
 
 alias mem="free -m"
 
