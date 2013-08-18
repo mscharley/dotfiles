@@ -18,6 +18,5 @@ export EDITOR="vim"
 export LANG="en_US.UTF-8"
 
 # Setup paths
-export GEM_HOME=$HOME/rubygems
-export PATH=$HOME/bin:$HOME/.bin:$PATH:$GEM_HOME/bin
+export PATH=$HOME/bin:$HOME/.bin:$PATH
 
