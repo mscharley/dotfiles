@@ -4,6 +4,10 @@
 [core]
 	excludesfile = <%= ENV['HOME'] %>/.gitignore
 	editor = vim
+  eol = lf
+  autocrlf = false
+  compression = 9
+  loosecompression = 1
 [color]
 	diff = auto
 	status = auto
@@ -16,11 +20,11 @@
   workdir-or-cwd = !echo $PWD
   workdir = rev-parse --show-toplevel
   prune = fetch --all --prune
+  in-develop = log master..develop --pretty='format:%s' --no-merges
 [push]
 	default = upstream
-[mergetool "bc3"]
-  cmd = /usr/bin/bcompare $LOCAL $REMOTE $BASE $MERGED
-  trustExitCode = true
+[rebase]
+  autosquash = true
 <% if File.exist?('/usr/bin/bcompare') %>
 [merge]
   tool = bc3
