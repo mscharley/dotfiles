@@ -2,7 +2,7 @@
 	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
 	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
 [core]
-	excludesfile = <%= ENV['HOME'] %>/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
   eol = lf
   autocrlf = false
@@ -16,6 +16,7 @@
 	whitespace = nowarn
 [alias]
 	ff = pull --ff-only
+  ff-merge = merge --ff-only
 	recommit = commit --amend
   workdir-or-cwd = !echo $PWD
   workdir = rev-parse --show-toplevel
