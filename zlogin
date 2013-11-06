@@ -46,3 +46,8 @@ elif [[ $USE_TMUX == true ]]; then
     source ~/.zshrc.tmux
   fi
 fi
+
+if `which fortune > /dev/null`; then
+  fortune -a
+fi
+
