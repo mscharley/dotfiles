@@ -48,6 +48,6 @@ elif [[ $USE_TMUX == true ]]; then
 fi
 
 if `which fortune > /dev/null`; then
-  fortune -a
+  fortune -as
 fi
 
