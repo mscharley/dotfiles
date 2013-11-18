@@ -22,6 +22,7 @@
   workdir = rev-parse --show-toplevel
   prune = fetch --all --prune
   in-develop = log master..develop --pretty='format:%s' --no-merges
+  deploy=push origin HEAD:develop
 [push]
 	default = upstream
 [rebase]
