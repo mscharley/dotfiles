@@ -49,5 +49,6 @@ fi
 
 if `which fortune > /dev/null`; then
   fortune -as
+  echo
 fi
 
