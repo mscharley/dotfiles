@@ -10,6 +10,8 @@ for i in {1..99}; do
   done
 done
 
+unset i
+unset f
 unsetopt NULL_GLOB
 unsetopt ALL_EXPORT
 
