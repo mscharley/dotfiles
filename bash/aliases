@@ -6,3 +6,4 @@ alias ls="ls --color=auto"
 alias ll="ls -lAh"
 alias la="ls -A"
 
+alias php-xdebug="php -dxdebug.remote_autostart=On"
