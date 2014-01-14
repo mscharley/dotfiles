@@ -36,7 +36,7 @@ function prompt
 	Write-Host (" " * ($host.ui.rawui.windowsize.width - $rprompt.length - 1) + "$($rprompt)`r") -NoNewline -ForegroundColor DarkGray
 	
 	# Left prompt
-	Write-Host ($git) -NoNewline -ForegroundColor DarkRed
 	Write-Host ("$($executionContext.SessionState.Path.CurrentLocation) ") -NoNewline -ForegroundColor DarkGreen
+	Write-Host ($git) -NoNewline -ForegroundColor DarkRed
 	"$('$' * ($nestedPromptLevel + 1)) "
 }
