@@ -2,7 +2,7 @@ function Get-GitBranch
 {
 	$branch = git branch -a 2> $null | Where-Object {$_ -match "^\*"}
 	if ($branch -eq $null) {
-		return $null;
+		return $null
 	}
 	
 	$branch = $branch.Substring(2)
@@ -18,9 +18,23 @@ function Get-GitBranch
 
 function prompt
 {
+	$exit = $LastExitCode
+	if ($exit -eq $null) {
+		$exit = 0
+	}
+	
 	$git = Get-GitBranch
 	if ($git -ne $null) { 
 		$git = "[$git] "
 	}
+	
+	# Reset $LastExitCode so we don't get confusing things happening because of stuff we've run
+	cmd /c "exit $($exit)"
+	
+	# Right prompt
+	$rprompt = "[$($exit)]"
+	Write-Host (" " * ($host.ui.rawui.windowsize.width - $rprompt.length - 1) + "$($rprompt)`r") -nonewline
+	
+	# Left prompt
 	"$($git)$($executionContext.SessionState.Path.CurrentLocation) $('$' * ($nestedPromptLevel + 1)) "
 }
