@@ -33,8 +33,10 @@ function prompt
 	
 	# Right prompt
 	$rprompt = "[$($exit)]"
-	Write-Host (" " * ($host.ui.rawui.windowsize.width - $rprompt.length - 1) + "$($rprompt)`r") -nonewline
+	Write-Host (" " * ($host.ui.rawui.windowsize.width - $rprompt.length - 1) + "$($rprompt)`r") -NoNewline -ForegroundColor DarkGray
 	
 	# Left prompt
-	"$($git)$($executionContext.SessionState.Path.CurrentLocation) $('$' * ($nestedPromptLevel + 1)) "
+	Write-Host ($git) -NoNewline -ForegroundColor DarkRed
+	Write-Host ("$($executionContext.SessionState.Path.CurrentLocation) ") -NoNewline -ForegroundColor DarkGreen
+	"$('$' * ($nestedPromptLevel + 1)) "
 }
