@@ -40,3 +40,16 @@ function prompt
 	Write-Host ($git) -NoNewline -ForegroundColor DarkRed
 	"$('$' * ($nestedPromptLevel + 1)) "
 }
+
+function which($cmd)
+{
+	Get-Command $cmd | Format-List *
+}
+
+$env:EDITOR = "notepad++.exe"
+
+Set-Alias ssh plink
+Set-Alias scp pscp
+# This is the same as ls, include for linux compat
+Set-Alias ll Get-ChildItem
+function la { Get-ChildItem -Force }
