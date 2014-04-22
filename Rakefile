@@ -16,7 +16,11 @@ desc "Install the dot files into user's home directory."
 task :install => [:git] do
   replace_all = false
   Dir['*'].each do |file|
+    # Ignore repository files
     next if %w[Rakefile README.md LICENSE].include? file
+	
+    # Ignore powershell files
+    next if file =~ /\.ps1$/
     
     filename = get_filename(file)
     is_example = (file =~ /\.example$/)
