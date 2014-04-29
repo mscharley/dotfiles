@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-# Load RVM into a shell session *as a function* if it exists
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 if [[ -z $TMUX && $TERM[0,6] == "screen" ]]; then
   unset USE_TMUX
 fi
@@ -46,6 +43,12 @@ elif [[ $USE_TMUX == true ]]; then
     source ~/.zshrc.tmux
   fi
 fi
+
+# Load RVM into a shell session *as a function* if it exists
+if [[ -d $HOME/.rvm ]]; then
+  append-path $HOME/.rvm/bin
+fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 if `which fortune > /dev/null`; then
   fortune -as

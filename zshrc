@@ -14,8 +14,3 @@ unset i
 unset f
 unsetopt NULL_GLOB
 unsetopt ALL_EXPORT
-
-if [ -f ~/.zsh/login ]; then
-  source ~/.zsh/login
-fi
-

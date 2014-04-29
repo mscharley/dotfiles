@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-if [[ -d $HOME/.rvm ]]; then
-  PATH=$PATH:$HOME/.rvm/bin
+if [[ ! -d $HOME/.rvm ]]; then
+  alias get-rvm="\curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles"
 fi

@@ -5,3 +5,7 @@ if [ -f ~/.profile ]; then
 	. ~/.profile
 fi
 
+# Setup paths
+prepend-path $HOME/bin
+prepend-path $HOME/.bin
+

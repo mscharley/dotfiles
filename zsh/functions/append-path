@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+if [[ -z ${path[(r)$1]} ]] ; then 
+  path+=$1
+fi
+
