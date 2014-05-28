@@ -46,6 +46,8 @@ task :install => [:git] do
           puts "skipping ~/.#{filename}"
         end
       end
+    elsif File.symlink?(File.join(ENV['HOME'], ".#{filename}"))
+      replace_file(file)
     else
       link_file(file)
     end
