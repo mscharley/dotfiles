@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+if [[ -n $KATE_PID ]]; then
+  return
+fi
+
 if [[ -z $TMUX && $TERM[0,6] == "screen" ]]; then
   unset USE_TMUX
 fi
