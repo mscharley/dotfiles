@@ -1,6 +1,12 @@
 #!/bin/zsh
 
 if [[ -z ${path[(r)$1]} ]] ; then 
-  path=( $1 "$path[@]" )
+  for (( i=1; i <= ${#path}; i++ )); do
+    if [[ ! ( ${path[$i]} =~ 'rvm' ) ]]; then
+      (( j = i + 1 ))
+      path=( "${(@)path[0,i]}" $1 "${(@)path[j,-1]}" )
+      return
+    fi
+  done
 fi
 
