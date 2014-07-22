@@ -22,3 +22,5 @@ atlassian-ide-plugin.xml
 .svn
 .hg
 .vagrant
+
+.versions.conf
