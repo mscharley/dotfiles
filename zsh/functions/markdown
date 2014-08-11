@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+local have_redcarpet=$(which redcarpet 2>&1 > /dev/null; echo -n $?)
+local have_maruku=$(which maruku 2>&1 > /dev/null; echo -n $?)
+if [[ $have_redcarpet -eq 0 ]]; then
+  echo 'Processing with "redcarpet"...'
+  redcarpet $1 > ${1%.md}.html
+elif [[ $have_maruku -eq 0 ]]; then
+  echo 'Processing with "maruku"...'
+  maruku $1
+fi
+
