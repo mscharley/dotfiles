@@ -26,44 +26,8 @@ PR_LLCORNER=${altchar[m]:--}
 PR_LRCORNER=${altchar[j]:--}
 PR_URCORNER=${altchar[k]:--}
 
-# Setup some variables for use in the actual prompt
-precmd() {
-  if [[ -n "$TMUX" ]]; then
-    PR_USER="%n:%l"
-    PR_USER_COLOR="${PR_LIGHT_MAGENTA}"
-  else
-    PR_USER="%n@%m:%l"
-    PR_USER_COLOR="${PR_LIGHT_YELLOW}"
-  fi
-
-  local bare_prompt=${(%):-(${PR_USER})-- }
-
-  unset PR_RUBY
-  if [[ -n "$rvm_version" ]]; then
-    local rvm_color="$PR_GREEN"
-    local rvm_version=`rvm current`
-    if [[ "$rvm_version" == "system" ]]; then
-      rvm_color="${PR_RED}"
-    fi
-    bare_prompt="${bare_prompt}-[${rvm_version}]"
-    PR_RUBY="${PR_LIGHT_BLACK}${PR_SHIFT_IN}${PR_HBAR}${PR_SHIFT_OUT}[${rvm_color}${rvm_version}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
-  fi
-
-  PR_GIT=`parse_git_branch`
-  if [[ -n "$PR_GIT" ]]; then
-    bare_prompt="${bare_prompt}-[${PR_GIT}]"
-    PR_GIT="${PR_LIGHT_BLACK}${PR_SHIFT_IN}${PR_HBAR}${PR_SHIFT_OUT}[${PR_GREEN}${PR_GIT}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
-  fi
-
-  local TERMWIDTH
-  (( TERMWIDTH = ${COLUMNS} - 1 ))
-  local promptsize=${#${bare_prompt}}
-  PR_FILLBAR="\${(l.(($TERMWIDTH - $promptsize))..${PR_HBAR}.)}"
-
-  if [[ "$USER" == "root" ]]; then
-    PR_USER_COLOR="${PR_RED}"
-  fi
-}
+# Setup some variables for use in the actual prompt (definition in fpath)
+precmd_functions[$(($#precmd_functions+1))]='prompt_precmd'
 
 # Actual prompt variables
 PROMPT='${PR_SET_CHARSET}${PR_LIGHT_BLACK}${PR_SHIFT_IN}${PR_ULCORNER}${PR_SHIFT_OUT}[${PR_USER_COLOR}${PR_USER}${PR_LIGHT_BLACK}]${PR_RUBY}${PR_GIT}${PR_LIGHT_BLACK}${PR_SHIFT_IN}${(e)PR_FILLBAR}${PR_HBAR}${PR_URCORNER}${PR_SHIFT_OUT}
