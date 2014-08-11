@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+START_SECONDS=$SECONDS
+

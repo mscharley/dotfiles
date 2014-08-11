@@ -1,13 +1,5 @@
 #!/bin/zsh
 
-if [[ -n "$TMUX" ]]; then
-  PR_USER="%n:%l"
-  PR_USER_COLOR="${PR_LIGHT_MAGENTA}"
-else
-  PR_USER="%n@%m:%l"
-  PR_USER_COLOR="${PR_LIGHT_YELLOW}"
-fi
-
 local bare_prompt=${(%):-(${PR_USER})-- }
 
 unset PR_RUBY
@@ -35,4 +27,3 @@ PR_FILLBAR="\${(l.(($TERMWIDTH - $promptsize))..${PR_HBAR}.)}"
 if [[ "$USER" == "root" ]]; then
   PR_USER_COLOR="${PR_RED}"
 fi
-
