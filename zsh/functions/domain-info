@@ -10,6 +10,8 @@ dig +short -t NS $1
 echo "$yellow  MX:$reset"
 MX=`dig +short -t MX $1 | sort -k 1 -n`
 echo $MX
+echo "$yellow  TXT:$reset"
+dig +short -t TXT $1
 echo "$yellow  A:$reset"
 for name in `echo $MX | awk "{ print \\\$2 }"`; do
   echo "$name: `dig +short -t A $name`"
