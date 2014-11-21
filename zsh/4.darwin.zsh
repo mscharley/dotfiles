@@ -9,6 +9,8 @@ if [[ -e /usr/local/share/zsh-completions ]]; then
 fi
 
 alias ls="ls -GF"
+alias ll="ls -la@h"
+
 prepend-path /usr/local/bin
 prepend-path /usr/sbin
 prepend-path /sbin
