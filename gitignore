@@ -24,3 +24,5 @@ atlassian-ide-plugin.xml
 .vagrant
 
 .versions.conf
+.kateproject
+.kateproject.d
