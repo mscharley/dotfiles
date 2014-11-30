@@ -6,6 +6,6 @@ else
   if [[ -d $HOME/.rvm ]]; then
     alias update-rvm="rvm get stable --ignore-dotfiles"
   else
-    alias update-rvm="rvmsudo rvm get stable --ignore-dotfiles"
+    alias update-rvm="PROMPT= RPROMPT= PS2= rvmsudo rvm get stable --ignore-dotfiles; rvm reload"
   fi
 fi
