@@ -11,6 +11,8 @@ fi
 alias ls="ls -GF"
 alias ll="ls -la@h"
 
+alias clear-quarantine="find . -xattr -exec xattr -d com.apple.quarantine \{\} \;"
+
 prepend-path /usr/local/bin
 prepend-path /usr/sbin
 prepend-path /sbin
