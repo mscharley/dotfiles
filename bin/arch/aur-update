@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+# This script has only been tested on Ruby 2.1.5. The Arch repositories are good at keeping Ruby up to
+# date.
+
+# These should be kept to Ruby's stdlib as much as possible
+require 'json'
+require 'net/http'
+
+if !ARGV[0].nil? && File.directory?(ARGV[0])
+  build_path = ARGV[0]
+elsif !ARGV[0].nil?
+  STDERR.puts "Build path #{ARGV[0]} does not exist."
+  exit 1
+elsif File.directory?(ENV['HOME'] + '/build')
+  build_path = ENV['HOME'] + '/build'
+elsif File.directory?(ENV['HOME'] + '/opt/build')
+  build_path = ENV['HOME'] + '/opt/build'
+else
+  STDERR.puts "Unable to find a valid build path, please specify one as the first command-line argument."
+  exit 1
+end
+
+output_file = (ENV['XDG_DATA_HOME'] || ENV['HOME'] + '/.local/share') + '/aur-update'
+
+File.open(output_file, 'w') do |output|
+  output_lines = false
+  pacman_count = `pacman -Qu`.lines.count
+
+  if pacman_count > 0
+    output.puts "echo \"${fg[yellow]}Found #{pacman_count} updates in pacman.${terminfo[sgr0]}\""
+    output_lines = true
+  end
+
+  aur_packages = Dir[build_path + '/*'].map {|f| File.basename f }
+  aur_args = 'arg[]=' + aur_packages.join('&arg[]=')
+  aur_info = JSON.parse(
+    Net::HTTP.get(URI.parse('https://aur.archlinux.org/rpc.php?type=multiinfo&' + aur_args))
+  )
+
+  aur_info['results'].each do |info|
+    pac_info = `pacman -Q #{info['Name']} 2> /dev/null`.chomp.split(' ')
+    continue if pac_info.length == 0
+
+    if info['Version'] != pac_info[1]
+      output.puts "echo \"$fg[yellow]}Found update for AUR package #{info['Name']} (#{info['Version']})${terminfo[sgr0]}\""
+      output_lines = true
+    end
+  end
+
+  output.puts "echo" if output_lines
+end
