@@ -14,12 +14,3 @@ alias touchsass="find ./ -iname \"*.scss\" -exec touch \{\} \;"
 alias php-xdebug="php -dxdebug.remote_autostart=On"
 
 alias please='sudo $(fc -ln -1)'
-
-# Open web addresses in the browser if one was set in zshrc.local
-if [[ -n $BROWSER ]]; then
-  alias -s html=$BROWSER
-  alias -s org=$BROWSER
-  alias -s com=$BROWSER
-  alias -s net=$BROWSER
-fi
-
