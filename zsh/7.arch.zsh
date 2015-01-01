@@ -14,3 +14,5 @@ if [[ -d $HOME/build || -d $HOME/opt/build ]]; then
     source ${XDG_DATA_HOME:-$HOME/.local/share}/aur-update
   fi
 fi
+
+alias pacman-orphans="pacman -Qtdq"

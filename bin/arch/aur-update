@@ -42,7 +42,7 @@ File.open(output_file, 'w') do |output|
     next if pac_info.length == 0
 
     if info['Version'] != pac_info[1]
-      output.puts "echo \"$fg[yellow]}Found update for AUR package #{info['Name']} (#{info['Version']})${terminfo[sgr0]}\""
+      output.puts "echo \"${fg[yellow]}Found update for AUR package #{info['Name']} (#{info['Version']})${terminfo[sgr0]}\""
       output_lines = true
     end
   end
