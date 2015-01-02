@@ -1,9 +1,18 @@
 #!/bin/zsh
 
-if [[ -n $KATE_PID ]]; then
-  return
+local PARENT_PROC
+PARENT_PROC=$(ps -o cmd --pid `get-ppid $$` | tail -n +2)
+
+# Don't use tmux inside IDE's
+if string-contains "com.intellij.idea.Main" "$PARENT_PROC"; then
+  unset USE_TMUX
 fi
 
+if [[ -n $KATE_PID ]]; then
+  unset USE_TMUX
+fi
+
+# If we're already in tmux, then don't try to nest a new session
 if [[ -z $TMUX && $TERM[0,6] == "screen" ]]; then
   unset USE_TMUX
 fi
@@ -60,4 +69,3 @@ if [[ $? == 0 && -z $QUIET_STARTUP ]]; then
   fortune -a
   echo
 fi
-
