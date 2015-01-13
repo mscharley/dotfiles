@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+if [[ -z "$1" ]]; then
+  $BROWSER https://aur.archlinux.org/packages
+else
+  if [[ -d "$1" ]]; then
+    echo "Deleting old version of $1."
+    rm -rf $1
+  fi
+  echo "Fetching updated version..."
+  get -z "https://aur.archlinux.org/packages/${1[1,2]}/$1/$1.tar.gz"
+fi
