@@ -14,3 +14,5 @@ alias touchsass="find ./ -iname \"*.scss\" -exec touch \{\} \;"
 alias php-xdebug="php -dxdebug.remote_autostart=On"
 
 alias please='sudo $(fc -ln -1)'
+
+alias sum="awk '{ s += \$1; } END { print s}'"
