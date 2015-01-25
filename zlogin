@@ -57,13 +57,6 @@ elif [[ $USE_TMUX == true ]]; then
   fi
 fi
 
-# Load RVM into a shell session *as a function* if it exists
-which append-path 2>&1 > /dev/null
-if [[ $? == 0 && -d $HOME/.rvm ]]; then
-  append-path $HOME/.rvm/bin
-fi
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 which fortune 2>&1 > /dev/null
 if [[ $? == 0 && -z $QUIET_STARTUP ]]; then
   fortune -a

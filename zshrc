@@ -10,6 +10,13 @@ for i in {1..99}; do
   done
 done
 
+# Load RVM into a shell session *as a function* if it exists
+which append-path 2>&1 > /dev/null
+if [[ $? == 0 && -d $HOME/.rvm ]]; then
+  append-path $HOME/.rvm/bin
+fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 unset i
 unset f
 unsetopt NULL_GLOB
