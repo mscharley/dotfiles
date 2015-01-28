@@ -1,16 +1,24 @@
 #!/bin/zsh
 
-local PARENT_PROC
-PARENT_PROC=$(ps -o cmd --pid `get-ppid $$` | tail -n +2)
+PARENT_PROC=$(ps -o command -p `get-ppid $$` | tail -n +2)
 
-# Don't use tmux inside IDE's
+## Don't use tmux inside IDE's
+
+# IDEA
 if string-contains "com.intellij.idea.Main" "$PARENT_PROC"; then
   unset USE_TMUX
 fi
 
+if string-contains ".app/Contents/MacOS/idea" "$PARENT_PROC"; then
+  unset USE_TMUX
+fi
+
+# Kate
 if [[ -n $KATE_PID ]]; then
   unset USE_TMUX
 fi
+
+unset PARENT_PROC
 
 # If we're already in tmux, then don't try to nest a new session
 if [[ -z $TMUX && $TERM[0,6] == "screen" ]]; then

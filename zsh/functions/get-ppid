@@ -3,4 +3,4 @@
 local PID
 PID=${1:?You must specify a PID as the only parameter}
 
-ps --pid ${1:?You must specify a PID as the only parameter} -o pid,ppid | tail -n +2 | awk '{print $2}'
+ps -p $PID -o pid,ppid | tail -n +2 | awk '{print $2}'
