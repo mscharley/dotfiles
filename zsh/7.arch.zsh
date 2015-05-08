@@ -16,3 +16,4 @@ if [[ -d $HOME/build || -d $HOME/opt/build ]]; then
 fi
 
 alias pacman-orphans="pacman -Qtdq"
+alias pacman-remove-orphans="pacman -Rns \$(pacman -Qtdq)"
