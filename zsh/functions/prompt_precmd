@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-local bare_prompt=${(%):-(${PR_USER})-- }
+local bare_prompt=${(%):-(${PR_USER})- }
 
 unset PR_RUBY
 if [[ -n "$rvm_version" ]]; then
@@ -17,6 +17,13 @@ PR_GIT=`parse_git_branch`
 if [[ -n "$PR_GIT" ]]; then
   bare_prompt="${bare_prompt}-[${PR_GIT}]"
   PR_GIT="${PR_LIGHT_BLACK}${PR_SHIFT_IN}${PR_HBAR}${PR_SHIFT_OUT}[${PR_GREEN}${PR_GIT}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
+fi
+
+PR_EMAIL=''
+mail -e &> /dev/null
+if [[ $? -eq 0 ]]; then
+  bare_prompt="${bare_prompt}-[*]"
+  PR_EMAIL="${PR_LIGHT_BLACK}${PR_SHIFT_IN}${PR_HBAR}${PR_SHIFT_OUT}[${PR_LIGHT_YELLOW}E${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
 fi
 
 local TERMWIDTH
