@@ -34,7 +34,7 @@ File.open(output_file, 'w') do |output|
   aur_packages = Dir[build_path + '/*'].map {|f| File.basename f }
   aur_args = 'arg[]=' + aur_packages.join('&arg[]=')
   aur_info = JSON.parse(
-    Net::HTTP.get(URI.parse('https://aur.archlinux.org/rpc.php?type=multiinfo&' + aur_args))
+    Net::HTTP.get(URI.parse('https://aur4.archlinux.org/rpc.php?type=multiinfo&' + aur_args))
   )
 
   aur_info['results'].each do |info|
