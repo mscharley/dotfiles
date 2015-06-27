@@ -1,12 +1,37 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env ruby
 
-if [[ -z "$1" ]]; then
-  $BROWSER https://aur.archlinux.org/packages
-else
-  if [[ -d "$1" ]]; then
-    echo "Deleting old version of $1."
-    rm -rf $1
-  fi
-  echo "Fetching updated version..."
-  get -z "https://aur.archlinux.org/packages/${1[1,2]}/$1/$1.tar.gz"
-fi
+require 'fileutils'
+include FileUtils
+
+begin
+  require 'highline/import'
+rescue LoadError
+  STDERR.puts 'Installing highline.'
+  system 'gem', 'install', 'highline'
+  exec $0, *ARGV
+end
+
+if ARGV.length == 0
+  exec ENV['BROWSER'], 'https://aur.archlinux.org/packages'
+end
+
+package = ARGV[0]
+if File.directory? package
+  puts "Deleting old version of #{package}."
+  rm_rf package
+end
+puts 'Fetching updated version.'
+system 'get', '-z', "https://aur.archlinux.org/packages/#{package[0..1]}/#{package}/#{package}.tar.gz"
+
+Dir.chdir package do
+  puts 'Making package.'
+  system 'makepkg'
+
+  install = ask("Install #{package}? ") { |s| s.in = ['y', 'n']}
+  if install == 'y'
+    system 'sudo', 'pacman', '-U', '--noconfirm', *Dir['*.pkg.tar.xz']
+  end
+end
+
+puts 'Stashing packages in pkg/.'
+mv Dir["#{package}/*.pkg.tar.xz"], 'pkg/'

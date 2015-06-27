@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# This script has only been tested on Ruby 2.1.5. The Arch repositories are good at keeping Ruby up to
+# This script has only been tested on latest Ruby. The Arch repositories are good at keeping Ruby up to
 # date.
 
 # These should be kept to Ruby's stdlib as much as possible
@@ -16,7 +16,7 @@ elsif File.directory?(ENV['HOME'] + '/build')
 elsif File.directory?(ENV['HOME'] + '/opt/build')
   build_path = ENV['HOME'] + '/opt/build'
 else
-  STDERR.puts "Unable to find a valid build path, please specify one as the first command-line argument."
+  STDERR.puts 'Unable to find a valid build path, please specify one as the first command-line argument.'
   exit 1
 end
 
