@@ -11,6 +11,11 @@ rescue LoadError
   exec $0, *ARGV
 end
 
+def run(*args)
+  system *args
+  exit $?.exitstatus if $?.exitstatus > 0
+end
+
 if ARGV.length == 0
   exec ENV['BROWSER'], 'https://aur4.archlinux.org/packages'
 end
@@ -21,15 +26,15 @@ if File.directory? package
   rm_rf package
 end
 puts ':: Fetching updated version.'
-system 'get', '-z', "https://aur4.archlinux.org/cgit/aur.git/snapshot/#{package}.tar.gz"
+run 'get', '-z', "https://aur4.archlinux.org/cgit/aur.git/snapshot/#{package}.tar.gz"
 
 Dir.chdir package do
   puts ':: Making package.'
-  system 'makepkg'
+  run 'makepkg'
 
   install = ask(":: Install #{package}? [Y/n] ") { |s| s.in = ['', 'y', 'n']}
   if install != 'n'
-    system 'sudo', 'pacman', '-U', '--noconfirm', *Dir['*.pkg.tar.xz']
+    run 'sudo', 'pacman', '-U', '--noconfirm', *Dir['*.pkg.tar.xz']
   end
 end
 
