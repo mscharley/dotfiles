@@ -5,6 +5,7 @@
 # These should be kept to Ruby's stdlib as much as possible
 require 'json'
 require 'net/http'
+require 'socket'
 
 if !ARGV[0].nil? && File.directory?(ARGV[0])
   build_path = ARGV[0]
@@ -33,9 +34,13 @@ File.open(output_file, 'w') do |output|
 
   aur_packages = Dir[build_path + '/*'].map {|f| File.basename f }
   aur_args = 'arg[]=' + aur_packages.join('&arg[]=')
-  aur_info = JSON.parse(
-    Net::HTTP.get(URI.parse('https://aur4.archlinux.org/rpc.php?type=multiinfo&' + aur_args))
-  )
+  begin
+    aur_info = JSON.parse(
+      Net::HTTP.get(URI.parse('https://aur4.archlinux.org/rpc.php?type=multiinfo&' + aur_args))
+    )
+  rescue SocketError
+    next
+  end
 
   aur_info['results'].each do |info|
     pac_info = `pacman -Q #{info['Name']} 2> /dev/null`.chomp.split(' ')
