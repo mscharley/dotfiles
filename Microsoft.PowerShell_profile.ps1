@@ -1,5 +1,10 @@
 function Get-GitBranch
 {
+	$git = Get-Command git
+	if ($git -eq $null) {
+		return $null
+	}
+
 	$branch = git branch -a 2> $null | Where-Object {$_ -match "^\*"}
 	if ($branch -eq $null) {
 		return $null
