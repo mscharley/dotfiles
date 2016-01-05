@@ -36,6 +36,10 @@ Dir.chdir package do
   if install != 'n'
     run 'sudo', 'pacman', '-U', '--noconfirm', *Dir['*.pkg.tar.xz']
   end
+
+  puts ':: Cleaning package folder'
+  rm_rf 'pkg' if File.exist? 'pkg'
+  rm_rf 'src' if File.exist? 'src'
 end
 
 puts ':: Stashing packages in pkg/.'

@@ -1,4 +1,3 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 START_SECONDS=$SECONDS
-

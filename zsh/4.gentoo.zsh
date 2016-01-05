@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 if [ ! -f /etc/gentoo-release ]; then
   return

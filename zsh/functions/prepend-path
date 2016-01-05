@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 if [[ -z ${path[(r)$1]} ]] ; then 
   for (( i=1; i <= ${#path}; i++ )); do
@@ -9,4 +9,3 @@ if [[ -z ${path[(r)$1]} ]] ; then
     fi
   done
 fi
-

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 setopt ALL_EXPORT
 setopt NULL_GLOB

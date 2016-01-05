@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 local MX
 local yellow=$terminfo[bold]$fg[yellow]

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Directory listings
 alias ls="ls --color=auto -F"

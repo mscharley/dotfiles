@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Source .profile for environment variables
 if [ -f ~/.profile ]; then
