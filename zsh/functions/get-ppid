@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 local PID
 PID=${1:?You must specify a PID as the only parameter}

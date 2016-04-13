@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 local BRANCH="$(command git branch -a 2> /dev/null | grep "^* " | sed -e 's/^\* //')"
 
@@ -11,4 +11,3 @@ if [[ -n "$BRANCH" ]]; then
 
   echo "${WORKDIR}:${BRANCH}"
 fi
-

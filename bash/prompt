@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 parse_git_branch () {
 	git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# [\1]#'

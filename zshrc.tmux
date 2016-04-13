@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 function ssh() {
   [ -z $DISPLAY ] && unset XTERM

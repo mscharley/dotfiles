@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Uncomment this variable definition to enable tmux support in
 # your login shell. This will cause tmux to be loaded as part of

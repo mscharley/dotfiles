@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 if [[ (! -d $HOME/.rvm) && (! -d /usr/local/rvm) ]]; then
   alias get-rvm="\curl -sSL https://get.rvm.io | bash -s stable --ignore-dotfiles"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if [ -f /proc/loadavg ]; then
   cat /proc/loadavg | awk '{ print $1,$2,$3 }'

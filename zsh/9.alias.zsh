@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Open web addresses in the browser if one was set in zshrc.local
 if [[ -n $BROWSER ]]; then

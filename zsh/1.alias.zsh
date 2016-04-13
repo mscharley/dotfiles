@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 # Directory listings
 alias ls="ls --color=auto -F"
@@ -12,3 +12,6 @@ alias php-xdebug="php -dxdebug.remote_autostart=On"
 alias please='sudo $(fc -ln -1)'
 
 alias sum="awk '{ s += \$1; } END { print s}'"
+
+# After deleting my crontab yet again...
+alias crontab="crontab -i"

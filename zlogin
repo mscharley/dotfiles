@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 PARENT_PROC=$(ps -o command -p `get-ppid $$` | tail -n +2)
 

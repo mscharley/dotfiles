@@ -1,11 +1,11 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 local bare_prompt=${(%):-(${PR_USER})- }
 
 unset PR_RUBY
 if [[ -n "$rvm_version" ]]; then
   local rvm_color="$PR_GREEN"
-  local rvm_version=$(~/.rvm/bin/rvm-prompt s i v g)
+  local rvm_version=$(rvm-prompt s i v g)
   if [[ "$rvm_version" == "system" ]]; then
     rvm_color="${PR_RED}"
   fi

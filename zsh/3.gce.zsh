@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 if [[ -d $HOME/opt/google-cloud-sdk ]]; then
   source $HOME/opt/google-cloud-sdk/path.zsh.inc
