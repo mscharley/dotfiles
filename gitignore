@@ -6,7 +6,9 @@ nbproject
 .project
 .settings
 .rakeTasks
+
 /tags
+/.tags_swap
 
 _notes
 thumbs.db
