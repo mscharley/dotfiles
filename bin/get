@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 url = ARGV.pop
-exec ['wget', '-nv', '-O', '-', "\"#{url}\"", "|", "tar", "-x", "--no-same-permissions", *ARGV].join(" ")
+exec ['curl', '-QsS', '-o', '-', '-L', "\"#{url}\"", "|", "tar", "-x", "--no-same-permissions", *ARGV].join(" ")
