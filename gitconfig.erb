@@ -24,6 +24,7 @@
   in-develop = log master..develop --pretty='format:%s' --no-merges
   deploy = push origin HEAD:develop
   log-branch = log --no-merges --first-parent
+  cleanup = !git branch --merged master | grep -v master | xargs git branch -d
 [push]
 	default = upstream
 [rebase]
