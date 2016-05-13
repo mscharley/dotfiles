@@ -18,6 +18,11 @@ if [[ -n $KATE_PID ]]; then
   unset USE_TMUX
 fi
 
+# Atom - terminal-plus
+if [[ "$TERM_PROGRAM" == "Terminal-Plus" ]]; then
+  unset USE_TMUX
+fi
+
 unset PARENT_PROC
 
 # If we're already in tmux, then don't try to nest a new session
