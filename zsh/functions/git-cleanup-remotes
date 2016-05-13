@@ -7,4 +7,3 @@ for branch in $(git branch -r --merged master | grep -v master | sed -E 's!^  ([
   git push --no-verify $broken
   IFS=$'\n'
 done
-git branch -r --merged master | grep -v master | sed 's!  remotes/!!' | xargs git branch -dr
