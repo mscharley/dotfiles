@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+system 'git fetch --all --prune'
+branches = `git branch -r --merged master`.lines.map(&:chomp).select{|b| !(b =~ /master$/)}.map{|b| b[2..-1].split('/', 2)}
+remotes = branches.reduce(Hash.new{|h, k| h[k] = []}) {|h, b| h[b[0]].push b[1];h }
+remotes.each do |remote, branches|
+  system 'git', 'push', '--no-verify', remote, '--delete', *branches
+end
