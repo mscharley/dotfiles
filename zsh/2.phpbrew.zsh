@@ -1,7 +1,13 @@
 #!/usr/bin/env zsh
 
 if [[ (! -d $HOME/.phpbrew) ]]; then
-  alias get-phpbrew="curl -L -o ~/bin/phpbrew https://github.com/phpbrew/phpbrew/raw/master/phpbrew; chmod a+x ~/bin/phpbrew; phpbrew init &> /dev/null; echo You will need to reload your shell now."
+  function get-phpbrew {
+    mkdir -p ~/bin
+    wget -qO ~/bin/phpbrew https://github.com/phpbrew/phpbrew/raw/master/phpbrew || { echo "Unable to download phpbrew successfully (requires wget)."; return 1; }
+    chmod a+x ~/bin/phpbrew
+    ~/bin/phpbrew init
+  }
 else
-  source "$HOME/.phpbrew/bashrc"
+  source /home/mscharley/.phpbrew/bashrc
+  eval `phpbrew zsh`
 fi
