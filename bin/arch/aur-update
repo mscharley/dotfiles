@@ -36,7 +36,7 @@ File.open(output_file, 'w') do |output|
   aur_args = 'arg[]=' + aur_packages.join('&arg[]=')
   begin
     aur_info = JSON.parse(
-      Net::HTTP.get(URI.parse('https://aur4.archlinux.org/rpc.php?type=multiinfo&' + aur_args))
+      Net::HTTP.get(URI.parse('https://aur.archlinux.org/rpc.php?type=multiinfo&' + aur_args))
     )
   rescue SocketError
     next

@@ -26,7 +26,7 @@ if File.directory? package
   rm_rf package
 end
 puts ':: Fetching updated version.'
-run 'get', '-z', "https://aur4.archlinux.org/cgit/aur.git/snapshot/#{package}.tar.gz"
+run 'get', '-z', "https://aur.archlinux.org/cgit/aur.git/snapshot/#{package}.tar.gz"
 
 Dir.chdir package do
   puts ':: Making package.'
