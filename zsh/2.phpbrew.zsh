@@ -8,6 +8,6 @@ if [[ (! -d $HOME/.phpbrew) ]]; then
     ~/bin/phpbrew init
   }
 else
-  source /home/mscharley/.phpbrew/bashrc
+  source $HOME/.phpbrew/bashrc
   eval `phpbrew zsh`
 fi
