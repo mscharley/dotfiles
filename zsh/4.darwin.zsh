@@ -11,7 +11,11 @@ fi
 alias ls="ls -GF"
 alias ll="ls -la@h"
 
-alias clear-quarantine="find . -xattrname com.apple.quarantine -exec xattr -d com.apple.quarantine \{\} \;"
+function clear-quarantine {
+  for attr in com.apple.metadata:kMDItemWhereFroms com.apple.metadata:kMDItemDownloadedDate com.apple.quarantine; do
+    find "$1" -xattrname "$attr" -exec xattr -d "$attr" \{\} \;
+  done
+}
 
 append-path /usr/local/sbin
 append-path /usr/local/bin
