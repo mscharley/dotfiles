@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+until "$@" ; do
+  sleep 60
+done
+echo "Successfully ran $*"
