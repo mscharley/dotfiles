@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 until "$@" ; do
+  echo "==> Retrying after 1 minute..."
   sleep 60
 done
-echo "Successfully ran $*"
+echo "==> Successfully ran $*"
