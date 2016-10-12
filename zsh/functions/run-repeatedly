@@ -3,4 +3,5 @@
 while [ "1" ] ; do
   "$@"
   echo "==> Restarting..."
+  sleep 10
 done
