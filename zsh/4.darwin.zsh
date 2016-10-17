@@ -17,6 +17,12 @@ function clear-quarantine {
   done
 }
 
+if [[ -d ~/Library/Python/2.7/bin ]] ; then
+  append-path ~/Library/Python/2.7/bin
+fi
+
+alias gpg="gpg2"
+
 append-path /usr/local/sbin
 append-path /usr/local/bin
 append-path /usr/sbin

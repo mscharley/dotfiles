@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+for x in */.git; do 
+  pushd $x/.. &> /dev/null
+  echo "==> Cleaning $(basename $(pwd))."
+  git cleanup-remotes
+  popd &> /dev/null
+done
