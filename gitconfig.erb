@@ -1,26 +1,26 @@
 [user]
-	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
-	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+  name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
   signingkey = FDB4F62E23670DA10DE8B7DA6EE4499E435FA52B
 [commit]
   gpgsign = true
 [core]
-	excludesfile = ~/.gitignore
-	editor = vim
+  excludesfile = ~/.gitignore
+  editor = vim
   eol = lf
   autocrlf = false
   compression = 9
   loosecompression = 1
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
 [alias]
-	ff = pull --ff-only
+  ff = pull --ff-only
   ff-merge = merge --ff-only
-	recommit = commit --amend
+  recommit = commit --amend
   workdir-or-cwd = !echo $PWD
   workdir = rev-parse --show-toplevel
   prune = fetch --all --prune
@@ -29,7 +29,7 @@
   log-branch = log --no-merges --first-parent
   cleanup = !git branch --merged master | grep -v master | xargs git branch -d
 [push]
-	default = upstream
+  default = upstream
 [rebase]
   autosquash = true
 <% if File.exist?('/usr/bin/bcompare') %>
