@@ -13,6 +13,14 @@ if [[ -n "$rvm_version" ]]; then
   PR_RUBY="${PR_LIGHT_BLACK}${PR_SHIFT_IN}${PR_HBAR}${PR_SHIFT_OUT}[${rvm_color}${rvm_version}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
 fi
 
+unset PR_PYTHON
+if [[ -n "$VIRTUAL_ENV" ]]; then
+  local venv="$(basename $(dirname "$VIRTUAL_ENV"))/$(basename "$VIRTUAL_ENV")"
+  local pyver="$(python --version 2>&1 | sed 's/Python /python-/')"
+  bare_prompt="${bare_prompt}-[${venv}:${pyver}]"
+  PR_PYTHON="${PR_LIGHT_BLACK}${PR_SHIFT_IN}${PR_HBAR}${PR_SHIFT_OUT}[${PR_GREEN}${venv}:${pyver}${PR_LIGHT_BLACK}]${PR_NO_COLOR}"
+fi
+
 PR_GIT=`parse_git_branch`
 if [[ -n "$PR_GIT" ]]; then
   bare_prompt="${bare_prompt}-[${PR_GIT}]"
