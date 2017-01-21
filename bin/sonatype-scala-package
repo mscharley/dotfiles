@@ -3,7 +3,10 @@
 set -e
 set -x
 
-sbt clean packagedArtifacts
-for file in target/scala-*/*.{jar,pom}; do
-  gpg -bsa -u matt.scharley+sonatype@gmail.com "${file}"
+sbt clean +packagedArtifacts
+mkdir -p pkg
+
+for file in $(find . -name '*.jar' -or -name '*.pom'); do
+  gpg -bsa -u "${SONATYPE_SIGNING_KEY:-matt.scharley+sonatype@gmail.com}" "${file}"
+  cp "$file" "${file}.asc" pkg/
 done
