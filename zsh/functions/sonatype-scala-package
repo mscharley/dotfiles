@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+sbt clean +packagedArtifacts || return $?
+
+PKG_DIR=$(pwd)/pkg
+mkdir -p $PKG_DIR
+
+for pom in $(find . -name '*.pom'); do
+  pushd $(dirname "$pom") &> /dev/null
+  echo $'\n'"=>> Packaging up a deployment bundle for $(basename "$pom")"$'\n'
+
+  for file in *.pom *.jar; do
+    gpg -bsa -u "${SONATYPE_SIGNING_KEY:-matt.scharley+sonatype@gmail.com}" "${file}" &> /dev/null || return $?
+  done
+
+  pomfile=$(basename "$pom")
+  jar -cvf ${pomfile:0:-4}-bundle.jar *.pom *.jar *.asc || return $?
+  cp ${pomfile:0:-4}-bundle.jar "${PKG_DIR}/"
+  popd &> /dev/null
+done
+
+echo $'\n'"=>> Your bundles are available in ${PKG_DIR}"$'\n'
