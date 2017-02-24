@@ -28,6 +28,7 @@
   deploy = push origin HEAD:develop
   log-branch = log --no-merges --first-parent
   cleanup = !git branch --merged master | grep -v master | xargs git branch -d
+  feature = !git checkout -f master && git pull --ff-only && git checkout -b
 [push]
   default = upstream
 [rebase]
