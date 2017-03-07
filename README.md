@@ -1,12 +1,12 @@
 # Dotfiles
 
-Matthew Scharley <<matt.scharley@gmail.com>>
+Matthew Scharley \<matt.scharley@gmail.com\>
 
-## Installation (*nix/OS X)
+## Installation (\*nix/OS X)
 
     git clone git://github.com/mscharley/dotfiles ~/.dotfiles
     cd ~/.dotfiles
-    rake install
+    ./install
 
 ## Installation (Windows)
 

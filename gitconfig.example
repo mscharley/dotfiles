@@ -1,6 +1,6 @@
 [user]
-  name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
-  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+  name = Matthew Scharley
+  email = matt.scharley@gmail.com
   signingkey = FDB4F62E23670DA10DE8B7DA6EE4499E435FA52B
 [commit]
   gpgsign = true
@@ -33,7 +33,3 @@
   default = upstream
 [rebase]
   autosquash = true
-<% if File.exist?('/usr/bin/bcompare') %>
-[merge]
-  tool = bc3
-<% end %>
