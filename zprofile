@@ -7,3 +7,8 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     exec 3>&2 2>$HOME/tmp/startlog.$$
     setopt xtrace prompt_subst
 fi
+
+# Source .profile for environment variables
+if [ -f ~/.profile ]; then
+	. ~/.profile
+fi
