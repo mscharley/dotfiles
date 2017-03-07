@@ -1,9 +1,4 @@
 
-# History controls
-export HISTFILE=$HOME/.zhistory
-export HISTSIZE=1000
-export SAVEHIST=1000
-
 # Setup environment
 export TZ="Australia/Melbourne"
 export HOSTNAME="`hostname`"

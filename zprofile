@@ -8,6 +8,11 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     setopt xtrace prompt_subst
 fi
 
+# History controls
+export HISTFILE=$HOME/.zhistory
+export HISTSIZE=1000
+export SAVEHIST=1000
+
 # Source .profile for environment variables
 if [ -f ~/.profile ]; then
 	. ~/.profile
