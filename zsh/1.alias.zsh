@@ -12,3 +12,7 @@ alias php-xdebug="php -dxdebug.remote_autostart=On"
 alias please='sudo $(fc -ln -1)'
 
 alias sum="awk '{ s += \$1; } END { print s}'"
+
+if which ack &> /dev/null; then
+  alias nack="ack -v"
+fi
