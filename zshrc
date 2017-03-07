@@ -1,5 +1,13 @@
 #!/usr/bin/env zsh
 
+# Run order.
+# 1. zshenv
+# 2. zshprofile
+# 3. zshrc
+# 4. zshlogin
+# ...
+# ?. zshlogout
+
 setopt ALL_EXPORT
 setopt NULL_GLOB
 
