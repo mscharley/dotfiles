@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+# TODO: ~300ms for something I rarely use - lazy load.
 if [[ (! -d $HOME/.phpbrew) ]]; then
   function get-phpbrew {
     mkdir -p ~/bin
