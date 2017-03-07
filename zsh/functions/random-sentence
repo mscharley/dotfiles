@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+curl -X POST -d '' http://watchout4snakes.com/wo4snakes/Random/NewRandomSentence; echo
