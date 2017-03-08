@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+
+# Uncomment this variable definition to enable tmux support in
+# your login shell. This will cause tmux to be loaded as part of
+# login and replace the login shell completely, starting up a
+# subshell in a new window, or reusing an existing one if it
+# has already been created. Perfect for remote SSH servers with
+# multiple connections into it.
+#
+# Only set this if not already set. This may be set by the no_tmux
+# function that opens a window explicitly without tmux.
+
+#if [[ -z $USE_TMUX ]]; then USE_TMUX=true; fi
+
+# If you have USE_TMUX enabled above, then specify an XTERM here
+# and when you try to connect to a remote host via SSH, then a new
+# terminal window will be opened using this terminal. You can
+# also specify XTERM_OPTIONS to pass extra options into your
+# terminal of choice.
+
+#XTERM="gnome-terminal"
+#XTERM_OPTIONS="--window"
+
+# Setting BROWSER will enable many applications to use your web
+# browser, but will also cause zshrc to load up some aliases so
+# that you can easily open web addresses from your console.
+#
+# ie. $ google.com # Opens Google in your browser.
+
+#BROWSER=chromium-browser
+#BROWSER=firefox
+
+# Set the below to true if you want to profile ZSH startup time.
+PROFILE_STARTUP=false
