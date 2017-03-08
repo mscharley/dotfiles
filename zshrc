@@ -12,10 +12,8 @@ setopt ALL_EXPORT
 setopt NULL_GLOB
 
 # Load subscripts
-for i in {1..99}; do
-  for f in ~/.zsh/$i.*.zsh; do
-    [ -f $f ] && source $f
-  done
+for f in ~/.zsh/*.zsh; do
+  [ -x $f ] && source $f
 done
 
 # Load RVM into a shell session *as a function* if it exists
