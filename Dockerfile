@@ -14,6 +14,8 @@ RUN useradd -m -s /usr/bin/zsh -G sudo ubuntu
 USER ubuntu
 WORKDIR /home/ubuntu
 COPY ./ /home/ubuntu/.dotfiles
-RUN gpg-agent --daemon && cd .dotfiles && yes | ./install
+RUN mkdir bin/ && \
+    gpg-agent --daemon && \
+    cd .dotfiles && yes | ./install
 
 CMD ["/usr/bin/zsh", "-l"]
