@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --yes \
       zsh openssh-client sudo \
-      gnupg2 pinentry-tty \
+      gnupg2 pinentry-tty curl \
       git most vim-tiny && \
     rm -rf /var/lib/apt/lists/*
 
