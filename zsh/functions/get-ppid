@@ -3,4 +3,11 @@
 local PID
 PID=${1:?You must specify a PID as the only parameter}
 
-ps -p $PID -o pid,ppid | tail -n +2 | awk '{print $2}'
+if [[ $PID == 1 ]]; then
+  # Here we prefer to model init as being it's own parent for simplicity sake.
+  # If you use this function to build recursive pid trees then you should
+  # work around this edge case yourself.
+  echo 1
+else
+  ps -p $PID -o pid,ppid | tail -n +2 | awk '{print $2}'
+fi
