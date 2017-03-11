@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ $(source /etc/*-release; echo $ID) == "ubuntu" ]]; then
+if [[ $(source /etc/*-release; echo $ID) != "ubuntu" ]]; then
   return
 fi
 
