@@ -1,7 +1,4 @@
 [user]
-  name = Matthew Scharley
-  email = matt.scharley@gmail.com
-  signingkey = FDB4F62E23670DA10DE8B7DA6EE4499E435FA52B
 [commit]
   gpgsign = true
 [core]
