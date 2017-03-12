@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ "$(source /dev/null /etc/*-release; echo $ID)" != "ubuntu" ]] ; then
+if [[ "$(for f in /dev/null /etc/*-release; do source $f; done; echo $ID)" != "ubuntu" ]] ; then
   return
 fi
 
