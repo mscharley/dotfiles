@@ -12,5 +12,5 @@ else
   local caches=('.ivy2' '.m2' '.sbt')
   for c in $caches; do volumes=($volumes -v "$HOME/$c:$DOCKER_HOME/$c"); done
 
-  docker run -it --name "$PROJECT" $volumes mscharley/dotfiles
+  docker run -it --name "$PROJECT" $volumes -w "$DOCKER_HOME/$PROJECT" mscharley/dotfiles
 fi
