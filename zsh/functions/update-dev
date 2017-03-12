@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+docker pull mscharley/dotfiles:latest
+docker images | egrep '^mscharley/dotfiles\s+<none>' | awk '{ print $3 }' | xargs docker rmi

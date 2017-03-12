@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+docker run -it --rm -v $(pwd):/home/ubuntu/$(basename `pwd`) mscharley/dotfiles
