@@ -4,7 +4,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --yes \
       zsh openssh-client sudo \
       gnupg2 pinentry-tty curl \
-      git most vim-tiny && \
+      git most vim && \
     rm -rf /var/lib/apt/lists/*
 
 RUN echo "%sudo ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/sudo-group && \
