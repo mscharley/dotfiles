@@ -1,6 +1,5 @@
 [user]
 [commit]
-  gpgsign = true
 [core]
   excludesfile = ~/.gitignore
   editor = vim
