@@ -3,7 +3,7 @@
 local UPDATES=$(git log --oneline --no-patch origin/master..HEAD | wc -l)
 
 if [[ $UPDATES -gt 0 ]]; then
-  echo $PR_YELLOW"Updates for dotfiles detected."$PR_NO_COLOR
+  echo "${fg[yellow]}Updates for dotfiles detected.${terminfo[sgr0]}"
   echo
 else
   git --git-dir "$(realpath ${0:a:h}/..)/.git" fetch origin &> /dev/null &!
