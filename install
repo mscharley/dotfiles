@@ -35,7 +35,7 @@ my $replace_all = 0;
 
 for (@files) {
   # Skip metafiles and Windows-specific files.
-  next if /^install$|^Dockerfile$|\.md$|\.ps1$/;
+  next if /^Dockerfile$|\.md$|\.ps1$/ || -x;
 
   my $is_example = /\.example$/;
   my $target_file = get_filename();
