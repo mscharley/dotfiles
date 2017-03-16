@@ -12,7 +12,7 @@ Want to take this repo for a test run in a project?
 
     git clone git://github.com/mscharley/dotfiles ~/.dotfiles
     cd ~/.dotfiles
-    ./install
+    ./install.pl
 
 ## Installation (Windows)
 
