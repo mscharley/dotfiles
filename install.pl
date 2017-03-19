@@ -36,7 +36,7 @@ my $replace_all = 0;
 
 for (@files) {
   # Skip metafiles and Windows-specific files.
-  next if /^Dockerfile$|\.md$|\.ps1$/ || -x;
+  next if /^imports$|^Dockerfile$|\.md$|\.ps1$/ || -x;
 
   my $is_example = /\.example$/;
   my $target_file = get_filename();
@@ -78,5 +78,15 @@ for (@files) {
   }
   else {
     link_file();
+  }
+}
+
+my $uname = `uname -s`;
+chomp($uname);
+my @imports = glob('imports/' . $uname . '/*');
+
+for my $import (@imports) {
+  if (-x $import) {
+    system($import);
   }
 }
