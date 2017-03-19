@@ -9,5 +9,6 @@ compinit
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs true
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 setopt completealiases

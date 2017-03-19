@@ -8,8 +8,12 @@ if [[ -e /usr/local/share/zsh-completions ]]; then
   fpath=(/usr/local/share/zsh-completions $fpath)
 fi
 
-alias ls="ls -GF"
-alias ll="ls -la@h"
+if which gls &> /dev/null; then
+  alias ls="gls --color=auto -F"
+else
+  alias ls="ls -GF"
+  alias ll="ls -la@h"
+fi
 
 function clear-quarantine {
   for attr in com.apple.metadata:kMDItemWhereFroms com.apple.metadata:kMDItemDownloadedDate com.apple.quarantine; do
