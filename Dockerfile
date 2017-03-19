@@ -16,6 +16,6 @@ WORKDIR /home/ubuntu
 COPY ./ /home/ubuntu/.dotfiles
 RUN mkdir bin/ && \
     gpg-agent --daemon && \
-    cd .dotfiles && yes | ./install
+    cd .dotfiles && yes | ./install.pl
 
 CMD ["/usr/bin/zsh", "-l"]
