@@ -5,9 +5,9 @@ autoload -Uz $(for f in ~/.zsh/functions/*; do echo ${f##*/}; done)
 
 PARENT_PROC=$(ps -o command -p `get-ppid $$` | tail -n +2)
 
-## Don't use tmux inside IDE's
-
 if [[ -n $USE_TMUX ]]; then
+  ## Don't use tmux inside IDE's
+
   # Intellij
   if string-contains "com.intellij.idea.Main" "$PARENT_PROC"; then
     unset USE_TMUX
