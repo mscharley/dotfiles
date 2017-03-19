@@ -6,10 +6,29 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
   colors
 fi
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
-  eval PR_LIGHT_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-  eval PR_$color='%{${PR_NO_COLOR}$terminfo[normal]$fg[${(L)color}]%}'
-done
+if [[ "$terminfo[colors]" -ge 256 ]]; then
+  PR_RED="%F{88}"
+  PR_LIGHT_RED="%F{196}"
+  PR_GREEN="%F{34}"
+  PR_LIGHT_GREEN="%F{46}"
+  PR_YELLOW="%F{100}"
+  PR_LIGHT_YELLOW="%F{226}"
+  PR_BLUE="%F{27}"
+  PR_LIGHT_BLUE="%F{75}"
+  PR_MAGENTA="%F{92}"
+  PR_LIGHT_MAGENTA="%F{207}"
+  PR_CYAN="%F{45}"
+  PR_LIGHT_CYAN="%F{87}"
+  PR_BLACK="%F{234}"
+  PR_LIGHT_BLACK="%F{240}"
+  PR_WHITE="%F{247}"
+  PR_LIGHT_WHITE="%F{253}"
+else
+  for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
+    eval PR_LIGHT_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval PR_$color='%{${PR_NO_COLOR}$terminfo[normal]$fg[${(L)color}]%}'
+  done
+fi
 
 # Enable substitutions in the prompt
 setopt PROMPT_SUBST
@@ -27,8 +46,8 @@ PR_LRCORNER=${altchar[j]:--}
 PR_URCORNER=${altchar[k]:--}
 
 # Setup some variables for use in the actual prompt (definition in fpath)
-precmd_functions[$(($#precmd_functions+1))]='prompt_precmd'
-preexec_functions[$(($#preexec_functions+1))]='prompt_preexec'
+precmd_functions=(precmd_functions 'prompt_precmd')
+preexec_functions=(preexec_functions 'prompt_preexec')
 prompt_preexec
 
 # Setup some variables once-off
