@@ -6,6 +6,8 @@ nbproject
 .project
 .settings
 .rakeTasks
+.ensime
+ensime.sbt
 
 /tags
 /TAGS
