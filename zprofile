@@ -49,6 +49,7 @@ if [[ -n $USE_TMUX ]]; then
     fi
 
     export TMUX_TERM="$TERM"
+    PATH="$HOME/bin:$HOME/.bin:$PATH"
     # Check if we have a running session already
     tmux has -t login 2> /dev/null
     if [[ $? -eq 0 ]]; then
