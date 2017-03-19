@@ -1,7 +1,22 @@
 #!/usr/bin/env zsh
 
+local target=${1:-fg}
+
+case $target in
+  fg)
+    local t=38
+    ;;
+  bg)
+    local t=48
+    ;;
+  *)
+    echo "Unsupported target: $1" 1>&2
+    return 1
+    ;;
+esac
+
 for i in `seq 0 15`; do
-  echo -n "\e[38;5;${i}m ${(l:3:: :)i}"
+  echo -n "\e[${t};5;${i}m ${(l:3:: :)i}"
 done
 echo; echo
 
@@ -10,7 +25,7 @@ for h in `seq 0 1`; do
     for j in `seq 0 2`; do
       for k in `seq 0 5`; do
         v=$((16 + $h * 108 + $i * 6 + $j * 36 + $k))
-        echo -n "\e[38;5;${v}m ${(l:3:: :)v}"
+        echo -n "\e[${t};5;${v}m ${(l:3:: :)v}"
       done
       echo -n "  "
     done
@@ -22,17 +37,8 @@ done
 for j in `seq 0 3`; do
   for k in `seq 0 5`; do
     v=$((232 + $j * 6 + $k))
-    echo -n "\e[38;5;${v}m ${(l:3:: :)v}"
+    echo -n "\e[${t};5;${v}m ${(l:3:: :)v}"
   done
   echo
 done
 echo $terminfo[sgr0]
-
-# for i in `seq 0 15`; do
-#   for j in `seq 0 15`; do
-#     v=$(($i * 16 + $j))
-#     echo -n "\e[48;5;${v}m ${(l:3:: :)v}"
-#   done
-#   echo
-# done
-# echo -n $terminfo[sgr0]
