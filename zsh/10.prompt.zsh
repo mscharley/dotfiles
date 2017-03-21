@@ -52,12 +52,11 @@ preexec_functions=(preexec_functions 'prompt_preexec')
 prompt_preexec
 
 # Setup some variables once-off
+PR_USER_COLOR="${PR_MAGENTA}"
 if [[ -n "$TMUX" ]]; then
   PR_USER="%n:%l"
-  PR_USER_COLOR="${PR_LIGHT_MAGENTA}"
 else
   PR_USER="%n@%m:%l"
-  PR_USER_COLOR="${PR_LIGHT_YELLOW}"
 fi
 
 # Actual prompt variables
