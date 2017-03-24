@@ -6,14 +6,15 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
   colors
 fi
 if [[ "$terminfo[colors]" -ge 256 ]]; then
+  # https://jonasjacek.github.io/colors/
   PR_RED="%F{88}"            #870000
   PR_LIGHT_RED="%F{160}"     #D70000
   PR_GREEN="%F{28}"          #008700
   PR_LIGHT_GREEN="%F{40}"    #00D700
   PR_YELLOW="%F{142}"        #AFAF00
   PR_LIGHT_YELLOW="%F{227}"  #FFFF5F
-  PR_BLUE="%F{21}"           #0000FF
-  PR_LIGHT_BLUE="%F{32}"     #0087D7
+  PR_BLUE="%F{27}"           #005fff
+  PR_LIGHT_BLUE="%F{39}"     #00afff
   PR_MAGENTA="%F{92}"        #8700D7
   PR_LIGHT_MAGENTA="%F{201}" #FF00FF
   PR_CYAN="%F{39}"           #00AFFF
