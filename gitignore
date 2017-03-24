@@ -8,6 +8,7 @@ nbproject
 .rakeTasks
 .ensime
 ensime.sbt
+.ensime_cache
 
 /tags
 /TAGS
