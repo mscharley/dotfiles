@@ -6,22 +6,22 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
   colors
 fi
 if [[ "$terminfo[colors]" -ge 256 ]]; then
-  PR_RED="%F{88}"
-  PR_LIGHT_RED="%F{160}"
-  PR_GREEN="%F{28}"
-  PR_LIGHT_GREEN="%F{40}"
-  PR_YELLOW="%F{142}"
-  PR_LIGHT_YELLOW="%F{227}"
-  PR_BLUE="%F{21}"
-  PR_LIGHT_BLUE="%F{32}"
-  PR_MAGENTA="%F{92}"
-  PR_LIGHT_MAGENTA="%F{201}"
-  PR_CYAN="%F{39}"
-  PR_LIGHT_CYAN="%F{87}"
-  PR_BLACK="%F{234}"
-  PR_LIGHT_BLACK="%F{240}"
-  PR_WHITE="%F{247}"
-  PR_LIGHT_WHITE="%F{253}"
+  PR_RED="%F{88}"            #870000
+  PR_LIGHT_RED="%F{160}"     #D70000
+  PR_GREEN="%F{28}"          #008700
+  PR_LIGHT_GREEN="%F{40}"    #00D700
+  PR_YELLOW="%F{142}"        #AFAF00
+  PR_LIGHT_YELLOW="%F{227}"  #FFFF5F
+  PR_BLUE="%F{21}"           #0000FF
+  PR_LIGHT_BLUE="%F{32}"     #0087D7
+  PR_MAGENTA="%F{92}"        #8700D7
+  PR_LIGHT_MAGENTA="%F{201}" #FF00FF
+  PR_CYAN="%F{39}"           #00AFFF
+  PR_LIGHT_CYAN="%F{87}"     #5FFFFF
+  PR_BLACK="%F{234}"         #1C1C1C
+  PR_LIGHT_BLACK="%F{240}"   #585858
+  PR_WHITE="%F{247}"         #9E9E9E
+  PR_LIGHT_WHITE="%F{253}"   #DADADA
   PR_NO_COLOR="$PR_LIGHT_WHITE"
 else
   PR_NO_COLOR="%{$terminfo[sgr0]%}"
