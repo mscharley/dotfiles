@@ -5,6 +5,8 @@ autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
   colors
 fi
+
+PR_NO_COLOR="%{$terminfo[sgr0]%}"
 if [[ "$terminfo[colors]" -ge 256 ]]; then
   # https://jonasjacek.github.io/colors/
   PR_RED="%F{88}"            #870000
@@ -23,9 +25,7 @@ if [[ "$terminfo[colors]" -ge 256 ]]; then
   PR_LIGHT_BLACK="%F{240}"   #585858
   PR_WHITE="%F{247}"         #9E9E9E
   PR_LIGHT_WHITE="%F{253}"   #DADADA
-  PR_NO_COLOR="$PR_WHITE"
 else
-  PR_NO_COLOR="%{$terminfo[sgr0]%}"
   for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
     eval PR_LIGHT_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
     eval PR_$color='%{${PR_NO_COLOR}$terminfo[normal]$fg[${(L)color}]%}'
