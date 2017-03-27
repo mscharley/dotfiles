@@ -55,7 +55,7 @@ font:
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
-    x: 2.0
+    x: 0.0
     y: 0.0
 
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
@@ -74,7 +74,7 @@ colors:
   # Default colors
   primary:
     background: '0x000000'
-    foreground: '0xDADADA'
+    foreground: '0x9E9E9E'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:

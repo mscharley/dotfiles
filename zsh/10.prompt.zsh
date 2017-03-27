@@ -23,7 +23,7 @@ if [[ "$terminfo[colors]" -ge 256 ]]; then
   PR_LIGHT_BLACK="%F{240}"   #585858
   PR_WHITE="%F{247}"         #9E9E9E
   PR_LIGHT_WHITE="%F{253}"   #DADADA
-  PR_NO_COLOR="$PR_LIGHT_WHITE"
+  PR_NO_COLOR="$PR_WHITE"
 else
   PR_NO_COLOR="%{$terminfo[sgr0]%}"
   for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
