@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+ruby -e "puts Time.at(${1:?You must provide a timestamp.})"
