@@ -52,12 +52,14 @@ bindkey "\e[5C" forward-word
 bindkey "\e\e[C" forward-word
 bindkey "\ef" forward-word
 bindkey "\eOc" emacs-forward-word
+bindkey "\e[1;3C" forward-word
 
 # Alt-Left
 bindkey "\e[5D" backward-word
 bindkey "\e\e[D" backward-word
 bindkey "\eb" backward-word
 bindkey "\eOd" emacs-backward-word
+bindkey "\e[1;3D" backward-word
 
 # Shift-Tab
 bindkey "\e[Z" reverse-menu-complete
