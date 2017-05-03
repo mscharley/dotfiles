@@ -1,16 +1,21 @@
 #!/usr/bin/env zsh
 
 local PROJECT=$(basename `pwd`)
-local IMAGE=$(docker ps -qlf "name=$PROJECT")
+local IMAGE=$(docker ps -qlf "name=${PROJECT}")
 if [[ -n $IMAGE ]]; then
   docker start -ai $IMAGE
 else
   local DOCKER_HOME="/home/ubuntu"
-  local volumes=(-v "$(pwd):$DOCKER_HOME/$PROJECT")
-  volumes=($volumes -v "$HOME/.gnupg:$DOCKER_HOME/.gnupg" -v "$HOME/.aws:$DOCKER_HOME/.aws")
+  local volumes=(-v "$(pwd):${DOCKER_HOME}/${PROJECT}:cached")
+  volumes=($volumes -v "${HOME}/.gnupg:${DOCKER_HOME}/.gnupg" -v "${HOME}/.aws:${DOCKER_HOME}/.aws")
 
   local caches=('.ivy2' '.m2' '.sbt')
-  for c in $caches; do volumes=($volumes -v "$HOME/$c:$DOCKER_HOME/$c"); done
+  for c in $caches; do
+    if [[ -d $c ]]; then volumes=($volumes -v "${HOME}/${c}:${DOCKER_HOME}/${c}"); fi
+  done
 
-  docker run -it --name "$PROJECT" $volumes -w "$DOCKER_HOME/$PROJECT" mscharley/dotfiles
+  for x in docker run -it --name "${PROJECT}" $volumes -w "${DOCKER_HOME}/${PROJECT}" mscharley/dotfiles; do
+    echo $x
+  done
+  docker run -it --name "${PROJECT}" $volumes -w "${DOCKER_HOME}/${PROJECT}" mscharley/dotfiles
 fi
