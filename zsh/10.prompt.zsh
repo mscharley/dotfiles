@@ -6,7 +6,7 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
   colors
 fi
 
-PR_NO_COLOR="%{$terminfo[sgr0]%}"
+PR_NO_COLOR="%k%f"
 if [[ "$terminfo[colors]" -ge 256 ]]; then
   # https://jonasjacek.github.io/colors/
   PR_RED="%F{88}"            #870000
@@ -27,8 +27,8 @@ if [[ "$terminfo[colors]" -ge 256 ]]; then
   PR_LIGHT_WHITE="%F{253}"   #DADADA
 else
   for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
-    eval PR_LIGHT_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-    eval PR_$color='%{${PR_NO_COLOR}$terminfo[normal]$fg[${(L)color}]%}'
+    eval PR_LIGHT_$color="%B%F{${(L)color}%}"
+    eval PR_$color="%F{${(L)color}%}"
   done
 fi
 
