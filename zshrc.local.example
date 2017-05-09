@@ -2,11 +2,11 @@
 
 # Setup aliases for our project folders
 
-#for f in $HOME/htdocs/*/; do
+#for f in $HOME/Code/*/; do
 #  f=$(basename $f)
 #  if `which $f > /dev/null`; then
 #  else
-#    $f() { cd $HOME/htdocs/$0/$1; }
-#    compctl -W $HOME/htdocs/$f/ -/ $f
+#    $f() { cd $HOME/Code/$0/$1; }
+#    compctl -W $HOME/Code/$f/ -/ $f
 #  fi
 #done
