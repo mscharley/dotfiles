@@ -10,7 +10,7 @@ brew 'coreutils'
 brew 'ctags'
 brew 'fortune'
 brew 'gnu-sed'
-brew 'gnupg2'
+brew 'gnupg'
 brew 'gpg-agent'
 brew 'pinentry-mac'
 brew 'graphviz', args: ['with-gts']
