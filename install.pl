@@ -36,7 +36,7 @@ my $replace_all = 0;
 
 for (@files) {
   # Skip metafiles and Windows-specific files.
-  next if /^imports$|^Dockerfile$|\.md$|\.ps1$/ || -x;
+  next if /^imports$|^Dockerfile$|\.md$|\.ps1$/ || (-x && ! -d);
 
   my $is_example = /\.example$/;
   my $target_file = get_filename();
