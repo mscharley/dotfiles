@@ -13,3 +13,5 @@ function reload-gpg-agent() {
 }
 
 reload-gpg-agent
+# Support for curses or CLI-based pin entry applications
+export GPG_TTY="$(tty)"
