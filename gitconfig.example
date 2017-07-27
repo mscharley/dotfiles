@@ -26,6 +26,7 @@
   cleanup = !git branch --merged master | grep -v master | xargs git branch -d
   feature = !git checkout -f master && git pull --ff-only && git checkout -b
   new-branch = !git fetch origin && git checkout --no-track origin/master -b
+  oneline-log = log --pretty='%aI %h %s - %an <%ae>'
 [push]
   default = upstream
 [rebase]
