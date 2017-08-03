@@ -16,7 +16,7 @@ for repo in *; do;
         echo "Repo $repo has dangling branches, attempting cleanup..."
 
         for branch in $(git branch | grep -v '^* '); do
-          git push origin $branch &> /dev/null
+          git push -u origin $branch &> /dev/null
           git branch -d $branch &> /dev/null
         done
       fi
