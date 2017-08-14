@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+local TMPFILE="/tmp/ssh-config-$(date '+%Y%m%d%M%s')"
+local DISALLOWED_VARIABLES='^(ciphers|hostkeyalgorithms|hostbasedkeytypes|kexalgorithms|macs|pubkeyacceptedkeytypes|identityfile) |^global'
+
+ssh -G "$@" | egrep -v "$DISALLOWED_VARIABLES" | ssh $SSH_JUMPBOX "touch $TMPFILE; chmod 0600 $TMPFILE; cat > $TMPFILE" &> /dev/null
+ssh -tA $SSH_JUMPBOX "ssh -F $TMPFILE $@"
+ssh $SSH_JUMPBOX "rm -r $TMPFILE" &> /dev/null
