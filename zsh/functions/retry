@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
 
+i=0
 until "$@" ; do
-  echo "==> Retrying after 1 minute..."
-  sleep 60
+  delay=$(( int(1.5 ** $i) ))
+  echo "==> Retrying after $delay minute..."
+  sleep $(( $delay * 60 ))
+  i=$(( $i + 1 ))
 done
 echo "==> Successfully ran $*"
