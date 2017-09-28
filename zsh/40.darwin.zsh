@@ -4,10 +4,6 @@ if [[ `uname` != "Darwin" ]]; then
   return
 fi
 
-if [[ -e /usr/local/share/zsh-completions ]]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-
 if which gls &> /dev/null; then
   alias ls="gls --color=auto -F"
 else
