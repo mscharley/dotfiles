@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-# Use Vi-style keybindings by default.
-bindkey -v
+# Use emacs-style keybindings. Vi-style means full insert mode.
+bindkey -e
 
 KEY_FILE="${ZDOTDIR:-$HOME}/.zkbd/${TMUX_TERM:-$TERM}-$VENDOR-$OSTYPE"
 
