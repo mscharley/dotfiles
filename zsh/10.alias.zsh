@@ -16,3 +16,11 @@ alias sum="awk '{ s += \$1; } END { print s }'"
 if which ack &> /dev/null; then
   alias nack="ack -v"
 fi
+
+if which docker-compose &> /dev/null; then
+  alias dc="docker-compose"
+  alias dce="docker-compose exec"
+  function dce-bash() {
+    docker-compose exec "${1:?You need to provide a service to run bash in.}" bash -l
+  }
+fi
