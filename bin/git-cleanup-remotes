@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'shellwords'
 
 puts "=> git fetch --all --prune"
 system 'git fetch --all --prune'
@@ -7,11 +8,20 @@ branches = `git branch -r --merged master`.lines.map(&:chomp).select{|b| !(b =~ 
 remotes = branches.reduce(Hash.new{|h, k| h[k] = []}) {|h, b| h[b[0]].push b[1];h }
 
 remotes.each do |remote, branches|
-  print "=> Cleaning remote '#{remote}', continue? [Yn] "
-  unless STDIN.gets.chomp =~ /^y(?:es)?$/i
+  next if `git config --get remote.#{Shellwords.escape remote}.skipcleanup`.chomp == 'true'
+  print "=> Cleaning remote '#{remote}', continue? [y,n,s] "
+  input = STDIN.gets.chomp
+
+  if input =~ /^y(?:es)?$/i
+    puts "=> git push --no-verify #{remote} --delete #{branches.join(' ')}"
+    system 'git', 'push', '--no-verify', remote, '--delete', *branches
+  elsif input =~ /^no?$/i
     puts "=> Skipped."
-    next
+  elsif input =~ /^s(?:kip)?$/i
+    puts "=> git config remote.#{remote}.skipcleanup true"
+    system 'git', 'config', "remote.#{remote}.skipcleanup", 'true'
+    puts "=> Skipped (permanent)."
+  else
+    redo
   end
-  puts "=> git push --no-verify #{remote} --delete #{branches.join(' ')}"
-  system 'git', 'push', '--no-verify', remote, '--delete', *branches
 end
