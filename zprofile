@@ -17,6 +17,11 @@ if [[ -n $USE_TMUX ]]; then
     unset USE_TMUX
   fi
 
+  # VS Code
+  if string-contains "Visual Studio Code.app" "$PARENT_PROC"; then
+    unset USE_TMUX
+  fi
+
   # Kate
   if [[ -n $KATE_PID ]]; then
     unset USE_TMUX
