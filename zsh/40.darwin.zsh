@@ -21,6 +21,11 @@ if [[ -d ~/Library/Python/2.7/bin ]] ; then
   append-path ~/Library/Python/2.7/bin
 fi
 
+function ram-disk {
+  local BLOCKS=$(( ${1:?You must provide a size in MiB.} * 2048 ))
+  diskutil erasevolume HFS+ 'RAM Disk' `hdiutil attach -nomount ram://$$BLOCKS`
+}
+
 append-path /usr/local/sbin
 append-path /usr/local/bin
 append-path /usr/sbin
