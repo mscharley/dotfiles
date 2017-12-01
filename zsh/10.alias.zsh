@@ -17,6 +17,10 @@ if which ack &> /dev/null; then
   alias nack="ack -v"
 fi
 
+if which docker &> /dev/null; then
+  alias docker-cleanup-images="docker images | grep '<none>' | awk '{ print \$3 }' | xargs docker rmi"
+fi
+
 if which docker-compose &> /dev/null; then
   alias dc="docker-compose"
   alias dce="docker-compose exec"
