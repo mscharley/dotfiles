@@ -7,8 +7,9 @@ use Cwd qw(realpath);
 use File::Compare;
 
 sub get_filename {
-  (my $filename = $_) =~ s/\.(?:example)$//;
-  return $filename;
+  s/\.(?:example)$//;
+  s!%!/!;
+  return $_;
 }
 
 sub replace_file {

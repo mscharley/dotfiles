@@ -1,14 +1,14 @@
 #!/usr/bin/env zsh
 
 function reload-gpg-agent() {
-  if [ -e "$HOME/.gpg-agent-info" ]; then
-    source $HOME/.gpg-agent-info
-    export GPG_AGENT_INFO
-  fi
-
   gpg-connect-agent /bye &> /dev/null
-  if [ $? != 0 ]; then
+  if [[ $? -ne 0 ]]; then
     eval $(gpg-agent --daemon)
+  else
+    unset SSH_AGENT_PID
+    if [[ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]]; then
+      export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    fi
   fi
 }
 
