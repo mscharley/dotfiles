@@ -41,8 +41,8 @@ fi
 [[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
 [[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
 [[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
-[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       history-beginning-search-backward
-[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     history-beginning-search-forward
+[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
+[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
 [[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
 [[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-history
@@ -61,6 +61,16 @@ bindkey "\e\e[D" backward-word
 bindkey "\eb" backward-word
 bindkey "\eOd" emacs-backward-word
 bindkey "\e[1;3D" backward-word
+
+# Alt-Up
+bindkey "\e[5A" history-beginning-search-backward
+bindkey "\e\e[A" history-beginning-search-backward
+bindkey "\e[1;3A" history-beginning-search-backward
+
+# Alt-Down
+bindkey "\e[5B" history-beginning-search-forward
+bindkey "\e\e[B" history-beginning-search-forward
+bindkey "\e[1;3B" history-beginning-search-forward
 
 # Shift-Tab
 bindkey "\e[Z" reverse-menu-complete
