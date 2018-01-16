@@ -1,0 +1,14 @@
+#!/usr/bin/env perl
+
+# require 'base64'
+#
+# bytes = File.open '/dev/urandom', 'r' do |file|
+#   (0...63).map {|x| file.readbyte }
+# end
+# key = bytes.reduce("") {|memo, obj| memo + obj.chr }
+# puts Base64.urlsafe_encode64(key).gsub("\n", "")
+
+use Crypt::OpenSSL::Random qw(random_bytes);
+use MIME::Base64 qw(encode_base64url);
+
+print encode_base64url(random_bytes(64));
