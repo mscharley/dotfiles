@@ -1,6 +1,6 @@
 # Dotfiles
 
-Matthew Scharley \<matt.scharley@gmail.com\>
+Matthew Scharley \<matt@scharley.me\>
 
 ## Installation (Docker)
 
