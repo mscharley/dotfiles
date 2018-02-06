@@ -27,6 +27,7 @@
   feature = !git checkout -f master && git pull --ff-only && git checkout -b
   new-branch = !git fetch origin && git checkout --no-track origin/master -b
   oneline-log = log --pretty='%aI %h %s - %an <%ae>'
+  release-log = log --first-parent --pretty=oneline --reverse
 [push]
   default = upstream
 [rebase]
