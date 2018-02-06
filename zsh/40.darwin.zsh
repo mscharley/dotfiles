@@ -30,3 +30,7 @@ append-path /usr/local/sbin
 append-path /usr/local/bin
 append-path /usr/sbin
 append-path /sbin
+
+function parallels-background-service {
+  prlctl set "${1:?You must specify a VM to update.}" --on-window-close keep-running
+}
