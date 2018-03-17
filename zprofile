@@ -3,36 +3,12 @@
 fpath=( ~/.zsh/functions "${fpath[@]}" )
 autoload -Uz $(for f in ~/.zsh/functions/*; do echo ${f##*/}; done)
 
-PARENT_PROC=$(ps -o command -p `get-ppid $$` | tail -n +2)
-
 if [[ -n $USE_TMUX ]]; then
   ## Don't use tmux inside IDE's
 
-  # Intellij
-  if string-contains "com.intellij.idea.Main" "$PARENT_PROC"; then
+  if parent-ide > /dev/null; then
     unset USE_TMUX
   fi
-
-  if string-contains ".app/Contents/MacOS/idea" "$PARENT_PROC"; then
-    unset USE_TMUX
-  fi
-
-  # VS Code
-  if string-contains "Visual Studio Code.app" "$PARENT_PROC"; then
-    unset USE_TMUX
-  fi
-
-  # Kate
-  if [[ -n $KATE_PID ]]; then
-    unset USE_TMUX
-  fi
-
-  # Atom - terminal-plus
-  if [[ "$TERM_PROGRAM" == "Terminal-Plus" ]]; then
-    unset USE_TMUX
-  fi
-
-  unset PARENT_PROC
 
   # If we're already in tmux, then don't try to nest a new session
   if [[ -z $TMUX && $TERM[0,6] == "screen" ]]; then

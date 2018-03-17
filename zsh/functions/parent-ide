@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+
+PARENT_PROC=$(ps -o command -p `get-ppid $$` | tail -n +2)
+
+# Intellij
+if string-contains "com.intellij.idea.Main" "$PARENT_PROC"; then
+  echo "IDEA"
+  return 0
+fi
+
+if string-contains ".app/Contents/MacOS/idea" "$PARENT_PROC"; then
+  echo "IDEA"
+  return 0
+fi
+
+# VS Code
+if string-contains "Visual Studio Code.app" "$PARENT_PROC"; then
+  echo "VS Code"
+  return 0
+fi
+
+# Kate
+if [[ -n $KATE_PID ]]; then
+  echo "Kate"
+  return 0
+fi
+
+# Atom - terminal-plus
+if [[ "$TERM_PROGRAM" == "Terminal-Plus" ]]; then
+  echo "Atom"
+  return 0
+fi
+
+return 1
