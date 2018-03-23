@@ -209,6 +209,7 @@ key_bindings:
   - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                    }
   - { key: Insert,                  chars: "\x1b[2~"                     }
   - { key: Delete,                  chars: "\x1b[3~"                     }
+  - { key: NumpadEnter,             chars: "\x0a"                        }
 
 # Mouse bindings
 #
