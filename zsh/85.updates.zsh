@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+if parent-ide > /dev/null; then
+  return
+fi
+
 local git_opts=(--git-dir "$(realpath ${0:a:h}/..)/.git")
 local UPDATES=$(git $git_opts log --oneline --no-patch origin/master...HEAD | wc -l)
 
