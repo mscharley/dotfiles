@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 
-url = ARGV.pop
-exec ['curl', '-QsS', '-o', '-', '-L', "\"#{url}\"", "|", "tar", "-x", "--no-same-permissions", *ARGV].join(" ")
+require 'shellwords'
+
+url = Shellwords.escape(ARGV.pop)
+exec ['curl', '-QsS', '-o', '-', '-L', url, "|", "tar", "-x", "--no-same-permissions", *ARGV.map{|a| Shellwords.escape(a)}].join(" ")
