@@ -1,4 +1,4 @@
-Copyright (C) 2010-2017 by Matthew Scharley
+Copyright (C) 2010-2018 by Matthew Scharley
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
