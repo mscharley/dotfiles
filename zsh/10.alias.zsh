@@ -19,11 +19,17 @@ fi
 
 if which docker &> /dev/null; then
   alias docker-cleanup-images="docker images | grep '<none>' | awk '{ print \$3 }' | xargs docker rmi"
+  alias docker-cleanup-volumes="docker volume prune -f"
+  function docker-cleanup {
+    docker-cleanup-images
+    docker-cleanup-volumes
+  }
 fi
 
 if which docker-compose &> /dev/null; then
   alias dc="docker-compose"
   alias dce="docker-compose exec"
+  alias drun="docker run -it --rm"
   function dce-bash() {
     docker-compose exec "${1:?You need to provide a service to run bash in.}" bash -l
   }
