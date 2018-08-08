@@ -20,6 +20,9 @@ fi
 if which docker &> /dev/null; then
   alias docker-cleanup-images="docker images | grep '<none>' | awk '{ print \$3 }' | xargs docker rmi"
   alias docker-cleanup-volumes="docker volume prune -f"
+  function docker-digest {
+    docker image inspect "${1:?You need to provide an image id or tag to look up.}" | jq -rM '.[].RepoDigests[0],.[].Id | strings'
+  }
   function docker-cleanup {
     docker-cleanup-images
     docker-cleanup-volumes
