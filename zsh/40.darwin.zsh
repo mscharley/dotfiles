@@ -23,7 +23,7 @@ fi
 
 function ram-disk {
   local BLOCKS=$(( ${1:?You must provide a size in MiB.} * 2048 ))
-  diskutil erasevolume HFS+ 'RAM Disk' `hdiutil attach -nomount ram://$$BLOCKS`
+  diskutil erasevolume HFS+ "${2:-Ram Disk}" `hdiutil attach -nomount ram://${BLOCKS}`
 }
 
 append-path /usr/local/sbin
