@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export GOPATH=$HOME/Code/goworkspace
+export GOPATH=$CODE_HOME/goworkspace
 
 # Setup paths
-append-path $HOME/Code/goworkspace/bin
+append-path $CODE_HOME/goworkspace/bin

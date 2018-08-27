@@ -1,17 +1,17 @@
 #!/usr/bin/env zsh
 
 # Setup aliases for our project folders
-#for f in $HOME/Code/*/; do
+#for f in $CODE_HOME/*/; do
 #  f=$(basename $f)
 #  if `which $f > /dev/null`; then
 #  else
-#    $f() { cd $HOME/Code/$0/$1; }
-#    compctl -W $HOME/Code/$f/ -/ $f
+#    $f() { cd $CODE_HOME/$0/$1; }
+#    compctl -W $CODE_HOME/$f/ -/ $f
 #  fi
 #done
 
 # Autocomplete Atom shortcuts.
 #if `which atom > /dev/null`; then
-#  a() { atom $HOME/Code/$1 }
-#  compctl -W $HOME/Code/ -/ a
+#  a() { atom $CODE_HOME/$1 }
+#  compctl -W $CODE_HOME/ -/ a
 #fi

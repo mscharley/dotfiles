@@ -32,3 +32,6 @@
 
 # Set the below to true if you want to profile ZSH startup time.
 PROFILE_STARTUP=false
+
+# Home directory for code repositories
+#CODE_HOME=$HOME/Code
