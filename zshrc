@@ -2,11 +2,11 @@
 
 # Run order.
 # 1. zshenv
-# 2. zshprofile
+# 2. zprofile
 # 3. zshrc
-# 4. zshlogin
+# 4. zlogin
 # ...
-# ?. zshlogout
+# ?. zshlogout (maybe)
 
 setopt ALL_EXPORT
 setopt NULL_GLOB
