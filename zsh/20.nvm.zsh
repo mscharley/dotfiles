@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 if parent-ide > /dev/null; then
-  export NVM_DIR="$HOME/.nvm"
+  NVM_DIR="$HOME/.nvm"
   # User-specific installation.
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   # Homebrew installation.
@@ -10,7 +10,7 @@ else
   function nvm {
     unset -f nvm
 
-    export NVM_DIR="$HOME/.nvm"
+    NVM_DIR="$HOME/.nvm"
     # User-specific installation.
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
     # Homebrew installation.

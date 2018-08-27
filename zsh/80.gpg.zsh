@@ -7,11 +7,11 @@ function reload-gpg-agent() {
   else
     unset SSH_AGENT_PID
     if [[ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]]; then
-      export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+      SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
     fi
   fi
 }
 
 reload-gpg-agent
 # Support for curses or CLI-based pin entry applications
-export GPG_TTY="$(tty)"
+GPG_TTY="$(tty)"
