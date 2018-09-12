@@ -8,7 +8,7 @@ cleanup() {
   ssh $SSH_JUMPBOX "rm -r $TMPFILE" &> /dev/null
 
   trap '' EXIT INT TERM
-  exit $err 
+  return $err
 }
 sig_cleanup() {
   trap '' EXIT # some shells will call EXIT after the INT handler
