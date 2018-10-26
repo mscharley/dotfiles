@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+OUTFILE=${1?:You need to provide a name for the output file.}
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+PS4=$'%D{%M:%S.%6.} %N:%i> '
+exec 3>&2 2>$OUTFILE
+setopt xtrace prompt_subst
+
+"${@:2}"
+
+unsetopt xtrace
+exec 2>&3 3>&-

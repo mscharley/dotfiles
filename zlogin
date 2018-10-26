@@ -7,6 +7,6 @@ if [[ $? == 0 && -z $QUIET_STARTUP ]]; then
 fi
 
 if [[ "$PROFILE_STARTUP" == true ]]; then
-    unsetopt xtrace
-    exec 2>&3 3>&-
+  unsetopt xtrace
+  exec 2>&3 3>&-
 fi
