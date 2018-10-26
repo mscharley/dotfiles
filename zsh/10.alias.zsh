@@ -37,3 +37,9 @@ if which docker-compose &> /dev/null; then
     docker-compose exec "${1:?You need to provide a service to run bash in.}" bash -l
   }
 fi
+
+if which gsed &> /dev/null; then
+  alias strip-ansi='gsed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|KG]//g"'
+else
+  alias strip-ansi='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|KG]//g"'
+fi

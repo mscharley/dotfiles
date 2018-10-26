@@ -4,6 +4,7 @@
   excludesfile = ~/.gitignore
   editor = vim
   eol = lf
+  hooks = ~/.githooks
   autocrlf = false
   compression = 9
   loosecompression = 1
