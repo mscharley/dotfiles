@@ -9,3 +9,5 @@ if [[ -d $HOME/Library/Android/sdk ]]; then
 else
   ANDROID_HOME="$HOME/.android"
 fi
+
+append-path $ANDROID_HOME/platform-tools/
