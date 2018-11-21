@@ -19,7 +19,7 @@ trap cleanup EXIT
 trap sig_cleanup INT QUIT TERM
 
 local TMPFILE="/tmp/ssh-config-$(date '+%Y%m%d%M%s')"
-local DISALLOWED_VARIABLES='^(ciphers|macs|.*algorithms|.*keytypes|identityfile) |^global'
+local DISALLOWED_VARIABLES='^(ciphers|macs|.*algorithms|.*keytypes|identityfile|syslog.*) |^global'
 
 ssh -G "$@" | egrep -v "$DISALLOWED_VARIABLES" | ssh $SSH_JUMPBOX "touch $TMPFILE; chmod 0600 $TMPFILE; cat > $TMPFILE" &> /dev/null
 ssh -tA $SSH_JUMPBOX "ssh -F $TMPFILE $@"
