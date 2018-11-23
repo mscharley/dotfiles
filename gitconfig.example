@@ -29,6 +29,7 @@
   new-branch = !git fetch origin && git checkout --no-track origin/master -b
   oneline-log = log --pretty='%aI %h %s - %an <%ae>'
   release-log = log --first-parent --pretty=oneline --reverse
+  sync-master = fetch origin master:master
 [push]
   default = upstream
 [rebase]
