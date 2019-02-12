@@ -15,10 +15,39 @@ case $target in
     ;;
 esac
 
+echo "16 colours:\n"
+
+echo -n "Dim:    "
+for i in `seq 0 7`; do
+  v=$((30 + $i))
+  echo -n "\e[2;${v}m ${(l:3:: :)i}"
+done
+echo "\e[0m "
+
+echo -n "Normal: "
+for i in `seq 0 7`; do
+  v=$((30 + $i))
+  echo -n "\e[${v}m ${(l:3:: :)i}"
+done
+for i in `seq 0 7`; do
+  v=$((40 + $i))
+  echo -n "\e[;${v}m ${(l:3:: :)i}"
+done
+echo "\e[0m "
+
+echo -n "Bold:   "
+for i in `seq 0 7`; do
+  v=$((30 + $i))
+  echo -n "\e[1;${v}m ${(l:3:: :)i}"
+done
+echo "\e[0m "; echo
+
+echo "\n256 colours:\n"
+
 for i in `seq 0 15`; do
   echo -n "\e[${t};5;${i}m ${(l:3:: :)i}"
 done
-echo; echo
+echo "\e[0m "; echo
 
 for h in `seq 0 1`; do
   for i in `seq 0 5`; do
@@ -29,7 +58,7 @@ for h in `seq 0 1`; do
       done
       echo -n "  "
     done
-    echo
+    echo "\e[0m"
   done
   echo
 done
@@ -39,6 +68,6 @@ for j in `seq 0 3`; do
     v=$((232 + $j * 6 + $k))
     echo -n "\e[${t};5;${v}m ${(l:3:: :)v}"
   done
-  echo
+  echo " \e[0m"
 done
 echo $terminfo[sgr0]
