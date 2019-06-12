@@ -45,5 +45,5 @@ else
 fi
 
 if which git &> /dev/null; then
-  alias wd='cd $(git workdir)'
+  alias wd='cd $(git workdir || echo .)'
 fi
