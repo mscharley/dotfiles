@@ -1,9 +1,15 @@
 #!/usr/bin/env zsh
 
 # Directory listings
-alias ls="ls --color=auto -F"
+if which gls &> /dev/null; then
+  LS="gls"
+else
+  LS="ls"
+fi
+alias ls="$LS --color=auto -F"
 alias ll="ls -lah"
 alias la="ls -A"
+unset LS
 
 alias mem="free -m"
 
