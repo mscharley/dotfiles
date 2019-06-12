@@ -19,6 +19,8 @@ alias please='sudo $(fc -ln -1)'
 
 alias sum="awk '{ s += \$1; } END { print s }'"
 
+alias show-cursor='echo "\x1B[?25h"'
+
 if which ack &> /dev/null; then
   alias nack="ack -v"
 fi
