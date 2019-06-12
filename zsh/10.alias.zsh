@@ -43,3 +43,7 @@ if which gsed &> /dev/null; then
 else
   alias strip-ansi='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|KG]//g"'
 fi
+
+if which git &> /dev/null; then
+  alias wd='cd $(git workdir)'
+fi
