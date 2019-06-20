@@ -4,12 +4,14 @@ use warnings;
 use strict;
 
 use Cwd qw(realpath);
+use File::Basename;
 use File::Compare;
+use File::Path qw(make_path);
 
 sub get_filename {
   my ($file) = (@_, $_);
   $file =~ s/\.(?:example)$//;
-  $file =~ s!%!/!;
+  $file =~ s!%!/!g;
   return $file;
 }
 
@@ -22,6 +24,7 @@ sub replace_file {
 sub link_file {
   my $target_file = get_filename();
   my $target = $ENV{"HOME"} . '/.' . $target_file;
+  make_path(dirname($target));
 
   if (/\.example/) {
     print("copying ~/.$target_file\n");
