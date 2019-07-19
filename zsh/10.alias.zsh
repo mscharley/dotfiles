@@ -40,6 +40,7 @@ fi
 if which docker-compose &> /dev/null; then
   alias dc="docker-compose"
   alias dce="docker-compose exec"
+  alias dcep='docker-compose exec $(basename "$(git workdir)")'
   alias drun="docker run -it --rm"
   function dce-bash() {
     docker-compose exec "${1:?You need to provide a service to run bash in.}" bash -l
