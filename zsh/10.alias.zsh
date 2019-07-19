@@ -26,6 +26,7 @@ if which ack &> /dev/null; then
 fi
 
 if which docker &> /dev/null; then
+  alias drun="docker run -it --rm"
   alias docker-cleanup-images="docker images | grep '<none>' | awk '{ print \$3 }' | xargs docker rmi"
   alias docker-cleanup-volumes="docker volume prune -f"
   function docker-digest {
@@ -41,7 +42,6 @@ if which docker-compose &> /dev/null; then
   alias dc="docker-compose"
   alias dce="docker-compose exec"
   alias dcep='docker-compose exec $(basename "$(git workdir)")'
-  alias drun="docker run -it --rm"
   function dce-bash() {
     docker-compose exec "${1:?You need to provide a service to run bash in.}" bash -l
   }
