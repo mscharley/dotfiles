@@ -62,3 +62,7 @@ noremap! <M-Up> <Up>
 noremap! <M-Down> <Down>
 noremap <M-Up> k
 noremap <M-Down> j
+
+" Standardise a few things
+noremap Y y$
+noremap cw vwhc
