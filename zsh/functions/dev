@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
 local PROJECT=$(basename `pwd`)
-local IMAGE=$(docker ps -qlf "name=${PROJECT}")
+local IMAGE=$(docker ps -qlf "name=dev--${PROJECT}")
+
 if [[ -n $IMAGE ]]; then
   docker start -ai $IMAGE
 else
@@ -14,8 +15,5 @@ else
     if [[ -d $c ]]; then volumes=($volumes -v "${HOME}/${c}:${DOCKER_HOME}/${c}"); fi
   done
 
-  for x in docker run -it --name "${PROJECT}" $volumes -w "${DOCKER_HOME}/${PROJECT}" mscharley/dotfiles; do
-    echo $x
-  done
-  docker run -it --name "${PROJECT}" $volumes -w "${DOCKER_HOME}/${PROJECT}" mscharley/dotfiles
+  docker run -it --name "dev--${PROJECT}" $volumes -w "${DOCKER_HOME}/${PROJECT}" mscharley/dotfiles
 fi
