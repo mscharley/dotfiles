@@ -5,7 +5,7 @@ if [[ -e /etc/gentoo-release ]]; then
   return
 fi
 
-if [[ "$(for f in /dev/null /etc/*-release; do source $f; done; echo $ID)" != "ubuntu" ]] ; then
+if [[ "$(for f in /dev/null /etc/*-release; do source $f &> /dev/null; done; echo $ID)" != "ubuntu" ]] ; then
   return
 fi
 
