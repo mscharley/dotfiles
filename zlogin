@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-which fortune 2>&1 > /dev/null
+which fortune &> /dev/null
 if [[ $? == 0 && -z $QUIET_STARTUP ]]; then
   fortune -a
   echo
