@@ -2,7 +2,8 @@ enable-ssh-support
 pinentry-program /usr/local/bin/pinentry-curses
 #pinentry-program /usr/local/bin/pinentry-mac
 
+# 1 hour to 9 hours
 default-cache-ttl 3600
 max-cache-ttl 32400
 default-cache-ttl-ssh 3600
-max-cache-ttl 32400
+max-cache-ttl-ssh 32400
