@@ -1,0 +1,8 @@
+# code: language=properties
+
+# Enable 256 color mode.
+set-option -g default-terminal "tmux-256color"
+
+# 256 color theme.
+set-option -g status-style bg=colour234,fg=colour167
+set-option -g message-style bg=colour167,fg=colour234
