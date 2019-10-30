@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # .bashrc
 
 # Source global definitions
