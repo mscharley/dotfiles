@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-NVM_DIR="${NVM_DIR:-${XDG_CONFIG_HOME:-$HOME/opt}/nvm}"
 if parent-ide > /dev/null; then
   # User-specific installation.
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

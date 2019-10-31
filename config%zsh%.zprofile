@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-fpath=( ~/.zsh/functions "${fpath[@]}" )
-autoload -Uz $(for f in ~/.zsh/functions/*; do echo ${f##*/}; done)
+fpath=( $ZDOTDIR/functions "${fpath[@]}" )
+autoload -Uz $(for f in $ZDOTDIR/functions/*; do echo ${f##*/}; done)
 
 if [[ -n $USE_TMUX ]]; then
   ## Don't use tmux inside IDE's
@@ -51,8 +51,8 @@ if [[ -n $USE_TMUX ]]; then
     fi
 
     # We're inside tmux, so run our own startup script if there is one
-    if [[ -f ~/.zshrc.tmux ]]; then
-      source ~/.zshrc.tmux
+    if [[ -f $ZDOTDIR/.zshrc.tmux ]]; then
+      source $ZDOTDIR/.zshrc.tmux
     fi
   fi
 fi
@@ -71,5 +71,5 @@ export SAVEHIST=1000
 
 # Source .profile for environment variables
 if [ -f ~/.profile ]; then
-	. ~/.profile
+  . ~/.profile
 fi

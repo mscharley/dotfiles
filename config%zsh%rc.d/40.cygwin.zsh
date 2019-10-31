@@ -38,4 +38,3 @@ rebaseall() {
 # by some installers. If needed in cygwin, you should set this in .zshrc.local
 
 unset GIT_SSH
-

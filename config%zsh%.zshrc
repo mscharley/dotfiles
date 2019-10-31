@@ -12,7 +12,7 @@ setopt ALL_EXPORT
 setopt NULL_GLOB
 
 # Load subscripts
-for f in ~/.zsh/*.zsh; do
+for f in $ZDOTDIR/rc.d/*.zsh; do
   [ -x $f ] && source $f
 done
 
