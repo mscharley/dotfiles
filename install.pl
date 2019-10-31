@@ -24,7 +24,7 @@ sub replace_file {
 sub link_file {
   my ($src, $target) = @_;
   make_path(dirname($target));
-  my $is_example = $target =~ /\.example$/;
+  my $is_example = $src =~ /\.example$/;
 
   if ($is_example && -d $src) {
     my $example_folder = $src;
