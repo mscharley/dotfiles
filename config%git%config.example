@@ -1,7 +1,12 @@
 [user]
+  # name = Your Name
+  # email = Your Email
+  # signingkey = Your GPG key fingerprint
 [commit]
+  # Enable to sign all commits
+  # gpgsign = true
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.config/git/ignore
   editor = vim
   eol = lf
   hooks = ~/.githooks
