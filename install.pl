@@ -52,7 +52,7 @@ for (@files) {
   my $target_file = get_filename();
   my $target = $ENV{"HOME"} . '/.' . $target_file;
 
-  if ($is_example && -f $target) {
+  if ($is_example && -e $target) {
     # Do nothing if an example was already installed.
     print("exists ~/.$target_file\n");
   }
