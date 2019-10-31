@@ -25,8 +25,13 @@ sub link_file {
   my $target_file = get_filename();
   my $target = $ENV{"HOME"} . '/.' . $target_file;
   make_path(dirname($target));
+  my $is_example = /\.example$/;
 
-  if (/\.example/) {
+  if ($is_example && -d $_) {
+    print("creating folder ~/.$target_file\n");
+    make_path($target);
+  }
+  elsif ($is_example) {
     print("copying ~/.$target_file\n");
     system('cp', '-v', $_, $target);
   }

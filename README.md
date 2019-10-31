@@ -14,6 +14,10 @@ Want to take this repo for a test run in a project?
     cd ~/.dotfiles
     ./install.pl
 
+### XDG support
+
+If you wish to use non-standard XDG base directories, make sure to export `$XDG_CONFIG_HOME`, `$XDG_CACHE_HOME` and `$XDG_DATA_HOME` before running the installer then edit `${XDG_CONFIG_HOME}/zsh/.zshenv` to use the values you expect.
+
 ## Installation (Windows)
 
 Still not automated. For now, copy the PowerShell profile to `$profile` in PowerShell
