@@ -55,9 +55,6 @@ my $replace_all = 0;
 sub process_files {
   my ($files, $src_prefix, $prefix) = @_;
   for (@$files) {
-    # Skip metafiles and Windows-specific files.
-    next if /^xdg$|^imports$|^Dockerfile$|\.md$|\.ps1$/ || (-x && ! -d);
-
     my $is_example = /\.example$/;
     my $target_file = get_filename();
     my $target = $target_file =~ s/^\Q${src_prefix}\E/${prefix}/r;
@@ -105,10 +102,10 @@ sub process_files {
 my $xdgConfig = $ENV{"XDG_CONFIG_HOME"} || $ENV{"HOME"} . "/.config";
 my $xdgData = $ENV{"XDG_DATA_HOME"} || $ENV{"HOME"} . "/.local/share";
 
-my @files = glob('*');
+my @files = glob('home/{*,.??*}');
 my @xdgConfig = glob('xdg/config/{*,.??*}');
 my @xdgData = glob('xdg/data/{*,.??*}');
-process_files(\@files, '', $ENV{"HOME"} . "/.");
+process_files(\@files, 'home/', $ENV{"HOME"} . "/.");
 process_files(\@xdgConfig, 'xdg/config', $xdgConfig);
 process_files(\@xdgData, 'xdg/data', $xdgData);
 
