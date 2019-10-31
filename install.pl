@@ -28,8 +28,19 @@ sub link_file {
   my $is_example = /\.example$/;
 
   if ($is_example && -d $_) {
+    my $example_folder = $_;
     print("creating folder ~/.$target_file\n");
     make_path($target);
+
+    my @example_files = glob($_ . '/{*,.??*}');
+    for (@example_files) {
+      next if m!/.gitkeep$!;
+
+      my $example_target_file = $_ =~ s/^\Q${example_folder}\E/${target}/r;
+
+      print("copying ~/.$example_target_file\n");
+      system('cp', '-v', $_, $example_target_file);
+    }
   }
   elsif ($is_example) {
     print("copying ~/.$target_file\n");

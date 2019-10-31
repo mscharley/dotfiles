@@ -6,10 +6,8 @@
   # Enable to sign all commits
   # gpgsign = true
 [core]
-  excludesfile = ~/.config/git/ignore
   editor = vim
   eol = lf
-  hooks = ~/.githooks
   autocrlf = false
   compression = 9
   loosecompression = 1
