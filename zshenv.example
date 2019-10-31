@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+# Setup XDG configuration variables. The defaults here are the
+# official defaults.
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
 # Uncomment this variable definition to enable tmux support in
 # your login shell. This will cause tmux to be loaded as part of
 # login and replace the login shell completely, starting up a
