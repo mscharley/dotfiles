@@ -5,7 +5,7 @@ zmodload zsh/mathfunc
 
 # Setup paths
 prepend-path $HOME/bin
-prepend-path $HOME/.bin
+prepend-path $HOME/.local/bin
 
 if [[ -f /var/mail/$USER ]]; then
   MAILPATH=/var/mail/$USER
