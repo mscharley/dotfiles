@@ -1,9 +1,6 @@
 #!/usr/bin/env zsh
 
-# Configure XDG defaults explicitly.
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
-XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+# Configure XDG defaults are configured in ~/.profile
 
 # Backport XDG into applications that can support it implicitly through configuration.
 

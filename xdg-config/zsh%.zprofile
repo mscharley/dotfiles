@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+# Source .profile for environment variables
+if [ -f ~/.profile ]; then
+  . ~/.profile
+fi
+
 fpath=( $ZDOTDIR/functions "${fpath[@]}" )
 autoload -Uz $(for f in $ZDOTDIR/functions/*; do echo ${f##*/}; done)
 
@@ -21,6 +26,7 @@ if [[ -n $USE_TMUX ]]; then
       return
     fi
     unset USE_TMUX
+    alias tmux='tmux -f "${XDG_CONFIG_HOME}/tmux/tmux.conf"'
 
     # Pause on login to SSH so we can still see any messaages put
     # out by the system
@@ -42,6 +48,7 @@ if [[ -n $USE_TMUX ]]; then
     if [[ $OUTPUT = "[exited]" ]]; then
       exit
     fi
+    unalias tmux
     echo $OUTPUT
   elif [[ $USE_TMUX == true ]]; then
     unset USE_TMUX
@@ -65,11 +72,5 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
 fi
 
 # History controls
-export HISTFILE=$HOME/.zhistory
 export HISTSIZE=1000
 export SAVEHIST=1000
-
-# Source .profile for environment variables
-if [ -f ~/.profile ]; then
-  . ~/.profile
-fi
