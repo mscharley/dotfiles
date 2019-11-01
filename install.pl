@@ -88,7 +88,7 @@ sub process_files {
           $replace_all = 1;
           replace_file($_, $target);
         }
-        elsif ($in eq 'y') { replace_file() }
+        elsif ($in eq 'y') { replace_file($_, $target) }
         elsif ($in eq 'q') { exit(1) }
         else { print("skipping $target\n") }
       }
