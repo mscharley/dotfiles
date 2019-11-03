@@ -20,11 +20,12 @@ if [[ -n $USE_TMUX ]]; then
     unset USE_TMUX
   fi
 
-  if [[ -z $TMUX ]]; then
-    if [[ $USE_TMUX != true || -z `which tmux` ]]; then
-      unset USE_TMUX
-      return
-    fi
+  # If tmux is not installed, then we definitely can't use it.
+  if ! command -v tmux &> /dev/null; then
+    unset USE_TMUX
+  fi
+
+  if [[ -z $TMUX && $USE_TMUX == true ]]; then
     unset USE_TMUX
     alias tmux='tmux -f "${XDG_CONFIG_HOME}/tmux/tmux.conf"'
 

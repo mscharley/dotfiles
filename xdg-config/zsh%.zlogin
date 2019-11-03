@@ -2,7 +2,7 @@
 
 if parent-ide > /dev/null; then
 else
-  which fortune &> /dev/null
+  command -v fortune &> /dev/null
   if [[ $? == 0 && -z $QUIET_STARTUP ]]; then
     fortune -a
     echo

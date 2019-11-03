@@ -10,8 +10,7 @@ else
     # User-specific installation.
     [ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
 
-    if which nvm &> /dev/null; then
-    else
+    if ! command -v nvm &> /dev/null; then
       echo "Installing NVM..."
       git clone https://github.com/nvm-sh/nvm.git "$NVM_HOME"
       pushd "$NVM_HOME" > /dev/null

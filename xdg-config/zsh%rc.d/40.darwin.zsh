@@ -4,7 +4,7 @@ if [[ `uname` != "Darwin" ]]; then
   return
 fi
 
-if ! which gls &> /dev/null; then
+if ! command -v gls &> /dev/null; then
   alias ls="ls -GF"
   alias ll="ls -la@h"
 fi

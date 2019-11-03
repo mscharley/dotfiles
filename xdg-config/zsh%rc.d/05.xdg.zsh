@@ -31,7 +31,7 @@ fi
 # Exporting VIMINIT interferes with other similar applications such as neovim. However, for $EDITOR=vim to work it is
 # necessary.
 if [[ $EDITOR == "vim" ]]; then
-  if which nvim &> /dev/null; then
+  if command -v nvim &> /dev/null; then
     function nvim {
       VIMINIT= command nvim "$@"
     }

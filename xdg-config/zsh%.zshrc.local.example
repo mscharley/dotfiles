@@ -3,15 +3,14 @@
 # Setup aliases for our project folders
 #for f in $CODE_HOME/*/; do
 #  f=$(basename $f)
-#  if `which $f > /dev/null`; then
-#  else
+#  if ! command -v $f &> /dev/null; then
 #    $f() { cd $CODE_HOME/$0/$1; }
 #    compctl -W $CODE_HOME/$f/ -/ $f
 #  fi
 #done
 
 # Autocomplete Atom shortcuts.
-#if `which atom > /dev/null`; then
+#if command -v atom &> /dev/null; then
 #  a() { atom $CODE_HOME/$1 }
 #  compctl -W $CODE_HOME/ -/ a
 #fi
