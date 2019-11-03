@@ -9,7 +9,9 @@ if which most > /dev/null 2>&1; then
 else
   export PAGER="less"
 fi
-export EDITOR="vim"
+if [ "x$EDITOR" = "x" ]; then
+  export EDITOR="vim"
+fi
 
 # Language setup
 export LANG="en_US.UTF-8"

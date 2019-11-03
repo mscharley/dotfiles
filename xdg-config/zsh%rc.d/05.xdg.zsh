@@ -17,7 +17,6 @@ ICEAUTHORITY="${XDG_CACHE_HOME}/ICEauthority"
 RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 SCREENRC="${XDG_CONFIG_HOME}/screen/screenrc"
 alias tmux='tmux -f "${XDG_CONFIG_HOME}/tmux/tmux.conf"'
-VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc"
 
 NODE_REPL_HISTORY="${XDG_DATA_HOME}/node/repl_history"
 NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
@@ -27,4 +26,20 @@ NVM_DIR="${NVM_DIR:-${XDG_CACHE_HOME}/nvm}"
 if [[ -n "$XDG_RUNTIME_DIR" ]]; then
   TMUX_TMPDIR="$XDG_RUNTIME_DIR"
   XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
+fi
+
+# Exporting VIMINIT interferes with other similar applications such as neovim. However, for $EDITOR=vim to work it is
+# necessary.
+if [[ $EDITOR == "vim" ]]; then
+  if which nvim &> /dev/null; then
+    function nvim {
+      VIMINIT= command nvim "$@"
+    }
+  fi
+
+  export VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc"
+else
+  function vim {
+    VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc" command vim "$@"
+  }
 fi
