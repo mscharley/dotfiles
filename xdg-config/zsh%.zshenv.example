@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+# Source .profile for basic environment variables
+if [ -f ~/.profile ]; then
+  emulate sh -c '. ~/.profile'
+fi
+
 # Setup XDG configuration variables. The defaults here are the
 # official defaults - you only need to uncomment this if you
 # want non-default locations.

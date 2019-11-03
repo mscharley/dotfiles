@@ -9,3 +9,9 @@ else
     alias update-rvm="PROMPT= RPROMPT= PS2= rvmsudo rvm get stable --ignore-dotfiles; rvm reload"
   fi
 fi
+
+# Load RVM into a shell session *as a function* if it exists
+if [[ -d $HOME/.rvm ]]; then
+  append-path $HOME/.rvm/bin
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+fi

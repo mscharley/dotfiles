@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 # Run order.
-# 1. zshenv
-# 2. zprofile
+# 1. zshenv (scripts finish here)
+# 2. zprofile (login shells only)
 # 3. zshrc
-# 4. zlogin
+# 4. zlogin (login shells only)
 # ...
 # ?. zshlogout (maybe)
 
@@ -15,12 +15,6 @@ setopt NULL_GLOB
 for f in $ZDOTDIR/rc.d/*.zsh; do
   [ -x $f ] && source $f
 done
-
-# Load RVM into a shell session *as a function* if it exists
-if [[ -d $HOME/.rvm ]]; then
-  append-path $HOME/.rvm/bin
-fi
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 unset i
 unset f
