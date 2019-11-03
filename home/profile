@@ -1,6 +1,8 @@
 #/bin/sh
 # code: language=shellscript
 
+# This is an opinionated set of defaults. Use .zshenv to override these values.
+
 # Setup environment
 export TZ="Australia/Melbourne"
 export HOSTNAME="`hostname`"
@@ -9,7 +11,9 @@ if command -v most > /dev/null 2>&1; then
 else
   export PAGER="less"
 fi
-if [ "x$EDITOR" = "x" ]; then
+if command -v nvim > /dev/null 2>&1; then
+  export EDITOR="nvim"
+else
   export EDITOR="vim"
 fi
 
@@ -28,12 +32,12 @@ else
   export LS_COLORS="rs=0:di=34:ln=36:so=35:pi=33:ex=32:bd=1;33;40:cd=1;33;40:su=1;32;1;41:sg=32;1;43:tw=1;34;42:ow=1;34;42"
 fi
 
-if [ "x$XDF_CONFIG_HOME" = "x" ]; then
+if [ "x$XDG_CONFIG_HOME" = "x" ]; then
   export XDG_CONFIG_HOME="$HOME/.config"
 fi
-if [ "x$XDF_CACHE_HOME" = "x" ]; then
+if [ "x$XDG_CACHE_HOME" = "x" ]; then
   export XDG_CACHE_HOME="$HOME/.cache"
 fi
-if [ "x$XDF_DATA_HOME" = "x" ]; then
+if [ "x$XDG_DATA_HOME" = "x" ]; then
   export XDG_DATA_HOME="$HOME/.local/share"
 fi
