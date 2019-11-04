@@ -16,7 +16,7 @@ Want to take this repo for a test run in a project?
 
 ### XDG support
 
-If you wish to use non-standard XDG base directories, make sure to export `$XDG_CONFIG_HOME` and `$XDG_DATA_HOME` before running the installer then edit `${XDG_CONFIG_HOME}/zsh/.zshenv` to use the values you expect.
+If you wish to use non-standard XDG base directories, make sure to export `$XDG_CONFIG_HOME`, `$XDG_BIN_HOME` and `$XDG_DATA_HOME` before running the installer then edit `${XDG_CONFIG_HOME}/zsh/.zshenv` to use the values you expect.
 
 ## Installation (Windows)
 
