@@ -39,7 +39,5 @@ if [[ $EDITOR == "vim" ]]; then
 
   export VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc"
 else
-  function vim {
-    VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc" command vim "$@"
-  }
+  alias vim="nvim"
 fi
