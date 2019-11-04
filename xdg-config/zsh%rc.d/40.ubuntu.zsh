@@ -9,4 +9,4 @@ if [[ "$(for f in /dev/null /etc/*-release; do source $f &> /dev/null; done; ech
   return
 fi
 
-prepend-path $HOME/.local/bin/ubuntu
+prepend-path $XDG_BIN_HOME/dotfiles/ubuntu

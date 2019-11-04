@@ -100,13 +100,16 @@ sub process_files {
 }
 
 my $xdgConfig = $ENV{"XDG_CONFIG_HOME"} || $ENV{"HOME"} . "/.config";
+my $xdgBin = $ENV{"XDG_BIN_HOME"} || $ENV{"HOME"} . "/.local/bin";
 my $xdgData = $ENV{"XDG_DATA_HOME"} || $ENV{"HOME"} . "/.local/share";
 
 my @files = glob('home/{*,.??*}');
 my @xdgConfig = glob('xdg-config/{*,.??*}');
+my @xdgBin = glob('xdg-bin/{*,.??*}');
 my @xdgData = glob('xdg-data/{*,.??*}');
 process_files(\@files, 'home/', $ENV{"HOME"} . "/.");
 process_files(\@xdgConfig, 'xdg-config', $xdgConfig);
+process_files(\@xdgBin, 'xdg-bin', $xdgBin);
 process_files(\@xdgData, 'xdg-data', $xdgData);
 
 my $uname = `uname -s`;

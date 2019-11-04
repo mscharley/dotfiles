@@ -28,16 +28,5 @@ if [[ -n "$XDG_RUNTIME_DIR" ]]; then
   XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
 fi
 
-# Exporting VIMINIT interferes with other similar applications such as neovim. However, for $EDITOR=vim to work it is
-# necessary.
-if [[ $EDITOR == "vim" ]]; then
-  if command -v nvim &> /dev/null; then
-    function nvim {
-      VIMINIT= command nvim "$@"
-    }
-  fi
-
-  export VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc"
-else
-  alias vim="nvim"
-fi
+# Vim needs a special $VIMINIT option set, but due to complexity with neovim and other forks this is offloaded to a
+# script in $XDG_BIN_HOME.

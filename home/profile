@@ -38,6 +38,9 @@ fi
 if [ "x$XDG_CACHE_HOME" = "x" ]; then
   export XDG_CACHE_HOME="$HOME/.cache"
 fi
+if [ "x$XDG_BIN_HOME" = "x" ]; then
+  export XDG_BIN_HOME="$HOME/.local/bin"
+fi
 if [ "x$XDG_DATA_HOME" = "x" ]; then
   export XDG_DATA_HOME="$HOME/.local/share"
 fi

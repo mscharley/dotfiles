@@ -1,11 +1,5 @@
 #!/usr/bin/env zsh
 
-# Load color constants
-autoload colors zsh/terminfo
-if [[ "$terminfo[colors]" -ge 8 ]]; then
-  colors
-fi
-
 PR_NO_COLOR="%k%f"
 if [[ "$terminfo[colors]" -ge 256 ]]; then
   # https://jonasjacek.github.io/colors/
