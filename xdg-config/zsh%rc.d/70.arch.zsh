@@ -4,7 +4,7 @@ if [[ ! -f /etc/arch-release ]]; then
   return
 fi
 
-prepend-path $XDG_BIN_HOME/dotfiles/arch
+prepend-path $XDG_BIN_HOME/arch
 
 if [[ -d $HOME/build || -d $HOME/opt/build ]]; then
   if [[ ! -f ${XDG_DATA_HOME:-$HOME/.local/share}/aur-update ]]; then

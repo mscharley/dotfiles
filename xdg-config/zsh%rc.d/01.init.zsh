@@ -22,7 +22,6 @@ export SAVEHIST=${SAVEHIST:-1000}
 PATH=""
 append-path $HOME/opt/bin
 append-path $XDG_BIN_HOME
-append-path $XDG_BIN_HOME/dotfiles
 append-path /usr/local/bin
 append-path /usr/local/sbin
 append-path /usr/sbin
