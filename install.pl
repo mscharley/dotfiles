@@ -8,6 +8,19 @@ use File::Basename;
 use File::Compare;
 use File::Path qw(make_path);
 
+if (-e $ENV{"HOME"} . '/.zshrc.local') {
+  print("\x1b[31m");
+  print("Detected a pre-XDG installation! The following update is potentially destructive and makes no attempt at a migration.\n");
+  print("\n");
+  print("More information: https://github.com/mscharley/dotfiles/pulls\n");
+  print("\n");
+  print("To revert your last pull, press Ctrl-C to quit and then run `git reset --hard HEAD\@{1}`.\n");
+  print("Press any other key to continue...\n");
+  print("\x1b[0m");
+
+  getc();
+}
+
 sub get_filename {
   my ($file) = (@_, $_);
   $file =~ s/\.(?:example)$//;
