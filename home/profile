@@ -5,7 +5,11 @@
 
 # Setup environment
 export TZ="Australia/Melbourne"
-export HOSTNAME="`hostname`"
+if command -v hostnamectl > /dev/null 2>&1; then
+  export HOSTNAME="`hostnamectl status --static`"
+else
+  export HOSTNAME="`hostname`"
+fi
 if command -v most > /dev/null 2>&1; then
   export PAGER="most"
 else
