@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+if command -v nvim &> /dev/null; then
+  exec nvim "$@"
+else
+  # Attempt to find the next `vim` in the $PATH to chainload it.
+  typeset -a vim_paths
+  IFS=$'\n' set -A vim_paths $(which -a vim)
+  next=0
+  for v in $vim_paths; do
+    if [[ $next == 1 && -x $v ]]; then
+      VIMINIT=":source ${XDG_CONFIG_HOME}/vim/vimrc" exec "$v" "$@"
+    fi
+    if [[ $v == $0 ]]; then
+      next=1
+    fi
+  done
+  echo $(basename $SHELL): command not found: $(basename $0)
+fi

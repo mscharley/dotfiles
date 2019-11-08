@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-mkdir -p ~/bin
-curl https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt -o ~/bin/sbt
-chmod 0755 ~/bin/sbt

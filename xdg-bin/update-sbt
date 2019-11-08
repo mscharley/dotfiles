@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+curl https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt -o $XDG_BIN_HOME/sbt
+chmod 0755 $XDG_BIN_HOME/sbt

@@ -1,0 +1,38 @@
+[user]
+  # name = Your Name
+  # email = Your Email
+  # signingkey = Your GPG key fingerprint
+[commit]
+  # Enable to sign all commits
+  # gpgsign = true
+[core]
+  eol = lf
+  autocrlf = false
+  compression = 9
+  loosecompression = 1
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[apply]
+  whitespace = nowarn
+[alias]
+  ff = pull --ff-only
+  ff-merge = merge --ff-only
+  recommit = commit --amend
+  workdir-or-cwd = !echo $PWD
+  workdir = rev-parse --show-toplevel
+  prune = fetch --all --prune
+  in-develop = log master..develop --pretty='format:%s' --no-merges
+  deploy = push origin HEAD:develop
+  log-branch = log --no-merges --first-parent
+  cleanup = !git branch --merged master | grep -v master | xargs git branch -d
+  feature = !git checkout -f master && git pull --ff-only && git checkout -b
+  new-branch = !git fetch origin && git checkout --no-track origin/master -b
+  oneline-log = log --pretty='%aI %h %s - %an <%ae>'
+  release-log = log --first-parent --pretty=oneline --reverse
+  sync-master = fetch origin master:master
+[push]
+  default = upstream
+[rebase]
+  autosquash = true

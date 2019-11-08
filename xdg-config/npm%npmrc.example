@@ -1,0 +1,7 @@
+# Not supported under NVM - enable if you plan to install a global node binary.
+#prefix=${XDG_DATA_HOME}/npm
+# Only enable on systems that set $XDG_RUNTIME_DIR.
+#tmp=${XDG_RUNTIME_DIR}/npm
+
+cache=${XDG_CACHE_HOME}/npm
+init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js

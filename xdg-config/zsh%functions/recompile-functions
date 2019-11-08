@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+pushd $ZDOTDIR/functions &> /dev/null
+zcompile -Uz ../functions.zwc *
+popd &> /dev/null

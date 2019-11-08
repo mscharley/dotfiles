@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+local have_redcarpet=$(command -v redcarpet 2>&1 > /dev/null; echo -n $?)
+local have_maruku=$(command -v maruku 2>&1 > /dev/null; echo -n $?)
+if [[ $have_redcarpet -eq 0 ]]; then
+  echo 'Processing with "redcarpet"...'
+  redcarpet --parse-tables --parse-no-intra-emphasis --parse-fenced-code-blocks $1 > ${1%.md}.html
+elif [[ $have_maruku -eq 0 ]]; then
+  echo 'Processing with "maruku"...'
+  maruku $1
+fi
