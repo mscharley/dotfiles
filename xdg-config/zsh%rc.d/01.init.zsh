@@ -24,10 +24,10 @@ prepend-path $XDG_BIN_HOME
 prepend-path $HOME/opt/bin
 append-path /usr/local/bin
 append-path /usr/local/sbin
-append-path /usr/sbin
 append-path /usr/bin
-append-path /sbin
+append-path /usr/sbin
 append-path /bin
+append-path /sbin
 
 if [[ -d $HOME/bin ]]; then
   echo -n "${fg[red]}"
