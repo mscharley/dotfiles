@@ -20,8 +20,8 @@ export SAVEHIST=${SAVEHIST:-1000}
 
 # Setup paths. Not all systems create a sane working path by default so lets make sure.
 # PATH=""
-append-path $HOME/opt/bin
-append-path $XDG_BIN_HOME
+prepend-path $XDG_BIN_HOME
+prepend-path $HOME/opt/bin
 append-path /usr/local/bin
 append-path /usr/local/sbin
 append-path /usr/sbin
