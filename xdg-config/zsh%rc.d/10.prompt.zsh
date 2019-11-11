@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-PR_NO_COLOR="%{$terminfo[sgr0]%}"
+PR_NO_COLOR="%k%f%{$terminfo[sgr0]%}"
 if [[ "$terminfo[colors]" -ge 256 ]]; then
   # https://jonasjacek.github.io/colors/
   PR_RED="%F{88}"            #870000

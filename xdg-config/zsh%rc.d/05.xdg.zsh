@@ -49,7 +49,9 @@ RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 # XDG Runtime support - must be made available by the OS but use it if provided.
 if [[ -n "$XDG_RUNTIME_DIR" ]]; then
   TMUX_TMPDIR="$XDG_RUNTIME_DIR"
-  XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
+  if [[ -z $XAUTHORITY ]]; then
+    XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
+  fi
 fi
 
 # Vim needs a special $VIMINIT option set, but due to complexity with neovim and other forks this is offloaded to a

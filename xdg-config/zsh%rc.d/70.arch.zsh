@@ -18,6 +18,14 @@ fi
 alias pacman-orphans="pacman -Qtdq"
 alias pacman-remove-orphans="pacman -Rns \$(pacman -Qtdq)"
 
+function pacman-upgrades {
+sudo pacman -Sy
+  pacman -Qu
+  if command -v aur &> /dev/null; then
+    aur repo --upgrades
+  fi
+}
+
 if [[ -d /usr/share/doc/pkgfile ]]; then
   source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
