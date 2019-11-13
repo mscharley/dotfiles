@@ -12,11 +12,13 @@ fi
 git_opts=(--git-dir "$dotfiles_dir")
 
 if [[ -n $(git $git_opts remote | grep updates) ]]; then
-  UPDATES=$(git $git_opts log --oneline --no-patch HEAD..updates/master | wc -l)
+  UPDATES=$(git $git_opts log --oneline --no-patch HEAD..updates/master)
 
-  if [[ $UPDATES -gt 0 ]]; then
-    echo "${fg[yellow]}Updates for dotfiles detected.${terminfo[sgr0]}"
+  if [[ $(echo $UPDATES | wc -l) -gt 0 ]]; then
+    echo "${fg[yellow]}Updates for dotfiles detected."
     echo
+    echo $UPDATES
+    echo "${terminfo[sgr0]}"
   else
     git $git_opts fetch updates &> /dev/null &!
   fi
