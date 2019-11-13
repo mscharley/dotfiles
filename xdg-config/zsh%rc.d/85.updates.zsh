@@ -19,13 +19,12 @@ if [[ -n $(git $git_opts remote | grep updates) ]]; then
     echo
     echo $UPDATES
     echo "${terminfo[sgr0]}"
-  else
-    git $git_opts fetch updates &> /dev/null &!
   fi
 else
   git $git_opts remote add updates https://github.com/mscharley/dotfiles.git
-  git $git_opts fetch updates &> /dev/null &!
 fi
+
+git $git_opts fetch updates &> /dev/null &!
 
 unset dotfiles_dir
 unset git_opts
