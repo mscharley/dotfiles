@@ -14,7 +14,7 @@ git_opts=(--git-dir "$dotfiles_dir")
 if [[ -n $(git $git_opts remote | grep updates) ]]; then
   UPDATES=$(git $git_opts log --oneline --no-patch HEAD..updates/master)
 
-  if [[ $(echo $UPDATES | wc -l) -gt 0 ]]; then
+  if [[ $(echo -n $UPDATES | wc -l) -gt 0 ]]; then
     echo "${fg[yellow]}Updates for dotfiles detected."
     echo
     echo $UPDATES
