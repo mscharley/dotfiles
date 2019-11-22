@@ -1,3 +1,11 @@
 #!/usr/bin/env zsh
 
-ruby -e "puts Time.at(${1:?You must provide a timestamp.})"
+TS=${1:?You must provide a timestamp.}
+if command -v ruby &> /dev/null; then
+  ruby -e "puts Time.at($TS)"
+elif command -v perl &> /dev/null; then
+  perl -e 'use DateTime; print DateTime->from_epoch(epoch=>'"$TS"', time_zone=>$ENV{"TZ"})->strftime("%F %T %z") . "\n";'
+else
+  echo "Unable to find a valid scripting engine to do this conversion. Needs either perl or ruby." 1>&2
+  return 1
+fi
