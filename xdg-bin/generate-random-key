@@ -3,4 +3,4 @@
 use Crypt::OpenSSL::Random qw(random_bytes);
 use MIME::Base64 qw(encode_base64url);
 
-print encode_base64url(random_bytes(64));
+print encode_base64url(random_bytes(64)) . "\n";
