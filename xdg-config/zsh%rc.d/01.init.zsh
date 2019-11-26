@@ -16,7 +16,7 @@ autoload -Uz $(for f in $ZDOTDIR/functions/*; do echo ${f##*/}; done)
 
 # History controls.
 export HISTSIZE=${HISTSIZE:-1000}
-export SAVEHIST=${SAVEHIST:-1000}
+export SAVEHIST=${SAVEHIST:-10000}
 
 # Setup paths. Not all systems create a sane working path by default so lets make sure.
 # PATH=""
