@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 
-# Source .profile for basic environment variables
-if [ -f ~/.profile ]; then
-  emulate sh -c '. ~/.profile'
+if [[ "$PROFILE_STARTUP" == true ]]; then
+  unsetopt xtrace
+  exec 2>&3 3>&-
+
+  echo "Profiling summary:"
+  (head -n 1 $HOME/tmp/startlog.$$; tail -n 1 $HOME/tmp/startlog.$$)
 fi
