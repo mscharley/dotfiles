@@ -134,3 +134,5 @@ for my $import (@imports) {
     system($import);
   }
 }
+
+system('chmod', 'go-rwx', $ENV{"HOME"} . "/.ssh");
