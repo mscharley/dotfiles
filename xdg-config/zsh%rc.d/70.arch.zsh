@@ -15,11 +15,11 @@ if [[ -d $HOME/build || -d $HOME/opt/build ]]; then
   fi
 fi
 
-alias pacman-orphans="pacman -Qtdq"
+alias pacman-orphans="pacman -Qtd"
 alias pacman-remove-orphans="pacman -Rns \$(pacman -Qtdq)"
 
 function pacman-upgrades {
-sudo pacman -Sy
+  sudo pacman -Sy
   pacman -Qu
   if command -v aur &> /dev/null; then
     aur repo --upgrades
