@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
-if [[ -z ${path[(r)$1]} ]] ; then
-  path+=$1
-fi
+for ((i = 1; i <= $#path; i++)); do
+  if [[ "${path[i]}" == "$1" ]]; then
+    (( start = i - 1 ))
+    (( rest = i + 1 ))
+    path=( "${(@)path[0,start]}" "${(@)path[rest,-1]}" )
+  fi
+done
+
+path+=$1
