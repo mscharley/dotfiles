@@ -4,6 +4,15 @@ if parent-ide > /dev/null; then
   # User-specific installation.
   [ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
 else
+  function useNvm {
+    if [[ -f .nvmrc ]]; then
+      if command -v nvm &> /dev/null; then
+        nvm use
+      fi
+    fi
+  }
+  chpwd_functions+='useNvm'
+
   function nvm {
     unset -f nvm
 
