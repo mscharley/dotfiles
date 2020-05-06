@@ -19,9 +19,8 @@ export HISTSIZE=${HISTSIZE:-1000}
 export SAVEHIST=${SAVEHIST:-10000}
 
 # Setup paths. Not all systems create a sane working path by default so lets make sure.
-# PATH=""
-prepend-path $XDG_BIN_HOME
 prepend-path $HOME/opt/bin
+prepend-path $XDG_BIN_HOME
 append-path /usr/local/bin
 append-path /usr/local/sbin
 append-path /usr/bin
