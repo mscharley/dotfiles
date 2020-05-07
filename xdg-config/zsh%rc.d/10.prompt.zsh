@@ -42,6 +42,8 @@ PR_LRCORNER=${altchar[j]:--}
 PR_URCORNER=${altchar[k]:--}
 
 # Setup some variables for use in the actual prompt (definition in fpath)
+typeset -a precmd_functions
+typeset -a preexec_functions
 precmd_functions+='prompt_precmd'
 preexec_functions+='prompt_preexec'
 prompt_preexec

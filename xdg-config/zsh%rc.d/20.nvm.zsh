@@ -11,6 +11,7 @@ else
       fi
     fi
   }
+  typeset -a chpwd_functions
   chpwd_functions+='useNvm'
 
   function nvm {
