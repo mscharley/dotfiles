@@ -55,6 +55,11 @@ sub link_file {
     }
   }
   elsif ($is_example) {
+    if (-l $target) {
+      print("removing old link $target\n");
+      system('rm', '-f', $target);
+    }
+
     print("copying $target\n");
     system('cp', '-v', $src, $target);
   }
