@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-# TODO: Actually use custom XDG_CONFIG_HOME for the ZDOTDIR here (somehow)
-ZDOTDIR=${XDG_CONFIG_HOME:-$HOME/.config}/zsh
-. $ZDOTDIR/.zshenv
