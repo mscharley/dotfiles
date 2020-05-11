@@ -36,15 +36,9 @@ else
   export LS_COLORS="rs=0:di=34:ln=36:so=35:pi=33:ex=32:bd=1;33;40:cd=1;33;40:su=1;32;1;41:sg=32;1;43:tw=1;34;42:ow=1;34;42"
 fi
 
-if [ "x$XDG_CONFIG_HOME" = "x" ]; then
-  export XDG_CONFIG_HOME="$HOME/.config"
+# Load XDG configuration, if one exists
+set -a
+if [ -e ~/.xdg ]; then
+  source ~/.xdg
 fi
-if [ "x$XDG_CACHE_HOME" = "x" ]; then
-  export XDG_CACHE_HOME="$HOME/.cache"
-fi
-if [ "x$XDG_BIN_HOME" = "x" ]; then
-  export XDG_BIN_HOME="$HOME/.local/bin"
-fi
-if [ "x$XDG_DATA_HOME" = "x" ]; then
-  export XDG_DATA_HOME="$HOME/.local/share"
-fi
+set +a

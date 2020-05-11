@@ -117,17 +117,18 @@ sub process_files {
   }
 }
 
-my $xdgConfig = $ENV{"XDG_CONFIG_HOME"} || $ENV{"HOME"} . "/.config";
 my $xdgBin = $ENV{"XDG_BIN_HOME"} || $ENV{"HOME"} . "/.local/bin";
+my $xdgCache = $ENV{"XDG_CACHE_HOME"} || $ENV{"HOME"} . "/.cache";
+my $xdgConfig = $ENV{"XDG_CONFIG_HOME"} || $ENV{"HOME"} . "/.config";
 my $xdgData = $ENV{"XDG_DATA_HOME"} || $ENV{"HOME"} . "/.local/share";
 
 my @files = glob('home/{*,.??*}');
-my @xdgConfig = glob('xdg-config/{*,.??*}');
 my @xdgBin = glob('xdg-bin/{*,.??*}');
+my @xdgConfig = glob('xdg-config/{*,.??*}');
 my @xdgData = glob('xdg-data/{*,.??*}');
 process_files(\@files, 'home/', $ENV{"HOME"} . "/.");
-process_files(\@xdgConfig, 'xdg-config', $xdgConfig);
 process_files(\@xdgBin, 'xdg-bin', $xdgBin);
+process_files(\@xdgConfig, 'xdg-config', $xdgConfig);
 process_files(\@xdgData, 'xdg-data', $xdgData);
 
 my $uname = `uname -s`;
@@ -140,4 +141,13 @@ for my $import (@imports) {
   }
 }
 
+# Cleanup SSH file permissions
 system('chmod', 'go-rwx', $ENV{"HOME"} . "/.ssh");
+
+# Update XDG configuration
+open(XDG_CONFIG, '>', $ENV{"HOME"} . "/.xdg") or die("Unable to update XDG configuration");
+print XDG_CONFIG "XDG_BIN_HOME=\"$xdgBin\";\n";
+print XDG_CONFIG "XDG_CACHE_HOME=\"$xdgCache\";\n";
+print XDG_CONFIG "XDG_CONFIG_HOME=\"$xdgConfig\";\n";
+print XDG_CONFIG "XDG_DATA_HOME=\"$xdgData\";\n";
+close(XDG_CONFIG);
