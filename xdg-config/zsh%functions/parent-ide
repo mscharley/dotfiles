@@ -19,6 +19,11 @@ if string-contains "Visual Studio Code.app" "$PARENT_PROC"; then
   return 0
 fi
 
+if string-contains "/visual-studio-code/code" "$PARENT_PROC"; then
+  echo "VS Code"
+  return 0
+fi
+
 # Kate
 if [[ -n $KATE_PID ]]; then
   echo "Kate"
