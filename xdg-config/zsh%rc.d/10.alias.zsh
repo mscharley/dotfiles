@@ -36,14 +36,11 @@ if command -v docker &> /dev/null; then
     docker-cleanup-images
     docker-cleanup-volumes
   }
-fi
-
-if command -v docker-compose &> /dev/null; then
-  alias dc="docker-compose"
-  alias dce="docker-compose exec"
-  alias dcep='docker-compose exec $(basename "$(git workdir)")'
+  alias dc="docker compose"
+  alias dce="docker compose exec"
+  alias dcep='docker compose exec $(basename "$(git workdir)")'
   function dce-bash() {
-    docker-compose exec "${1:?You need to provide a service to run bash in.}" bash -l
+    docker compose exec "${1:?You need to provide a service to run bash in.}" bash -l
   }
 fi
 
