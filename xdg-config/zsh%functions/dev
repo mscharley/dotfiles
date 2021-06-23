@@ -15,5 +15,5 @@ else
     if [[ -d $c ]]; then volumes=($volumes -v "${HOME}/${c}:${DOCKER_HOME}/${c}"); fi
   done
 
-  docker run -it --name "dev--${PROJECT}" $volumes -w "${DOCKER_HOME}/${PROJECT}" mscharley/dotfiles
+  docker run -it --name "dev--${PROJECT}" $volumes -w "${DOCKER_HOME}/${PROJECT}" ghcr.io/mscharley/dotfiles
 fi
