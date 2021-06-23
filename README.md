@@ -6,7 +6,7 @@ Matthew Scharley \<matt@scharley.me\>
 
 Want to take this repo for a test run in a project?
 
-    docker run -it --rm -v $(pwd):/home/ubuntu/$(basename `pwd`) mscharley/dotfiles
+    docker run -it --rm -v $(pwd):/home/ubuntu/$(basename `pwd`) ghcr.io/mscharley/dotfiles
 
 ## Installation (\*nix/OS X)
 
