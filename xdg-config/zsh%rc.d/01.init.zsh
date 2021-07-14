@@ -15,6 +15,7 @@ fpath=( $ZDOTDIR/functions "${fpath[@]}" )
 autoload -Uz $(for f in $ZDOTDIR/functions/*; do echo ${f##*/}; done)
 
 # History controls.
+export HISTFILE=$XDG_DATA_HOME/zsh/history
 export HISTSIZE=${HISTSIZE:-1000}
 export SAVEHIST=${SAVEHIST:-10000}
 
