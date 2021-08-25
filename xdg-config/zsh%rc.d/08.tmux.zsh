@@ -22,6 +22,7 @@ if ! command -v tmux &> /dev/null; then
   return
 fi
 
+alias tmux='tmux -f "${XDG_CONFIG_HOME}/tmux/tmux.conf"'
 if [[ -z $TMUX ]]; then
   unset USE_TMUX
 

@@ -20,7 +20,6 @@ DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 ELINKS_CONFDIR="${XDG_CONFIG_HOME}/elinks"
 ICEAUTHORITY="${XDG_CACHE_HOME}/ICEauthority"
 SCREENRC="${XDG_CONFIG_HOME}/screen/screenrc"
-alias tmux='tmux -f "${XDG_CONFIG_HOME}/tmux/tmux.conf"'
 
 ####
 # Node

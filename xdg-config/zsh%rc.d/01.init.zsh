@@ -29,6 +29,10 @@ append-path /usr/sbin
 append-path /bin
 append-path /sbin
 
+if [[ `uname` = "Darwin" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 if [[ -d $HOME/bin ]]; then
   echo -n "${fg[red]}"
   echo "$HOME/bin is deprecated. It is currently in your \$PATH still but you should do one of the following:"
