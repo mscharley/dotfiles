@@ -25,15 +25,11 @@
   workdir-or-cwd = !echo $PWD
   workdir = rev-parse --show-toplevel
   prune = fetch --all --prune
-  in-develop = log master..develop --pretty='format:%s' --no-merges
-  deploy = push origin HEAD:develop
   log-branch = log --no-merges --first-parent
-  cleanup = !git branch --merged master | grep -v master | xargs git branch -d
-  feature = !git checkout -f master && git pull --ff-only && git checkout -b
-  new-branch = !git fetch origin && git checkout --no-track origin/master -b
   oneline-log = log --pretty='%aI %h %s - %an <%ae>'
   release-log = log --first-parent --pretty=oneline --reverse
   sync-master = fetch origin master:master
+  sync-main = fetch origin main:main
 [push]
   default = upstream
 [rebase]
