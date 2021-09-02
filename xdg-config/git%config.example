@@ -5,6 +5,8 @@
 [commit]
   # Enable to sign all commits
   # gpgsign = true
+[init]
+  defaultBranch = main
 [core]
   eol = lf
   autocrlf = false
