@@ -5,13 +5,19 @@
 [commit]
   # Enable to sign all commits
   # gpgsign = true
-[init]
-  defaultBranch = main
 [core]
   eol = lf
   autocrlf = false
   compression = 9
   loosecompression = 1
+[init]
+  defaultBranch = main
+[checkout]
+  defaultRemote = origin
+[push]
+  default = upstream
+[rebase]
+  autosquash = true
 [color]
   diff = auto
   status = auto
@@ -30,7 +36,3 @@
   release-log = log --first-parent --pretty=oneline --reverse
   sync-master = fetch origin master:master
   sync-main = fetch origin main:main
-[push]
-  default = upstream
-[rebase]
-  autosquash = true
