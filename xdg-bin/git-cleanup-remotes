@@ -3,9 +3,11 @@ require 'shellwords'
 
 puts "=> git fetch --all --prune"
 system 'git fetch --all --prune'
+localBranches = `git branch`.lines.map{|b| b[2..-1]}.map(&:chomp)
+mainBranch = localBranches.include?('main') ? 'main' : 'master'
 
 branches = [
-  *`git branch -r --merged master`.lines.map(&:chomp).select{|b| !(b =~ /master$|develop$|HEAD/)},
+  *`git branch -r --merged #{mainBranch}`.lines.map(&:chomp).select{|b| !(b =~ /master$|main$|develop$|HEAD/)},
   *`git branch -r`.lines.map(&:chomp).select{|b| b =~ /greenkeeper\//}
 ].map{|b| b[2..-1].split('/', 2)}
 remotes = branches.reduce(Hash.new{|h, k| h[k] = []}) {|h, b| h[b[0]].push b[1];h }
