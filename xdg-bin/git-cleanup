@@ -4,7 +4,7 @@ require 'shellwords'
 localBranches = `git branch`.lines.map{|b| b[2..-1]}.map(&:chomp)
 mainBranch = localBranches.include?('main') ? 'main' : 'master'
 
-branches = `git branch --merged #{mainBranch} | grep -v #{mainBranch} | grep -vE '^*'`.lines
+branches = `git branch --merged #{mainBranch} | grep -v #{mainBranch} | grep -vE '^\\*'`.lines
 
 branches.each do |b|
   `git branch -d #{b}`
