@@ -49,11 +49,18 @@ preexec_functions+='prompt_preexec'
 prompt_preexec
 
 # Setup some variables once-off
-PR_USER_COLOR="${PR_MAGENTA}"
 if [[ -n "$TMUX" ]]; then
   PR_USER="%n:%l"
 else
   PR_USER="%n@%m:%l"
+fi
+
+if [[ $(whoami) == "root" ]]; then
+  PR_USER_COLOR="${PR_RED}"
+elif [[ -n "${SSH_CONNECTION}" ]]; then
+  PR_USER_COLOR="${PR_LIGHT_BLUE}"
+else
+  PR_USER_COLOR="${PR_MAGENTA}"
 fi
 
 # Actual prompt variables
