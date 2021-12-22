@@ -12,8 +12,10 @@ XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 
 if [[ -d $HOME/Library/Android/sdk ]]; then
   ANDROID_HOME="$HOME/Library/Android/sdk"
+elif [[ -d $HOME/Android/Sdk ]]; then
+  ANDROID_HOME="$HOME/Android/Sdk"
 else
-  ANDROID_HOME="${XDG_CONFIG_HOME:-$HOME/opt}/android"
+  ANDROID_HOME="${ANDROID_HOME:-${XDG_CONFIG_HOME:-$HOME/opt}/android}"
 fi
 
 DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
