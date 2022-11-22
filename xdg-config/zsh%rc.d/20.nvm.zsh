@@ -1,34 +1,26 @@
 #!/usr/bin/env zsh
 
+# User-specific installation.
+[ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
+
 if parent-ide > /dev/null; then
-  # User-specific installation.
-  [ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
 else
-  function useNvm {
-    if [[ -f .nvmrc ]]; then
-      if command -v nvm &> /dev/null; then
-        nvm use
-      fi
-    fi
-  }
-  typeset -a chpwd_functions
-  chpwd_functions+='useNvm'
+	load-nvmrc() {
+		local nvmrc_path="$(nvm_find_nvmrc)"
 
-  function nvm {
-    unset -f nvm
+		if [ -n "$nvmrc_path" ]; then
+			local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-    # User-specific installation.
-    [ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
-
-    if ! command -v nvm &> /dev/null; then
-      echo "Installing NVM..."
-      git clone https://github.com/nvm-sh/nvm.git "$NVM_HOME"
-      pushd "$NVM_HOME" > /dev/null
-      git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-      . "./nvm.sh" --no-use
-      popd > /dev/null
-    fi
-
-    nvm "$@"
-  }
+			if [ "$nvmrc_node_version" = "N/A" ]; then
+				nvm install
+			elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+				nvm use
+			fi
+		elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+			echo "Reverting to nvm default version"
+			nvm use default
+		fi
+	}
+	add-zsh-hook chpwd load-nvmrc
+	load-nvmrc
 fi

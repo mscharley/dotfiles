@@ -4,6 +4,7 @@
 zmodload zsh/mathfunc
 autoload -U compinit
 autoload colors zsh/terminfo
+autoload -U add-zsh-hook
 
 # Load color constants
 if [[ "$terminfo[colors]" -ge 8 ]]; then
