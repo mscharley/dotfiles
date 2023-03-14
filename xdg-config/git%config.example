@@ -10,6 +10,7 @@
   autocrlf = false
   compression = 9
   loosecompression = 1
+  ignorecase = false
 [init]
   defaultBranch = main
 [checkout]
