@@ -4,7 +4,7 @@
 [ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
 
 if parent-ide > /dev/null; then
-else
+elif which nvm &> /dev/null; then
 	load-nvmrc() {
 		local nvmrc_path="$(nvm_find_nvmrc)"
 
