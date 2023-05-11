@@ -3,7 +3,7 @@
 i=0
 until "$@" ; do
   delay=$(( int(1.5 ** $i) ))
-  echo "==> Retrying after $delay minute..."
+  echo "==> [$(date)] Retrying after $delay minute..."
   sleep $(( $delay * 60 ))
   i=$(( $i + 1 ))
 done
