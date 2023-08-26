@@ -28,7 +28,6 @@ SCREENRC="${XDG_CONFIG_HOME}/screen/screenrc"
 ##
 NODE_REPL_HISTORY="${XDG_DATA_HOME}/node/repl_history"
 NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
-NVM_HOME="${NVM_DIR:-${XDG_DATA_HOME}/nvm}"
 NVM_DIR="${NVM_DIR:-${XDG_CACHE_HOME}/nvm}"
 
 ####

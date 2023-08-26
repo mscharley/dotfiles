@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # User-specific installation.
-[ -s "$NVM_HOME/nvm.sh" ] && . "$NVM_HOME/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 if parent-ide > /dev/null; then
 elif which nvm &> /dev/null; then
