@@ -1,2 +1,6 @@
+Host *
+	# Enable this to use 1Password as an SSH agent
+	# IdentityAgent ~/.1password/agent.sock
+
+# Pass through env variable to tell if we have tmux already wrapping
 SendEnv USE_TMUX
-Match host * exec "gpg-connect-agent UPDATESTARTUPTTY /bye"

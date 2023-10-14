@@ -1,7 +1,12 @@
 [user]
   # name = Your Name
   # email = Your Email
-  # signingkey = Your GPG key fingerprint
+  # signingkey = Your GPG/ssh key fingerprint
+[gpg]
+  # format = ssh
+[gpg "ssh"]
+  # program = "/Applications/1Password.app/Contents/MacOS/op-sign-ssh"
+  # program = "/opt/1Password/op-ssh-sign"
 [commit]
   # Enable to sign all commits
   # gpgsign = true
