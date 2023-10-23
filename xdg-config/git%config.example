@@ -1,7 +1,7 @@
 [user]
   # name = Your Name
   # email = Your Email
-  # signingkey = Your GPG/ssh key fingerprint
+  # signingkey = Your GPG key fingerprint or SSH public key
 [gpg]
   # format = ssh
 [gpg "ssh"]
