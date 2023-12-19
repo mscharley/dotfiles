@@ -43,4 +43,4 @@
   oneline-log = log --pretty='%aI %h %s - %an <%ae>'
   release-log = log --first-parent --pretty=oneline --reverse
   sync-master = fetch origin master:master
-  sync-main = fetch origin main:main
+  sync = fetch origin main:main
