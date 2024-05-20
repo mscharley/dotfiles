@@ -1,11 +1,8 @@
-#!/usr/bin/env ruby
-require 'shellwords'
+#!/usr/bin/env bash
 
-localBranches = `git branch`.lines.map{|b| b[2..-1]}.map(&:chomp)
-mainBranch = localBranches.include?('main') ? 'main' : 'master'
+main=$(if git branch | grep '^[ *] main$' &> /dev/null; then echo "main"; else echo "master"; fi)
+merged_branches=$(git branch --merged "$main" | grep -v "$main" | grep -v '^*')
 
-branches = `git branch --merged #{mainBranch} | grep -v #{mainBranch} | grep -vE '^\\*'`.lines.map(&:strip)
-
-branches.each do |b|
-  system 'git', 'branch', '-vd', b
-end
+for b in $merged_branches; do
+	git branch -vd "$b"
+done
