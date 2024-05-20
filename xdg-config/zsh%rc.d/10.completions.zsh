@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-if [[ -d /usr/local/share/zsh-completions ]]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-
 if [[ ! -d $XDG_CACHE_HOME/zsh ]]; then
   mkdir -p $XDG_CACHE_HOME/zsh
 fi
@@ -18,4 +14,3 @@ setopt completealiases
 if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
   source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
-

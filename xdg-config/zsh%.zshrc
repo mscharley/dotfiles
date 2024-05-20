@@ -8,7 +8,6 @@
 # ...
 # ?. zshlogout (maybe)
 
-setopt ALL_EXPORT
 setopt NULL_GLOB
 
 # Load subscripts
@@ -19,4 +18,3 @@ done
 unset i
 unset f
 unsetopt NULL_GLOB
-unsetopt ALL_EXPORT

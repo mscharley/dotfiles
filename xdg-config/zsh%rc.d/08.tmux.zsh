@@ -45,7 +45,7 @@ if [[ -z $TMUX ]]; then
   fi
   echo $OUTPUT
 else
-  USE_TMUX=false
+  export USE_TMUX=false
 
   if [[ `tput -T${TMUX_TERM} colors 2>&1` -ge 256 ]]; then
     export TERM="screen-256color"

@@ -47,14 +47,14 @@ if [[ -d $HOME/bin ]]; then
 fi
 
 if [[ -f /var/mail/$USER ]]; then
-  MAILPATH=/var/mail/$USER
+  export MAILPATH=/var/mail/$USER
 fi
 
 # Load some overrides for bash scripts.
-BASH_ENV="$HOME/.bashenv"
+export BASH_ENV="$HOME/.bashenv"
 
 # Set a default CODE_HOME directory in case one hasn't been configured in zshenv
-CODE_HOME=${CODE_HOME:-$HOME/Code}
+export CODE_HOME=${CODE_HOME:-$HOME/Code}
 
 # Configure xz compression to smartly use available processing capacity
-XZ_DEFAULTS="-T 0"
+export XZ_DEFAULTS="-T 0"
