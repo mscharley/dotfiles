@@ -3,8 +3,9 @@
 main=$(if git branch | grep '^[ *] main$' &> /dev/null; then echo "main"; else echo "master"; fi)
 potential_branches=$(git branch | grep -v "$main" | grep -v '^*')
 for b in $potential_branches; do
+  echo "Checking branch $b."
 	# Smartly check whether the branches changes are on main rather than trust git's simple merge check. This also catches rebases.
-	if [ "$(git range-diff --right-only $main...$b | grep -Ev '^[[:blank:]]*[[:digit:]]+:[[:blank:]]+[0-9a-f]+[[:blank:]]+=' | wc -l)" = "0" ]; then
-		git branch -vd "$b"
+  if [[ $(($(git range-diff --right-only $main...$b | grep -Ev '^[[:blank:]]*[[:digit:]]+:[[:blank:]]+[0-9a-f]+[[:blank:]]+=' | wc -l))) == "0" ]]; then
+		git branch -vD "$b"
 	fi
 done
