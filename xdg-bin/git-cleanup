@@ -4,13 +4,13 @@ setopt shwordsplit
 main=$(if git branch | grep '^[ *] main$' &> /dev/null; then echo "main"; else echo "master"; fi)
 potential_branches=$(git branch | grep -v "$main" | grep -v '^*')
 for b in $potential_branches; do
-  echo "Checking branch $b."
+	echo "Checking branch $b."
 	# Smartly check whether the branches changes are on main rather than trust git's simple merge check. This also catches rebases.
-  commits=$(git range-diff --no-patch --right-only $main...$b | grep -Ev '^[[:blank:]]*[[:digit:]]+:[[:blank:]]+[0-9a-f]+[[:blank:]]+=')
-  if [[ $(($(echo "$commits" | wc -l))) == "0" ]]; then
+	commits=$(git range-diff --no-patch --right-only $main...$b | grep -Ev '^[[:blank:]]*[[:digit:]]+:[[:blank:]]+[0-9a-f]+[[:blank:]]+=')
+	if [[ $(($(echo "$commits" | wc -l))) == "0" ]]; then
 		echo git branch -vD "$b"
-  else
-    echo "Found unmerged commits:"
-    echo "$commits"
+	else
+		echo "Found unmerged commits:"
+		echo "$commits"
 	fi
 done
