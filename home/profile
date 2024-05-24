@@ -42,6 +42,3 @@ if [ -e ~/.xdg ]; then
   source ~/.xdg
 fi
 set +a
-
-export NVM_DIR="$HOME/.cache/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

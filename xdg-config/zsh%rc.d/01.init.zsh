@@ -2,7 +2,6 @@
 
 # ZSH modules.
 zmodload zsh/mathfunc
-autoload -U compinit
 autoload colors zsh/terminfo
 autoload -U add-zsh-hook
 

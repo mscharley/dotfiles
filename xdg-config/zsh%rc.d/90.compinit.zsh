@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+autoload -Uz compinit
+
 if [[ ! -d $XDG_CACHE_HOME/zsh ]]; then
   mkdir -p $XDG_CACHE_HOME/zsh
 fi
