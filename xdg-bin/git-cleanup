@@ -8,7 +8,7 @@ for b in $potential_branches; do
 	# Smartly check whether the branches changes are on main rather than trust git's simple merge check. This also catches rebases.
 	commits=$(git range-diff --no-patch --right-only $main...$b | grep -Ev '^[[:blank:]]*[[:digit:]]+:[[:blank:]]+[0-9a-f]+[[:blank:]]+=')
 	if [[ $(($(echo -n "$commits" | wc -l))) == "0" ]]; then
-		echo git branch -vD "$b"
+		git branch -vD "$b"
 	else
 		echo "Found unmerged commits:"
 		echo "$commits"
