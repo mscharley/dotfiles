@@ -12,6 +12,8 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 5
 vim.opt.showtabline = 2
 vim.opt.title = true
+vim.opt.listchars = 'tab:> ,leadmultispace:┃ ,trail:-,nbsp:+'
+vim.opt.list = true
 
 -- Tab configuration
 vim.opt.tabstop = 2
@@ -35,6 +37,9 @@ Plug.begin()
 require('usermod.themes.sonokai')
 require('usermod.plugins.nvim-web-devicons')
 
+-- LIBRARIES
+require('usermod.plugins.plenary')
+
 -- PLUGINS (load order is important)
 require('usermod.plugins.gitsigns')
 require('usermod.plugins.lualine')
@@ -44,10 +49,13 @@ require('usermod.plugins.nvim-lspconfig')
 require('usermod.plugins.nvim-treesitter')
 require('usermod.plugins.nvim-tree')
 require('usermod.plugins.lsp_lines')
-
+require('usermod.plugins.nvim-lsp-file-operations')
 require('usermod.plugins.hover')
 require('usermod.plugins.nvim-surround')
 require('usermod.plugins.commentary')
+
+-- LANGUAGE TOOLS
+require('usermod.plugins.typescript-tools')
 
 Plug.ends()
 
