@@ -36,16 +36,21 @@ Plug.begin()
 -- THEMING
 require('usermod.themes.sonokai')
 require('usermod.plugins.nvim-web-devicons')
+require('usermod.themes.lush')
 
 -- LIBRARIES
 require('usermod.plugins.plenary')
+require('usermod.plugins.mason')
 
 -- PLUGINS (load order is important)
 require('usermod.plugins.gitsigns')
-require('usermod.plugins.lualine')
 require('usermod.plugins.barbar')
 require('usermod.plugins.nvim-cmp')
+require('usermod.plugins.ollama')
+require('usermod.plugins.schemastore')
+require('usermod.plugins.mason-lspconfig')
 require('usermod.plugins.nvim-lspconfig')
+require('usermod.plugins.neoformat')
 require('usermod.plugins.nvim-treesitter')
 require('usermod.plugins.nvim-tree')
 require('usermod.plugins.lsp_lines')
@@ -53,6 +58,7 @@ require('usermod.plugins.nvim-lsp-file-operations')
 require('usermod.plugins.hover')
 require('usermod.plugins.nvim-surround')
 require('usermod.plugins.commentary')
+require('usermod.plugins.lualine')
 
 -- LANGUAGE TOOLS
 require('usermod.plugins.typescript-tools')

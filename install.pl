@@ -22,16 +22,16 @@ if (-e $ENV{"HOME"} . '/.zshrc.local') {
 }
 
 sub get_filename {
-  my ($file) = (@_, $_);
-  $file =~ s/\.(?:example)$//;
-  $file =~ s!%!/!g;
-  return $file;
+    my $file = shift || $_; # take the first argument or use default ($_)
+    $file =~ s/\.example$//; # remove '.example' at the end of filename
+    $file =~ tr/%/\\/; # replace '%' with '/'
+    return $file;
 }
 
 sub replace_file {
-  my ($src_file, $target_file) = @_;
-  system("rm", "-rf", $target_file);
-  link_file($src_file, $target_file)
+    my ($src_file, $target_file) = @_;
+    system("rm", "-rf", $target_file); # remove the target file if it exists
+    link($src_file, $target_file); # create a hard link from src to target
 }
 
 sub link_file {

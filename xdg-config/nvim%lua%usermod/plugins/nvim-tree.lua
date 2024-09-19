@@ -18,6 +18,11 @@ require('usermod.vimplug')('nvim-tree/nvim-tree.lua', {
 
 				-- Add our own mappings
 				vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
+
+				-- Automatically open file on creation
+				api.events.subscribe(api.events.Event.FileCreated, function(file)
+					vim.cmd("edit " .. file.fname)
+				end)
 			end,
 			view = {
 				width = 30,
@@ -28,6 +33,11 @@ require('usermod.vimplug')('nvim-tree/nvim-tree.lua', {
 			filters = {
 				git_ignored = false,
 				git_clean = false,
+				custom = {
+					"^.git$",
+					"^.turbo$",
+					"node_modules$"
+				}
 			},
 			diagnostics = {
 				enable = true,

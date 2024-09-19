@@ -12,7 +12,7 @@ local Plug = {
 	ends = function()
 		vim.fn['plug#end']()
 
-		for i, config in pairs(configs.start) do
+		for i, config in ipairs(configs.start) do
 			config()
 		end
 	end
@@ -47,7 +47,7 @@ local meta = {
 			local plugin = opts.as or plug_name(repo)
 
 			if opts['for'] == nil and opts.on == nil then
-				configs.start[plugin] = opts.config
+				table.insert(configs.start, opts.config)
 			else
 				configs.lazy[plugin] = opts.config
 				vim.api.nvim_create_autocmd('User', {
