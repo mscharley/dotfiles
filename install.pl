@@ -24,7 +24,7 @@ if (-e $ENV{"HOME"} . '/.zshrc.local') {
 sub get_filename {
     my $file = shift || $_; # take the first argument or use default ($_)
     $file =~ s/\.example$//; # remove '.example' at the end of filename
-    $file =~ tr/%/\\/; # replace '%' with '/'
+    $file =~ tr/%/\//; # replace '%' with '/'
     return $file;
 }
 
