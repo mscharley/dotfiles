@@ -3,4 +3,3 @@ require('usermod.vimplug')('lewis6991/gitsigns.nvim', {
 		require('gitsigns').setup()
 	end
 })
-

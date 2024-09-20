@@ -54,4 +54,3 @@ require('usermod.vimplug')('romgrk/barbar.nvim', {
 		-- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 	end
 })
-
