@@ -7,6 +7,8 @@ export XDG_CACHE_HOME
 export XDG_BIN_HOME
 export XDG_DATA_HOME
 
+export PATH="$XDG_BIN_HOME:$PATH"
+
 # Backport XDG into applications that can support it implicitly through configuration.
 
 if test -d $HOME/Library/Android/sdk; then
