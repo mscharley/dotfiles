@@ -11,7 +11,7 @@ if test -d /home/linuxbrew/.linuxbrew
 	set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH
 
 	# Homebrew asked for this in order to `brew upgrade`
-	set -gx HOMEBREW_GITHUB_API_TOKEN {api token goes here, don't remember where that's created}
+	#set -gx HOMEBREW_GITHUB_API_TOKEN {api token goes here, don't remember where that's created}
 else if test -d /opt/homebrew
 	# Homebrew is installed on MacOS
 
