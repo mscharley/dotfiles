@@ -24,10 +24,6 @@ vim.opt.list = true
 vim.opt.backup = true
 vim.opt.backupdir = vim.env.XDG_DATA_HOME .. "/nvim/backup"
 
--- Navigate by visual line instead of logical line
-vim.keymap.set("", "<up>", "gk")
-vim.keymap.set("", "<down>", "gj")
-
 -- Load vim-plug
 local Plug = require('usermod.vimplug')
 
