@@ -18,7 +18,7 @@ Plug('hrsh7th/nvim-cmp', {
 			},
 			mapping = cmp.mapping.preset.insert({
 				['<C-Space>'] = cmp.mapping.complete(),
-				['C-e>'] = cmp.mapping.abort(),
+				['<C-e>'] = cmp.mapping.abort(),
 				['<CR>'] = cmp.mapping.confirm({ select = true }),
 			}),
 			sources = cmp.config.sources({

@@ -91,19 +91,6 @@ require('usermod.vimplug')('neovim/nvim-lspconfig', {
 			},
 			callback = function() vim.lsp.buf.format({}) end,
 		})
-
-		-- Setup some keybindings
-		local opts = { noremap = true, silent = true }
-
-		local function quickfix()
-			vim.lsp.buf.code_action({
-				filter = function(a) return a.isPreferred end,
-				apply = true
-			})
-		end
-
-		vim.keymap.set('n', '<leader>qf', quickfix, opts)
-		vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.code_action() end, opts)
 	end
 })
 

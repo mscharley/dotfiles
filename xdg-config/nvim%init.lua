@@ -12,13 +12,13 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 5
 vim.opt.showtabline = 2
 vim.opt.title = true
-vim.opt.listchars = 'tab:> ,leadmultispace:┃ ,trail:-,nbsp:+'
-vim.opt.list = true
 
 -- Tab configuration
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.listchars = 'tab:> ,leadmultispace:┃   ,trail:-,nbsp:+'
+vim.opt.list = true
 
 -- Backups
 vim.opt.backup = true
@@ -65,6 +65,8 @@ require('usermod.plugins.lualine')
 require('usermod.plugins.typescript-tools')
 
 Plug.ends()
+
+require('usermod.keybindings')
 
 local function vim_enter(data)
 	local tree = require("nvim-tree.api").tree
