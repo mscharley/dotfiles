@@ -47,10 +47,6 @@ map('n', '<A-q>', '<Cmd>BufferClose<CR>', opts)
 -- map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
 -- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
 
--- Fuzzy file finder
-map('n', '<Leader>f', '<Cmd>Files<CR>', opts)
-map('n', '<Leader>g', '<Cmd>GFiles<CR>', opts)
-
 -- Hover keymaps
 vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
 vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
@@ -60,6 +56,12 @@ vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") en
 -- Mouse support for hover
 -- vim.keymap.set('n', '<MouseMove>', require('hover').hover_mouse, { desc = "hover.nvim (mouse)" })
 -- vim.o.mousemoveevent = true
+
+-- Tree keybindings
+vim.keymap.set("n", "<space>s", require('nvim-tree.api').tree.toggle, { silent = true, desc = 'toggle nvim-tree' })
+
+-- Fuzzy file finder
+vim.keymap.set('n', '<leader>g', require('fzf-lua').files, { desc = "Fuzzy find files" })
 
 -- LSP interactions
 local function quickfix()

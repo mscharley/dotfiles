@@ -1,9 +1,6 @@
-require('usermod.vimplug')('junegunn/fzf', {
-	run = function()
-		vim.fn["fzf#install"]()
-	end
-})
-require('usermod.vimplug')('junegunn/fzf.vim', {
+require('usermod.vimplug')('ibhagwan/fzf-lua', {
+	branch = "main",
 	config = function()
+		require('fzf-lua').setup({ 'fzf-native' })
 	end
 })
