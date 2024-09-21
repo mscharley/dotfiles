@@ -2,10 +2,15 @@
 vim.keymap.set("", "<up>", "gk")
 vim.keymap.set("", "<down>", "gj")
 
+-- Navigate between split buffers
 vim.keymap.set("n", "<C-A-up>", "<C-w><up>")
 vim.keymap.set("n", "<C-A-down>", "<C-w><down>")
 vim.keymap.set("n", "<C-A-left>", "<C-w><left>")
 vim.keymap.set("n", "<C-A-right>", "<C-w><right>")
+
+-- Split buffers
+vim.keymap.set("n", "<leader>\"", "<Cmd>vsplit<CR>")
+vim.keymap.set("n", "<leader>%", "<Cmd>split<CR>")
 
 -- Move to previous/next tab
 vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>')
