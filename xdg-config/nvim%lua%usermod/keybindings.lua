@@ -1,6 +1,10 @@
 -- Navigate by visual line instead of logical line
-vim.keymap.set("", "<up>", "gk")
 vim.keymap.set("", "<down>", "gj")
+vim.keymap.set("", "<up>", "gk")
+
+-- Move line up/down
+vim.keymap.set("n", "<A-up>", "dd<up>P")
+vim.keymap.set("n", "<A-down>", "ddp")
 
 -- Navigate between split buffers
 vim.keymap.set("n", "<C-A-up>", "<C-w><up>")
