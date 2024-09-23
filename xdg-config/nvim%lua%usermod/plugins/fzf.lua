@@ -1,3 +1,4 @@
+# Binary dependencies: fzf, bat, fd
 require('usermod.vimplug')('ibhagwan/fzf-lua', {
 	branch = "main",
 	config = function()
