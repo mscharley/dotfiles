@@ -146,8 +146,8 @@ system('chmod', 'go-rwx', $ENV{"HOME"} . "/.ssh");
 
 # Update XDG configuration
 open(XDG_CONFIG, '>', $ENV{"HOME"} . "/.xdg") or die("Unable to update XDG configuration");
-print XDG_CONFIG "XDG_BIN_HOME=\"$xdgBin\";\n";
-print XDG_CONFIG "XDG_CACHE_HOME=\"$xdgCache\";\n";
-print XDG_CONFIG "XDG_CONFIG_HOME=\"$xdgConfig\";\n";
-print XDG_CONFIG "XDG_DATA_HOME=\"$xdgData\";\n";
+print XDG_CONFIG "export XDG_BIN_HOME=\"$xdgBin\";\n";
+print XDG_CONFIG "export XDG_CACHE_HOME=\"$xdgCache\";\n";
+print XDG_CONFIG "export XDG_CONFIG_HOME=\"$xdgConfig\";\n";
+print XDG_CONFIG "export XDG_DATA_HOME=\"$xdgData\";\n";
 close(XDG_CONFIG);

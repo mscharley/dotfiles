@@ -11,4 +11,3 @@ export CODE_HOME
 
 # Configure xz compression to smartly use available processing capacity
 export XZ_DEFAULTS="-T 0"
-

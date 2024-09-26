@@ -1,5 +1,5 @@
 #/bin/sh
-# code: language=shellscript
+# code: language=shellscript, vim: ft=sh
 
 # This is an opinionated set of defaults. Use .zshenv to override these values.
 

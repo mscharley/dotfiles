@@ -1,3 +1,8 @@
+# If we have saved XDG configuration settings, then load them
+if test -e ~/.xdg
+	source ~/.xdg
+end
+
 set -q XDG_CONFIG_HOME || set XDG_CONFIG_HOME "$HOME/.config"
 set -q XDG_CACHE_HOME || set XDG_CACHE_HOME "$HOME/.cache"
 set -q XDG_BIN_HOME || set XDG_BIN_HOME "$HOME/.local/bin"
