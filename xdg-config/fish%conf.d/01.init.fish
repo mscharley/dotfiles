@@ -11,3 +11,8 @@ export CODE_HOME
 
 # Configure xz compression to smartly use available processing capacity
 export XZ_DEFAULTS="-T 0"
+
+# Set tab-stops automatically if able
+if which tabs &> /dev/null
+	tabs -4
+end
