@@ -4,7 +4,7 @@ require('usermod.vimplug')('nvim-treesitter/nvim-treesitter', {
 		require('nvim-treesitter.configs').setup({
 			ensure_installed = {
 				"yaml", "json", "json5", "markdown", "toml",
-				"lua", "vim",
+				"lua", "vim", "vimdoc",
 				"perl",
 				"javascript", "typescript",
 				"gleam", "rust"

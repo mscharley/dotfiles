@@ -14,6 +14,7 @@ vim.opt.showtabline = 2
 vim.opt.title = true
 
 -- Tab/whitespace configuration
+vim.opt.expandtab = false
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -23,6 +24,9 @@ vim.opt.list = true
 -- Backups
 vim.opt.backup = true
 vim.opt.backupdir = vim.env.XDG_DATA_HOME .. "/nvim/backup"
+
+-- Allow project-specific settings
+vim.opt.exrc = true
 
 -- Load vim-plug
 local Plug = require('usermod.vimplug')
