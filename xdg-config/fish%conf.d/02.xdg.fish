@@ -13,6 +13,7 @@ export XDG_BIN_HOME
 export XDG_DATA_HOME
 
 export PATH="$XDG_BIN_HOME:$PATH"
+set -p fish_function_path "$XDG_CONFIG_HOME/fish/functions.local"
 
 # Backport XDG into applications that can support it implicitly through configuration.
 
