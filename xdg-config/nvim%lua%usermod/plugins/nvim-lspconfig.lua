@@ -8,7 +8,7 @@ require('usermod.vimplug')('neovim/nvim-lspconfig', {
 		local lspconfig = require('lspconfig')
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 		lspconfig.eslint.setup({
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
@@ -17,6 +17,9 @@ require('usermod.vimplug')('neovim/nvim-lspconfig', {
 					command = "EslintFixAll",
 				})
 			end,
+			settings = {
+				experimental = { useFlatConfig = true },
+			},
 		})
 		lspconfig.gleam.setup({ capabilities = capabilities })
 		lspconfig.rust_analyzer.setup({
