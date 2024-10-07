@@ -77,6 +77,8 @@ vim.keymap.set("n", "<space>s", require('nvim-tree.api').tree.toggle, { silent =
 
 -- Fuzzy file finder
 vim.keymap.set('n', '<leader>g', require('fzf-lua').files, { desc = "Fuzzy find files" })
+vim.keymap.set('n', '<leader>r', require('fzf-lua').live_grep_resume, { desc = "Search project" })
+vim.keymap.set('n', '<leader>R', require('fzf-lua').live_grep, { desc = "Search project (clean)" })
 
 -- LSP interactions
 local function quickfix()
