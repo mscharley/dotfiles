@@ -13,6 +13,8 @@ export CODE_HOME
 export XZ_DEFAULTS="-T 0"
 
 # Set tab-stops automatically if able
-if which tabs &> /dev/null
-	tabs -4
+if status is-interactive
+	if which tabs &> /dev/null
+		tabs -4
+	end
 end
