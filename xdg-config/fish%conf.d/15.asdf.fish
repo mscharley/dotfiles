@@ -1,6 +1,7 @@
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export ASDF_DIR="$XDG_DATA_HOME/asdf"
 export ASDF_DATA_DIR="$XDG_CACHE_HOME/asdf"
+export ASDF_NODEJS_AUTO_ENABLE_COREPACK="true"
 
 if test -s "$ASDF_DIR"
 	if ! test -e "$ASDF_DIR/completions/asdf.fish"
