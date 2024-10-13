@@ -19,6 +19,9 @@ require('usermod.vimplug')('neovim/nvim-lspconfig', {
 			end,
 			settings = {
 				experimental = { useFlatConfig = true },
+				rulesCustomizations = {
+					{ rule = "@stylistic/*", fixable = true, severity = "off" },
+				}
 			},
 		})
 		lspconfig.gleam.setup({ capabilities = capabilities })
