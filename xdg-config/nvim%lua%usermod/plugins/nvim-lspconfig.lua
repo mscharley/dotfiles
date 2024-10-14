@@ -22,6 +22,7 @@ require('usermod.vimplug')('neovim/nvim-lspconfig', {
 				experimental = { useFlatConfig = #flatEslint > 0 },
 				rulesCustomizations = {
 					{ rule = "@stylistic/*", fixable = true, severity = "off" },
+					{ rule = "prettier/prettier", fixable = true, severity = "off" },
 				}
 			},
 		})
