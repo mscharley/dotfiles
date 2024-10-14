@@ -7,6 +7,7 @@ require('usermod.vimplug')('neovim/nvim-lspconfig', {
 
 		local lspconfig = require('lspconfig')
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
+		local flatEslint = vim.fs.find('eslint.config.js', { path = "./", type = "file", upward = true })
 
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 		lspconfig.eslint.setup({
@@ -18,7 +19,7 @@ require('usermod.vimplug')('neovim/nvim-lspconfig', {
 				})
 			end,
 			settings = {
-				experimental = { useFlatConfig = true },
+				experimental = { useFlatConfig = #flatEslint > 0 },
 				rulesCustomizations = {
 					{ rule = "@stylistic/*", fixable = true, severity = "off" },
 				}
