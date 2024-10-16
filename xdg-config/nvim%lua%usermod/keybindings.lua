@@ -73,7 +73,7 @@ vim.keymap.set('n', '<MouseMove>', require('hover').hover_mouse, { desc = "hover
 vim.o.mousemoveevent = true
 
 -- Tree keybindings
-vim.keymap.set("n", "<space>s", require('nvim-tree.api').tree.toggle, { silent = true, desc = 'toggle nvim-tree' })
+vim.keymap.set("n", "<leader>s", require('nvim-tree.api').tree.toggle, { silent = true, desc = 'toggle nvim-tree' })
 
 -- Fuzzy file finder
 vim.keymap.set('n', '<leader>g', require('fzf-lua').files, { desc = "Fuzzy find files" })

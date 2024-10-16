@@ -1,5 +1,4 @@
-require('usermod.vimplug')('b0o/schemastore.nvim', {
-	config = function()
-	end
-})
-
+return {
+	'b0o/schemastore.nvim',
+	lazy = true,
+}

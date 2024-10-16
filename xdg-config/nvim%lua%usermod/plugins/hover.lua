@@ -1,4 +1,6 @@
-require('usermod.vimplug')('lewis6991/hover.nvim', {
+return {
+	'lewis6991/hover.nvim',
+	event = "VeryLazy",
 	config = function()
 		require('hover').setup({
 			init = function()
@@ -15,5 +17,4 @@ require('usermod.vimplug')('lewis6991/hover.nvim', {
 			mouse_delay = 1000,
 		})
 	end
-})
-
+}

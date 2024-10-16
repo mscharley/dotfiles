@@ -1,4 +1,5 @@
-require('usermod.vimplug')('neovim/nvim-lspconfig', {
+return {
+	'neovim/nvim-lspconfig',
 	config = function()
 		-- Disable virtual_text since it's redundant due to lsp_lines.
 		vim.diagnostic.config({
@@ -99,6 +100,5 @@ require('usermod.vimplug')('neovim/nvim-lspconfig', {
 			},
 			callback = function() vim.lsp.buf.format({}) end,
 		})
-	end
-})
-
+	end,
+}

@@ -1,4 +1,5 @@
-require('usermod.vimplug')('mhartington/formatter.nvim', {
+return {
+	'mhartington/formatter.nvim',
 	config = function()
 		local formatters = {}
 		local prettierrc = vim.fs.find('.prettierrc', { path = "./", type = "file", upward = true })
@@ -19,4 +20,4 @@ require('usermod.vimplug')('mhartington/formatter.nvim', {
 			command = ":FormatWriteLock",
 		})
 	end
-})
+}

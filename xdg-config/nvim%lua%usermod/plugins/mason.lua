@@ -1,5 +1,5 @@
-require('usermod.vimplug')('williamboman/mason.nvim', {
-	config = function()
-		require("mason").setup()
-	end
-})
+return {
+	'williamboman/mason.nvim',
+	lazy = true,
+	opts = {},
+}

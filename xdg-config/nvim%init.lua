@@ -28,43 +28,14 @@ vim.opt.backupdir = vim.env.XDG_DATA_HOME .. "/nvim/backup"
 -- Allow project-specific settings
 vim.opt.exrc = true
 
--- Load vim-plug
-local Plug = require('usermod.vimplug')
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-Plug.begin()
+-- Run the lazy.nvim package manager
+require('usermod.config.lazy')
 
--- THEMING
-require('usermod.themes.sonokai')
-require('usermod.plugins.nvim-web-devicons')
-require('usermod.themes.lush')
-
--- LIBRARIES
-require('usermod.plugins.plenary')
-require('usermod.plugins.mason')
-
--- PLUGINS (load order is important)
-require('usermod.plugins.gitsigns')
-require('usermod.plugins.barbar')
-require('usermod.plugins.fzf')
-require('usermod.plugins.nvim-cmp')
-require('usermod.plugins.ollama')
-require('usermod.plugins.schemastore')
-require('usermod.plugins.mason-lspconfig')
-require('usermod.plugins.nvim-lspconfig')
-require('usermod.plugins.formatter')
-require('usermod.plugins.nvim-treesitter')
-require('usermod.plugins.nvim-tree')
-require('usermod.plugins.lsp_lines')
-require('usermod.plugins.nvim-lsp-file-operations')
-require('usermod.plugins.hover')
-require('usermod.plugins.nvim-surround')
-require('usermod.plugins.commentary')
-require('usermod.plugins.lualine')
-
--- LANGUAGE TOOLS
-require('usermod.plugins.typescript-tools')
-
-Plug.ends()
-
+-- Load custom keybindings
 require('usermod.keybindings')
-

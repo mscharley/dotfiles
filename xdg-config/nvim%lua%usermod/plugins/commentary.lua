@@ -1,4 +1,5 @@
-require('usermod.vimplug')('tpope/vim-commentary', {
+return {
+	'tpope/vim-commentary',
 	config = function()
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = {
@@ -7,5 +8,4 @@ require('usermod.vimplug')('tpope/vim-commentary', {
 			command = "setlocal commentstring =//\\ %s",
 		})
 	end
-})
-
+}

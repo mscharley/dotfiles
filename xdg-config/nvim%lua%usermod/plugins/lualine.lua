@@ -14,7 +14,8 @@ local function get_status_icon()
 	end
 end
 
-require('usermod.vimplug')('nvim-lualine/lualine.nvim', {
+return {
+	'nvim-lualine/lualine.nvim',
 	config = function()
 		require('lualine').setup({
 			options = {
@@ -44,5 +45,5 @@ require('usermod.vimplug')('nvim-lualine/lualine.nvim', {
 			extensions = { "nvim-tree" },
 		})
 	end
-})
+}
 

@@ -1,4 +1,5 @@
-require('usermod.vimplug')('nvim-treesitter/nvim-treesitter', {
+return {
+	'nvim-treesitter/nvim-treesitter',
 	run = ":TSUpdate",
 	config = function()
 		require('nvim-treesitter.configs').setup({
@@ -9,10 +10,7 @@ require('usermod.vimplug')('nvim-treesitter/nvim-treesitter', {
 				"javascript", "typescript",
 				"gleam", "rust"
 			},
-			highlight = {
-				enable = true,
-			},
+			highlight = { enable = true },
 		})
 	end
-})
-
+}

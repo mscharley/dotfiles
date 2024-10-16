@@ -1,7 +1,7 @@
-require('usermod.vimplug')('lewis6991/gitsigns.nvim', {
-	config = function()
-		require('gitsigns').setup({
-			numhl = true,
-		})
-	end
-})
+return {
+	"lewis6991/gitsigns.nvim",
+	event = "VeryLazy",
+	opts = {
+		numhl = true,
+	}
+}
