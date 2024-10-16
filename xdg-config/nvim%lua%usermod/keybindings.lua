@@ -69,8 +69,8 @@ vim.keymap.set("n", "<C-p>", function() require("hover").hover_switch("previous"
 vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
 
 -- Mouse support for hover
--- vim.keymap.set('n', '<MouseMove>', require('hover').hover_mouse, { desc = "hover.nvim (mouse)" })
--- vim.o.mousemoveevent = true
+vim.keymap.set('n', '<MouseMove>', require('hover').hover_mouse, { desc = "hover.nvim (mouse)" })
+vim.o.mousemoveevent = true
 
 -- Tree keybindings
 vim.keymap.set("n", "<space>s", require('nvim-tree.api').tree.toggle, { silent = true, desc = 'toggle nvim-tree' })
