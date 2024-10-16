@@ -1,7 +1,8 @@
 return {
-	{ 'hrsh7th/cmp-nvim-lsp' },
+	{ 'hrsh7th/cmp-nvim-lsp', lazy = true },
 	{
 		'hrsh7th/nvim-cmp',
+		event = "InsertEnter",
 		config = function()
 			local cmp = require('cmp')
 

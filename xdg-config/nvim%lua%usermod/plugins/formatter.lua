@@ -1,5 +1,6 @@
 return {
 	'mhartington/formatter.nvim',
+	event = 'BufReadPre',
 	config = function()
 		local formatters = {}
 		local prettierrc = vim.fs.find('.prettierrc', { path = "./", type = "file", upward = true })
@@ -19,5 +20,5 @@ return {
 			group = "__formatter__",
 			command = ":FormatWriteLock",
 		})
-	end
+	end,
 }

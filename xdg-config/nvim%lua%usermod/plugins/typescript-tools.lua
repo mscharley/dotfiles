@@ -1,4 +1,5 @@
 return {
 	'pmizio/typescript-tools.nvim',
-	opts = {}
+	event = 'BufReadPre',
+	opts = {},
 }
