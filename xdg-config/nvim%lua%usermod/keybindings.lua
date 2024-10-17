@@ -63,22 +63,22 @@ vim.keymap.set('n', '<A-q>', '<Cmd>BufferClose<CR>', { desc = "Close buffer" })
 -- vim.keymap.set('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>')
 
 -- Hover keymaps
-vim.keymap.set("n", "K", require("hover").hover, { desc = "Display hover information" })
-vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
+vim.keymap.set("n", "K", function() require("hover").hover() end, { desc = "Display hover information" })
+vim.keymap.set("n", "gK", function() require("hover").hover_select() end, { desc = "hover.nvim (select)" })
 vim.keymap.set("n", "<C-p>", function() require("hover").hover_switch("previous") end, { desc = "hover.nvim (previous source)" })
 vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, { desc = "hover.nvim (next source)" })
 
 -- Mouse support for hover
-vim.keymap.set({ 'n', 'i' }, '<MouseMove>', require('hover').hover_mouse, { desc = "hover.nvim (mouse)" })
+vim.keymap.set({ 'n', 'i' }, '<MouseMove>', function() require('hover').hover_mouse() end, { desc = "hover.nvim (mouse)" })
 vim.o.mousemoveevent = true
 
 -- Tree keybindings
 vim.keymap.set("n", "<leader>s", function() require('nvim-tree.api').tree.toggle() end, { silent = true, desc = 'Toggle nvim-tree' })
 
 -- Fuzzy file finder
-vim.keymap.set('n', '<leader>g', require('fzf-lua').files, { desc = "Fuzzy find files" })
-vim.keymap.set('n', '<leader>r', require('fzf-lua').live_grep_resume, { desc = "Search project" })
-vim.keymap.set('n', '<leader>R', require('fzf-lua').live_grep, { desc = "Search project (clean)" })
+vim.keymap.set('n', '<leader>g', function(...) require('fzf-lua').files(unpack(arg)) end, { desc = "Fuzzy find files" })
+vim.keymap.set('n', '<leader>r', function(...) require('fzf-lua').live_grep_resume(unpack(arg)) end, { desc = "Search project" })
+vim.keymap.set('n', '<leader>R', function(...) require('fzf-lua').live_grep(unpack(arg)) end, { desc = "Search project (clean)" })
 
 -- LSP interactions
 local function quickfix()

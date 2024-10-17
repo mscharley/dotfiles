@@ -13,7 +13,7 @@ return {
 		config = function()
 			-- Expand
 			vim.keymap.set({ 'i', 's' }, '<C-j>', function()
-				if vim.fn['vsnip#expandable']() then
+				if vim.fn['vsnip#expandable']() ~= 0 then
 					return '<Plug>(vsnip-expand)'
 				else
 					return '<C-j>'
@@ -22,7 +22,7 @@ return {
 
 			-- Expand or jump
 			vim.keymap.set({ 'i', 's' }, '<C-l>', function()
-				if vim.fn['vsnip#available'](1) then
+				if vim.fn['vsnip#available'](1) ~= 0 then
 					return '<Plug>(vsnip-expand-or-jump)'
 				else
 					return '<C-l>'
@@ -31,14 +31,14 @@ return {
 
 			-- Jump forward or backward
 			vim.keymap.set({ 'i', 's' }, '<Tab>', function()
-				if vim.fn['vsnip#jumpable'](1) then
+				if vim.fn['vsnip#jumpable'](1) ~= 0 then
 					return '<Plug>(vsnip-jump-next)'
 				else
 					return '<Tab>'
 				end
 			end, { expr = true })
 			vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
-				if vim.fn['vsnip#jumpable'](-1) then
+				if vim.fn['vsnip#jumpable'](-1) ~= 0 then
 					return '<Plug>(vsnip-jump-prev)'
 				else
 					return '<Tab>'
