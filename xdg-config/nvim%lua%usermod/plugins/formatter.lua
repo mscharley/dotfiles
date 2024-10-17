@@ -3,17 +3,21 @@ return {
 		'mhartington/formatter.nvim',
 		event = 'BufReadPost',
 		config = function()
-			local formatters = {}
+			local prettier = {}
 			local prettierrc = vim.fs.find('.prettierrc', { path = "./", type = "file", upward = true })
 			if #prettierrc > 0 then
-				table.insert(formatters, require('formatter.defaults.prettier'))
+				table.insert(prettier, require('formatter.defaults.prettier'))
 			end
 
 			require('formatter').setup({
 				logging = true,
 				log_level = vim.log.levels.WARN,
 				filetype = {
-					['*'] = formatters,
+					css = prettier,
+					graphql = prettier,
+					json = prettier,
+					markdown = prettier,
+					yaml = prettier,
 				},
 			})
 			vim.api.nvim_create_augroup("__formatter__", { clear = true })
@@ -21,6 +25,7 @@ return {
 				group = "__formatter__",
 				command = ":FormatWriteLock",
 			})
+			-- Attempt to work around monorepos with node_modules at multiple levels and prettier installed in the root
 			vim.api.nvim_create_autocmd("BufEnter", {
 				group = "__formatter__",
 				callback = function()
