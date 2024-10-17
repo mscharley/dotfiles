@@ -21,6 +21,14 @@ return {
 				group = "__formatter__",
 				command = ":FormatWriteLock",
 			})
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = "__formatter__",
+				callback = function()
+					if vim.fn.filereadable("./node_modules/.bin/prettier") == 1 then
+						vim.b.formatter_node_modules = "./node_modules"
+					end
+				end,
+			})
 		end,
 	},
 }
