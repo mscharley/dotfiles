@@ -3,11 +3,6 @@ return {
 	dependencies = { 'williamboman/mason-lspconfig.nvim' },
 	event = "BufReadPre",
 	config = function()
-		-- Disable virtual_text since it's redundant due to lsp_lines.
-		vim.diagnostic.config({
-			virtual_text = false,
-		})
-
 		local lspconfig = require('lspconfig')
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 		local flatEslint = vim.fs.find('eslint.config.js', { path = "./", type = "file", upward = true })

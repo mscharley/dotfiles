@@ -17,12 +17,12 @@ vim.keymap.set("n", "<leader>\"", "<Cmd>vsplit<CR>", { desc = "Split screen (ver
 vim.keymap.set("n", "<leader>%", "<Cmd>split<CR>", { desc = "Split screen (horizontal)" })
 
 -- Move to previous/next tab
-vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>')
-vim.keymap.set('n', '<A-.>', '<Cmd>BufferNext<CR>')
+vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>', { desc = "View buffer left" })
+vim.keymap.set('n', '<A-.>', '<Cmd>BufferNext<CR>', { desc = "View buffer right" })
 
 -- Re-order to previous/next tab
-vim.keymap.set('n', '<D-A-,>', '<Cmd>BufferMovePrevious<CR>')
-vim.keymap.set('n', '<D-A-.>', '<Cmd>BufferMoveNext<CR>')
+vim.keymap.set('n', '<D-A-,>', '<Cmd>BufferMovePrevious<CR>', { desc = "Move buffer left" })
+vim.keymap.set('n', '<D-A-.>', '<Cmd>BufferMoveNext<CR>', { desc = "Move buffer right" })
 
 -- -- Goto buffer in position...
 -- vim.keymap.set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>')
@@ -40,7 +40,7 @@ vim.keymap.set('n', '<D-A-.>', '<Cmd>BufferMoveNext<CR>')
 -- vim.keymap.set('n', '<A-p>', '<Cmd>BufferPin<CR>')
 
 -- Close buffer
-vim.keymap.set('n', '<A-q>', '<Cmd>BufferClose<CR>')
+vim.keymap.set('n', '<A-q>', '<Cmd>BufferClose<CR>', { desc = "Close buffer" })
 
 -- Wipeout buffer
 --                 :BufferWipeout
@@ -73,7 +73,7 @@ vim.keymap.set({ 'n', 'i' }, '<MouseMove>', require('hover').hover_mouse, { desc
 vim.o.mousemoveevent = true
 
 -- Tree keybindings
-vim.keymap.set("n", "<leader>s", require('nvim-tree.api').tree.toggle, { silent = true, desc = 'toggle nvim-tree' })
+vim.keymap.set("n", "<leader>s", function() require('nvim-tree.api').tree.toggle() end, { silent = true, desc = 'Toggle nvim-tree' })
 
 -- Fuzzy file finder
 vim.keymap.set('n', '<leader>g', require('fzf-lua').files, { desc = "Fuzzy find files" })
@@ -89,3 +89,6 @@ local function quickfix()
 end
 vim.keymap.set('n', '<leader>qf', quickfix, { desc = "Quick fix" })
 vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.code_action() end, { desc = "Show code fix menu" })
+
+-- Dianostics
+vim.keymap.set('n', '<leader>e', function() vim.diagnostic.open_float() end, { desc = "Show error details" })

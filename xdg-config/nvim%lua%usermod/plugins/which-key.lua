@@ -1,5 +1,5 @@
 local uname = vim.fn.system({ "uname" })
-local osx = uname == 'Darwin'
+local osx = uname == 'Darwin\n'
 
 return {
 	"folke/which-key.nvim",
