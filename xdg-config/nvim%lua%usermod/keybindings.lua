@@ -3,8 +3,8 @@ vim.keymap.set("", "<down>", "gj")
 vim.keymap.set("", "<up>", "gk")
 
 -- Move line up/down
-vim.keymap.set("n", "<A-up>", "dd<up>P")
-vim.keymap.set("n", "<A-down>", "ddp")
+vim.keymap.set("n", "<A-up>", "dd<up>P", { desc = "Move line up" })
+vim.keymap.set("n", "<A-down>", "ddp", { desc = "Move line down" })
 
 -- Navigate between split buffers
 vim.keymap.set("n", "<C-A-up>", "<C-w><up>")
@@ -13,8 +13,8 @@ vim.keymap.set("n", "<C-A-left>", "<C-w><left>")
 vim.keymap.set("n", "<C-A-right>", "<C-w><right>")
 
 -- Split buffers
-vim.keymap.set("n", "<leader>\"", "<Cmd>vsplit<CR>")
-vim.keymap.set("n", "<leader>%", "<Cmd>split<CR>")
+vim.keymap.set("n", "<leader>\"", "<Cmd>vsplit<CR>", { desc = "Split screen (vertical)" })
+vim.keymap.set("n", "<leader>%", "<Cmd>split<CR>", { desc = "Split screen (horizontal)" })
 
 -- Move to previous/next tab
 vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>')
@@ -63,13 +63,13 @@ vim.keymap.set('n', '<A-q>', '<Cmd>BufferClose<CR>')
 -- vim.keymap.set('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>')
 
 -- Hover keymaps
-vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
-vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
-vim.keymap.set("n", "<C-p>", function() require("hover").hover_switch("previous") end, {desc = "hover.nvim (previous source)"})
-vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
+vim.keymap.set("n", "K", require("hover").hover, { desc = "Display hover information" })
+vim.keymap.set("n", "gK", require("hover").hover_select, { desc = "hover.nvim (select)" })
+vim.keymap.set("n", "<C-p>", function() require("hover").hover_switch("previous") end, { desc = "hover.nvim (previous source)" })
+vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, { desc = "hover.nvim (next source)" })
 
 -- Mouse support for hover
-vim.keymap.set('n', '<MouseMove>', require('hover').hover_mouse, { desc = "hover.nvim (mouse)" })
+vim.keymap.set({ 'n', 'i' }, '<MouseMove>', require('hover').hover_mouse, { desc = "hover.nvim (mouse)" })
 vim.o.mousemoveevent = true
 
 -- Tree keybindings
@@ -87,5 +87,5 @@ local function quickfix()
 		apply = true
 	})
 end
-vim.keymap.set('n', '<leader>qf', quickfix, {})
-vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.code_action() end, {})
+vim.keymap.set('n', '<leader>qf', quickfix, { desc = "Quick fix" })
+vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.code_action() end, { desc = "Show code fix menu" })
