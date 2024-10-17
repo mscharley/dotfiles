@@ -141,6 +141,9 @@ for my $import (@imports) {
   }
 }
 
+# Configure git hooks for updates
+system('git', 'config', 'set', 'core.hooksPath', './hooks/');
+
 # Cleanup SSH file permissions
 system('chmod', 'go-rwx', $ENV{"HOME"} . "/.ssh");
 

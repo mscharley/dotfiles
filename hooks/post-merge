@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if which nvim &> /dev/null; then
+	nvim --headless "+Lazy! restore" +qa
+fi
