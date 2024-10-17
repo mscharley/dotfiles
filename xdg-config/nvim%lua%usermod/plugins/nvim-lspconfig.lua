@@ -1,5 +1,6 @@
 return {
 	'neovim/nvim-lspconfig',
+	dependencies = { 'williamboman/mason-lspconfig.nvim' },
 	event = "BufReadPre",
 	config = function()
 		-- Disable virtual_text since it's redundant due to lsp_lines.

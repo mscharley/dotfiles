@@ -1,0 +1,10 @@
+{
+	"IOC Token": {
+		"prefix": "token",
+		"body": [
+			"export const $1 = new Token<$2>(\"$3\");",
+			"export type $1 = TokenType<typeof $1>;"
+		],
+		"description": "Generate an IOC token."
+	}
+}
