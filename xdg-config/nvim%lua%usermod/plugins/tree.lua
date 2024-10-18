@@ -25,7 +25,7 @@ return {
 
 				-- Automatically open file on creation
 				api.events.subscribe(api.events.Event.FileCreated, function(file)
-					vim.cmd("edit " .. file.fname:gsub('%%', '\\%%'))
+					vim.cmd("edit " .. vim.fn.fnameescape(file.fname))
 				end)
 			end,
 			view = {
