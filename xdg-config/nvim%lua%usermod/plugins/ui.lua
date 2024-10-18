@@ -18,6 +18,26 @@ end
 
 return {
 	{
+		'Shatur/neovim-session-manager',
+		config = function()
+			local config = require('session_manager.config')
+			local session_manager = require('session_manager')
+			session_manager.setup({
+				autoload_mode = { config.AutoloadMode.GitSession, config.AutoloadMode.CurrentDir },
+				autosave_only_in_session = true,
+			})
+		end,
+	},
+	{
+		'goolord/alpha-nvim',
+		dependencies = { 'Shatur/neovim-session-manager', 'nvim-tree/nvim-web-devicons' },
+		config = function ()
+			local theme = require('usermod.theme.alpha');
+			theme.file_icons.provider = 'devicons'
+			require('alpha').setup(theme.config)
+		end
+	},
+	{
 		'romgrk/barbar.nvim',
 		version = "*",
 		opts = {}
