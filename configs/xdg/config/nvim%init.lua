@@ -12,11 +12,7 @@ vim.opt.showtabline = 2
 vim.opt.title = true
 
 -- Tab/whitespace configuration
-vim.opt.expandtab = false
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.listchars = 'tab:> ,leadmultispace:┃   ,trail:-,nbsp:+'
+require('usermod.whitespace').hardtabs(4)
 vim.opt.list = true
 
 -- Backups
