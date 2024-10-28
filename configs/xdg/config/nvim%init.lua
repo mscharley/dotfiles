@@ -3,6 +3,8 @@
 
 -- Styling
 vim.opt.cursorline = true
+vim.opt.textwidth = 120
+vim.opt.colorcolumn = "+1"
 vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 5
