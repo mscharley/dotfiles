@@ -28,7 +28,10 @@ require("lazy").setup({
 	install = { colorscheme = { "sonokai", "habamax" } },
 	performance = {
 		rtp = {
-			disabled_plugins = { "netrwPlugin" },
+			disabled_plugins = {
+				-- Disable netrw so it doesn't interfere with nvim-tree
+				"netrwPlugin",
+			},
 		},
 	},
 	-- automatically check for plugin updates

@@ -9,7 +9,6 @@ vim.opt.number = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 5
 vim.opt.showtabline = 2
-vim.opt.title = true
 
 -- Tab/whitespace configuration
 require('usermod.whitespace').hardtabs(4)
@@ -30,6 +29,9 @@ vim.g.maplocalleader = "\\"
 
 -- Run the lazy.nvim package manager
 require('usermod.config.lazy')
+
+-- Configure tab titles
+require('usermod.title')
 
 -- Load custom keybindings
 require('usermod.keybindings')
