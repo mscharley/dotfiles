@@ -122,14 +122,14 @@ my $xdgCache = $ENV{"XDG_CACHE_HOME"} || $ENV{"HOME"} . "/.cache";
 my $xdgConfig = $ENV{"XDG_CONFIG_HOME"} || $ENV{"HOME"} . "/.config";
 my $xdgData = $ENV{"XDG_DATA_HOME"} || $ENV{"HOME"} . "/.local/share";
 
-my @files = glob('home/{*,.??*}');
-my @xdgBin = glob('xdg-bin/{*,.??*}');
-my @xdgConfig = glob('xdg-config/{*,.??*}');
-my @xdgData = glob('xdg-data/{*,.??*}');
-process_files(\@files, 'home/', $ENV{"HOME"} . "/.");
-process_files(\@xdgBin, 'xdg-bin', $xdgBin);
-process_files(\@xdgConfig, 'xdg-config', $xdgConfig);
-process_files(\@xdgData, 'xdg-data', $xdgData);
+my @files = glob('configs/home/{*,.??*}');
+my @xdgBin = glob('configs/xdg/bin/{*,.??*}');
+my @xdgConfig = glob('configs/xdg/config/{*,.??*}');
+my @xdgData = glob('configs/xdg/data/{*,.??*}');
+process_files(\@files, 'configs/home', $ENV{"HOME"} . "/.");
+process_files(\@xdgBin, 'configs/xdg/bin', $xdgBin);
+process_files(\@xdgConfig, 'configs/xdg/config', $xdgConfig);
+process_files(\@xdgData, 'configs/xdg/data', $xdgData);
 
 my $uname = `uname -s`;
 chomp($uname);
