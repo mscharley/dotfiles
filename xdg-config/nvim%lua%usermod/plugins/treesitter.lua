@@ -8,9 +8,10 @@ return {
 				ensure_installed = {
 					"yaml", "json", "json5", "markdown", "toml",
 					"lua", "vim", "vimdoc",
+					"graphql",
 					"perl",
 					"javascript", "typescript",
-					"gleam", "rust"
+					"gleam", "rust",
 				},
 				highlight = { enable = true },
 			})
