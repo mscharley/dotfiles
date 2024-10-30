@@ -126,7 +126,7 @@ my @files = glob('configs/home/{*,.??*}');
 my @xdgBin = glob('configs/xdg/bin/{*,.??*}');
 my @xdgConfig = glob('configs/xdg/config/{*,.??*}');
 my @xdgData = glob('configs/xdg/data/{*,.??*}');
-process_files(\@files, 'configs/home', $ENV{"HOME"} . "/.");
+process_files(\@files, 'configs/home/', $ENV{"HOME"} . "/."); # trailing slash on the directory is intentional
 process_files(\@xdgBin, 'configs/xdg/bin', $xdgBin);
 process_files(\@xdgConfig, 'configs/xdg/config', $xdgConfig);
 process_files(\@xdgData, 'configs/xdg/data', $xdgData);
