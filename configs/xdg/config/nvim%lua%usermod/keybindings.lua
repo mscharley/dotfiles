@@ -1,6 +1,6 @@
 -- Navigate by visual line instead of logical line
-vim.keymap.set({}, '<down>', 'gj')
-vim.keymap.set({}, '<up>', 'gk')
+vim.keymap.set({'n'}, '<down>', 'gj')
+vim.keymap.set({'n'}, '<up>', 'gk')
 
 -- Move line up/down
 vim.keymap.set({'n'}, '<A-up>', 'dd<up>P', { desc = "Move line up" })
