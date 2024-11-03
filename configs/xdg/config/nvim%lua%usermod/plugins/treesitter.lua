@@ -25,4 +25,8 @@ return {
 			vim.treesitter.language.register('markdown', 'mdx')
 		end
 	},
+	{
+		-- This needs to not be lazy as it needs to be loaded before a file is loaded
+		'fladson/vim-kitty',
+	},
 }
