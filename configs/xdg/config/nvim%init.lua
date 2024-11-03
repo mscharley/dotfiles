@@ -12,6 +12,10 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 5
 vim.opt.showtabline = 2
 
+-- Enable spell checking
+vim.opt.spell = true
+vim.opt.spelllang = "en_au,cjk"
+
 -- Tab/whitespace configuration
 require('usermod.whitespace').hardtabs(4)
 vim.opt.list = true
