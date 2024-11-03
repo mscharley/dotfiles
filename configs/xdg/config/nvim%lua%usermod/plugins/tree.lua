@@ -21,7 +21,8 @@ return {
 				vim.keymap.del('n', 's',     { buffer = bufnr })
 
 				-- Add our own mappings
-				vim.keymap.set('n', '?',     api.tree.toggle_help,                  opts('Help'))
+				vim.keymap.set('n', '?',     api.tree.toggle_help, opts('Help'))
+				vim.keymap.set('n', '<Esc>', function() require('nvim-tree.api').tree.toggle() end, opts('Close'))
 
 				-- Automatically open file on creation
 				api.events.subscribe(api.events.Event.FileCreated, function(file)
