@@ -1,4 +1,4 @@
--- Binary dependencies: fzf, bat, fd, ripgrep
+-- Binary dependencies: bat, fd, fzf, ripgrep
 return {
 	{
 		'ibhagwan/fzf-lua',
