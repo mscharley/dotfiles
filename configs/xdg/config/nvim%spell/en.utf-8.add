@@ -19,3 +19,4 @@ workflow
 Docusaurus
 filesystem
 config
+eslint
