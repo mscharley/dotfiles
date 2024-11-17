@@ -28,4 +28,3 @@ else
 		asdf plugin add ruby
 	end
 end
-
