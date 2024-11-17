@@ -22,7 +22,7 @@ else
 		pushd $ASDF_DIR &> /dev/null
 		git checkout "$(git tag --sort version:refname | tail -n 1)"
 		popd &> /dev/null
-		source "$ASDF_DIR/asdf.sh"
+		source "$ASDF_DIR/asdf.fish"
 
 		asdf plugin add nodejs
 		asdf plugin add ruby
