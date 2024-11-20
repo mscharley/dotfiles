@@ -2,7 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 command_timeout = 500
-format = '$all$os$directory$sudo$character'
+format = '$all$container$os$directory$sudo$character'
 right_format = '$cmd_duration$status$time'
 add_newline = false
 
@@ -12,6 +12,7 @@ format = '[$duration]($style) '
 
 [sudo]
 disabled = false
+symbol = '🧙'
 format = '[$symbol]($style)'
 
 [status]
@@ -23,6 +24,9 @@ disabled = false
 
 [os]
 disabled = false
+
+[container]
+format = '[\[$name\]]($style) '
 
 [aws]
 symbol = "  "
