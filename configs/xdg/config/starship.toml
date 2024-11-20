@@ -4,7 +4,7 @@
 command_timeout = 500
 format = '$all$os$directory$sudo$character'
 right_format = '$cmd_duration$status$time'
-#add_newline = false
+add_newline = false
 
 [cmd_duration]
 min_time = 0
