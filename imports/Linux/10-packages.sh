@@ -18,3 +18,13 @@ fi
 
 # Reset sudo access
 sudo -k
+
+function ensure-flatpak {
+	if ! flatpak info --user "$1" &> /dev/null; then
+		flatpak install --user "$1"
+	fi
+}
+
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+ensure-flatpak com.github.tchx84.Flatseal
+ensure-flatpak com.nextcloud.desktopclient.nextcloud
