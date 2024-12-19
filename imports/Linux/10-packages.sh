@@ -28,3 +28,4 @@ function ensure-flatpak {
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ensure-flatpak com.github.tchx84.Flatseal
 ensure-flatpak com.nextcloud.desktopclient.nextcloud
+ensure-flatpak dev.deedles.Trayscale
