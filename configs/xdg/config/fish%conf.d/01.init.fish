@@ -14,7 +14,7 @@ export XZ_DEFAULTS="-T 0"
 
 # Set tab-stops automatically if able
 if status is-interactive
-	if which tabs &> /dev/null
+	if type tabs &> /dev/null
 		tabs -4
 	end
 end

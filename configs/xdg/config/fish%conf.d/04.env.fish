@@ -2,12 +2,12 @@
 
 # Setup environment
 export TZ="Australia/Melbourne"
-if which most &> /dev/null
+if type most &> /dev/null
 	export PAGER="most"
 else
 	export PAGER="less"
 end
-if which nvim &> /dev/null
+if type nvim &> /dev/null
 	export EDITOR=nvim
 else
 	export EDITOR=vim
@@ -17,10 +17,10 @@ end
 # https://geoff.greer.fm/lscolors/
 export CLICOLOR=1
 export LSCOLORS="exgxfxdxcxDaDaCBcDEcEc"
-if which gdircolors &> /dev/null
+if type gdircolors &> /dev/null
 	eval ( gdircolors -c $XDG_CONFIG_HOME/dircolors )
 	export LS_COLORS
-else if which dircolors &> /dev/null
+else if type dircolors &> /dev/null
 	eval ( dircolors -c $XDG_CONFIG_HOME/dircolors )
 	export LS_COLORS
 else
