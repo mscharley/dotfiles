@@ -22,9 +22,18 @@ else
 		pushd $ASDF_DIR &> /dev/null
 		git checkout "$(git tag --sort version:refname | tail -n 1)"
 		popd &> /dev/null
+		ln -s "$ASDF_DIR/completions/asdf.fish" "$XDG_CONFIG_HOME/fish/completions/asdf.fish"
 		source "$ASDF_DIR/asdf.fish"
 
 		asdf plugin add nodejs
 		asdf plugin add ruby
+
+		# asdf shims hide the real path to where corepack installs the binaries.
+		abbr --add yarn "corepack yarn"
+		abbr --add yarnpkg "corepack yarnpkg"
+		abbr --add pnpm "corepack pnpm"
+		abbr --add pnpx "corepack pnpx"
+		abbr --add npm "corepack npm"
+		abbr --add npx "corepack npx"
 	end
 end
