@@ -40,6 +40,7 @@
   workdir-or-cwd = !echo $PWD
   workdir = rev-parse --show-toplevel
   prune = fetch --all --prune
+  explain = log --pretty=oneline --patch
   log-branch = log --no-merges --first-parent
   oneline-log = log --pretty='%aI %h %s - %an <%ae>'
   release-log = log --first-parent --pretty=oneline --reverse
