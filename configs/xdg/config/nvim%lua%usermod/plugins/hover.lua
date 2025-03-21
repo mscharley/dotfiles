@@ -28,7 +28,7 @@ return {
 			{ '<C-n>', function() require('hover').hover_switch('next') end, desc = 'hover.nvim (next source)' },
 
 			-- Mouse support for hover
-			{ '<MouseMove>', function() require('hover').hover_mouse() end, mode = { 'n' }, desc = 'hover.nvim (mouse)' },
+			-- { '<MouseMove>', function() require('hover').hover_mouse() end, mode = { 'n' }, desc = 'hover.nvim (mouse)' },
 		},
 	},
 }
