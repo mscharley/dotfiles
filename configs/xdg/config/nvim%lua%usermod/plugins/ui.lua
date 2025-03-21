@@ -39,18 +39,24 @@ return {
 	},
 	{
 		'romgrk/barbar.nvim',
+		dependencies = {
+			'lewis6991/gitsigns.nvim',
+			'nvim-tree/nvim-web-devicons',
+		},
+		init = function() vim.g.barbar_auto_setup = false end,
 		version = "*",
-		opts = {}
-	},
-	{
-		"sainnhe/sonokai",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.g.sonokai_style = 'andromeda'
-			vim.g.sonokai_better_performance = 1
-			vim.cmd.colorscheme('sonokai')
-		end,
+		opts = {
+			exclude_ft = { 'gitcommit' },
+			highlight_visible = false,
+			icons = {
+				gitsigns = {
+					added = {enabled = true, icon = '+'},
+					changed = {enabled = true, icon = '~'},
+					deleted = {enabled = true, icon = '-'},
+				},
+				preset = 'slanted',
+			},
+		},
 	},
 	{
 		'nvim-lualine/lualine.nvim',
