@@ -60,34 +60,36 @@ return {
 	},
 	{
 		'nvim-lualine/lualine.nvim',
-		config = function()
-			require('lualine').setup({
-				options = {
-					icons_enabled = true,
-					theme = require('lualine.themes.horizon'),
-					component_separators = { left = '\u{e0bf}', right = '\u{e0bd}'},
-					section_separators = { left = '\u{e0b8}', right = '\u{e0ba}'},
-					globalstatus = true,
-					ignore_focus = { "NvimTree", "help" },
-				},
-				sections = {
-					lualine_a = {'mode'},
-					lualine_b = {'branch', 'diff', 'diagnostics'},
-					lualine_c = {'filename'},
-					lualine_x = {get_status_icon, 'encoding', 'fileformat', 'filetype'},
-					lualine_y = {'progress'},
-					lualine_z = {'location'}
-				},
-				inactive_sections = {
-					lualine_a = {},
-					lualine_b = {},
-					lualine_c = {'filename'},
-					lualine_x = {'location'},
-					lualine_y = {},
-					lualine_z = {}
-				},
-				extensions = { "nvim-tree" },
-			})
-		end
+		dependencies = {
+			'sainnhe/sonokai',
+			'nvim-tree/nvim-web-devicons',
+		},
+		opts = {
+			options = {
+				icons_enabled = true,
+				theme = 'horizon',
+				component_separators = { left = '\u{e0bf}', right = '\u{e0bd}'},
+				section_separators = { left = '\u{e0b8}', right = '\u{e0ba}'},
+				globalstatus = true,
+				ignore_focus = { "NvimTree", "help" },
+			},
+			sections = {
+				lualine_a = {'mode'},
+				lualine_b = {'branch', 'diff', 'diagnostics'},
+				lualine_c = {'filename'},
+				lualine_x = {get_status_icon, 'encoding', 'fileformat', 'filetype'},
+				lualine_y = {'progress'},
+				lualine_z = {'location'}
+			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {'filename'},
+				lualine_x = {'location'},
+				lualine_y = {},
+				lualine_z = {}
+			},
+			extensions = { "nvim-tree" },
+		}
 	},
 }

@@ -25,7 +25,7 @@ require("lazy").setup({
 	branch = "stable",
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
-	install = { colorscheme = { "sonokai", "habamax" } },
+	install = { colorscheme = { "lush", "slate" } },
 	performance = {
 		rtp = {
 			disabled_plugins = {

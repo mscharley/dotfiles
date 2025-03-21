@@ -27,10 +27,7 @@ return {
 				},
 				{
 					name = 'Lush',
-					colorscheme = 'sonokai',
-					after = [[
-						require('lush')(require('usermod.theme.lush'))
-					]]
+					colorscheme = 'lush',
 				},
 			},
 		},
