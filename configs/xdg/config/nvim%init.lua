@@ -3,8 +3,11 @@
 
 -- Styling
 vim.opt.cursorline = true
-vim.opt.textwidth = 120
-vim.opt.colorcolumn = "+1"
+vim.opt.textwidth = 0
+vim.opt.wrapmargin = 0
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.colorcolumn = "121"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 4
