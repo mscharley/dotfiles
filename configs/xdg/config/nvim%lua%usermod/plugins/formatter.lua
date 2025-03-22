@@ -34,20 +34,6 @@ return {
 					end
 				end,
 			})
-
-			vim.api.nvim_create_autocmd('FileType', {
-				pattern = { 'gitcommit' },
-				callback = function()
-					vim.opt_local.colorcolumn = "73"
-				end
-			})
-
-			vim.api.nvim_create_autocmd('FileType', {
-				pattern = { 'help' },
-				callback = function()
-					vim.opt_local.colorcolumn = ""
-				end
-			})
 		end,
 	},
 }

@@ -44,3 +44,6 @@ require('usermod.title')
 
 -- Load custom keybindings
 require('usermod.keybindings')
+
+-- Load custom file type configurations
+require('usermod.filetypes')
