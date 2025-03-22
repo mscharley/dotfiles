@@ -4,6 +4,7 @@ local osx = uname == 'Darwin\n'
 return {
 	{
 		"folke/which-key.nvim",
+		version = "*",
 		event = "VeryLazy",
 		opts = {
 			icons = {

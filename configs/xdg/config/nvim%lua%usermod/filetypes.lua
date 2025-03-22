@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	callback = function()
 		-- Gleams built-in formatter insists on soft tabs
 		require('usermod.whitespace').softtabs(2, true)
+		vim.opt_local.commentstring = "// %s"
 	end
 })
 

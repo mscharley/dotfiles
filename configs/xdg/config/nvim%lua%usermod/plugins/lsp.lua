@@ -10,11 +10,13 @@ return {
 	},
 	{
 		'williamboman/mason.nvim',
+		version = '*',
 		lazy = true,
 		opts = {},
 	},
 	{
 		'williamboman/mason-lspconfig.nvim',
+		version = '*',
 		dependencies = { 'williamboman/mason.nvim' },
 		event = 'VimEnter',
 		opts = {
@@ -58,6 +60,7 @@ return {
 	},
 	{
 		'neovim/nvim-lspconfig',
+		version = '*',
 		dependencies = { 'williamboman/mason-lspconfig.nvim' },
 		event = "BufReadPost",
 		config = function()
