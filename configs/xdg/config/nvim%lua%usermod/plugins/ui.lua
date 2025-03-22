@@ -1,7 +1,7 @@
 vim.g.barbar_auto_setup = false
 
 -- Define a function to check the status and return the corresponding icon
-local function get_status_icon()
+local function ollama_status()
 	local available = package.loaded["ollama"] and require("ollama").status ~= nil
 	if not available then
 		return "🦙⛔"
@@ -63,32 +63,34 @@ return {
 			'sainnhe/sonokai',
 			'nvim-tree/nvim-web-devicons',
 		},
-		opts = {
-			options = {
-				icons_enabled = true,
-				theme = 'horizon',
-				component_separators = { left = '\u{e0bf}', right = '\u{e0bd}'},
-				section_separators = { left = '\u{e0b8}', right = '\u{e0ba}'},
-				globalstatus = true,
-				ignore_focus = { "NvimTree", "help" },
-			},
-			sections = {
-				lualine_a = {'mode'},
-				lualine_b = {'branch', 'diff', 'diagnostics'},
-				lualine_c = {'filename'},
-				lualine_x = {get_status_icon, 'encoding', 'fileformat', 'filetype'},
-				lualine_y = {'progress'},
-				lualine_z = {'location'}
-			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = {'filename'},
-				lualine_x = {'location'},
-				lualine_y = {},
-				lualine_z = {}
-			},
-			extensions = { "nvim-tree" },
-		}
+		config = function()
+			require('lualine').setup{
+				options = {
+					icons_enabled = true,
+					theme = require'usermod.theme.lualine',
+					component_separators = { left = '\u{e0bf}', right = '\u{e0bd}' },
+					section_separators = { left = '\u{e0b8}', right = '\u{e0ba}' },
+					globalstatus = true,
+					ignore_focus = { 'help' },
+				},
+				sections = {
+					lualine_a = { 'mode' },
+					lualine_b = { 'branch', 'diff' },
+					lualine_c = { 'lsp_status', 'filename', 'diagnostics' },
+					lualine_x = { ollama_status, 'encoding', 'fileformat', 'filetype' },
+					lualine_y = { 'progress' },
+					lualine_z = { 'location' }
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { 'filename' },
+					lualine_x = { 'location' },
+					lualine_y = {},
+					lualine_z = {}
+				},
+				extensions = { 'fzf', 'lazy', 'nvim-tree' },
+			}
+		end,
 	},
 }
