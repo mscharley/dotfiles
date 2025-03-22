@@ -47,7 +47,6 @@ return {
 		version = "*",
 		opts = {
 			exclude_ft = { 'gitcommit' },
-			highlight_visible = false,
 			icons = {
 				gitsigns = {
 					added = {enabled = true, icon = '+'},

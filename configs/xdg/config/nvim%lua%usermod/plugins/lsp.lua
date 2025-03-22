@@ -16,20 +16,37 @@ return {
 	{
 		'williamboman/mason-lspconfig.nvim',
 		dependencies = { 'williamboman/mason.nvim' },
-		event = "VimEnter",
+		event = 'VimEnter',
 		opts = {
-			ensure_installed = { "eslint", "rust_analyzer", "lua_ls", "jsonls", "yamlls" },
+			ensure_installed = { 'eslint', 'rust_analyzer', 'lua_ls', 'jsonls', 'yamlls' },
 		}
 	},
 	{
 		'antosha417/nvim-lsp-file-operations',
-		event = "BufReadPost",
+		event = 'BufReadPost',
 		opts = {},
 	},
 	{
+		'ravibrock/spellwarn.nvim',
+		event = 'VeryLazy',
+		dependencies = { 'lsp_lines' },
+		opts = {
+			enable = false,
+			severity = {
+				spellbad   = "HINT",
+				spellrare  = "HINT",
+				spellcap   = "HINT",
+				spelllocal = "HINT",
+			},
+		},
+		keys = {
+			{ '<leader>ts', function() require('spellwarn').toggle() end, desc = "Toggle spelling warnings" },
+		},
+	},
+	{
 		'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-		name = "lsp_lines",
-		event = "BufReadPost",
+		name = 'lsp_lines',
+		event = 'BufReadPost',
 		config = function()
 			-- Disable virtual_text since it's redundant due to lsp_lines.
 			vim.diagnostic.config({

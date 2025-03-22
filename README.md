@@ -6,13 +6,17 @@ Matthew Scharley \<matt@scharley.me\>
 
 Want to take this repo for a test run in a project?
 
-    docker run -it --rm -v $(pwd):/home/ubuntu/$(basename `pwd`) ghcr.io/mscharley/dotfiles
+```shell
+docker run -it --rm -v $(pwd):/home/ubuntu/$(basename `pwd`) ghcr.io/mscharley/dotfiles
+```
 
 ## Installation (\*nix/OS X)
 
-    git clone https://github.com/mscharley/dotfiles.git ~/.dotfiles
-    cd ~/.dotfiles
-    ./install.pl
+```shell
+git clone https://github.com/mscharley/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install.pl
+```
 
 ### XDG support
 
