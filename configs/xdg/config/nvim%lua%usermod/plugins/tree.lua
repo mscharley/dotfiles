@@ -33,25 +33,25 @@ return {
 			end,
 			view = {
 				float = {
-				enable = true,
-				open_win_config = function()
-					local screen_w = vim.opt.columns:get()
-					local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-					local window_w = screen_w * WIDTH_RATIO
-					local window_h = screen_h * HEIGHT_RATIO
-					local window_w_int = math.floor(window_w)
-					local window_h_int = math.floor(window_h)
-					local center_x = (screen_w - window_w) / 2
-					local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+					enable = true,
+					open_win_config = function()
+						local screen_w = vim.opt.columns:get()
+						local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+						local window_w = screen_w * WIDTH_RATIO
+						local window_h = screen_h * HEIGHT_RATIO
+						local window_w_int = math.floor(window_w)
+						local window_h_int = math.floor(window_h)
+						local center_x = (screen_w - window_w) / 2
+						local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
 
-					return {
-						border = 'rounded',
-						relative = 'editor',
-						row = center_y,
-						col = center_x,
-						width = window_w_int,
-						height = window_h_int,
-					}
+						return {
+							border = 'rounded',
+							relative = 'editor',
+							row = center_y,
+							col = center_x,
+							width = window_w_int,
+							height = window_h_int,
+						}
 					end,
 				},
 				width = function()
@@ -81,18 +81,19 @@ return {
 				},
 			},
 			log = {
-				enable = false,
-				truncate = false,
+				enable = true,
+				truncate = true,
 				types = {
 					all = false,
-					config = false,
+					config = true,
 					copy_paste = false,
 					diagnostics = false,
-					git = false,
+					git = true,
 					profile = false,
 				},
 			},
 			renderer = {
+				highlight_opened_files = "name",
 				indent_markers = {
 					enable = true,
 					inline_arrows = true,
@@ -106,23 +107,28 @@ return {
 				},
 				icons = {
 					git_placement = "after",
+					web_devicons = {
+						file = { enable = true },
+						folder = { enable = false },
+					},
 					glyphs = {
 						git = {
 							-- don't call out staged changes explicitly
-							staged = "",
+							staged = " ",
 							unstaged = "✗",
-							unmerged = "\u{f4db}",
-							renamed = "\u{f45a}",
-							untracked = "\u{f4dd}",
-							deleted = "\u{f4dc}",
-							ignored = "\u{e668}",
+							unmerged = " ",
+							renamed = " ",
+							untracked = " ",
+							deleted = " ",
+							ignored = " ",
 						},
 					},
 				},
 			},
 		},
 		keys = {
-			{ "<leader>s", function() require('nvim-tree.api').tree.toggle() end, silent = true, desc = 'Toggle file tree' },
+			{ "<leader>s", function() require('nvim-tree.api').tree.toggle{ find_file = true } end, silent = true, desc = 'Toggle file tree and show current file' },
+			{ "<leader>S", function() require('nvim-tree.api').tree.toggle{} end, silent = true, desc = 'Toggle file tree' },
 		},
 	},
 }
