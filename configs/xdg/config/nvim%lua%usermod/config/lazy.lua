@@ -15,7 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup lazy.nvim
+-- Set up lazy.nvim
 require("lazy").setup({
 	spec = {
 		{ "folke/lazy.nvim", tag = "stable" },
@@ -30,6 +30,7 @@ require("lazy").setup({
 		rtp = {
 			disabled_plugins = {
 				-- Disable netrw so it doesn't interfere with nvim-tree
+				"netrw",
 				"netrwPlugin",
 			},
 		},

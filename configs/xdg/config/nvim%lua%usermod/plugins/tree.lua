@@ -4,6 +4,8 @@ local WIDTH_RATIO = 0.5
 return {
 	{
 		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		opts = {
 			auto_reload_on_write = true,
 			on_attach = function(bufnr)
