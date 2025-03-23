@@ -4,14 +4,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 		(vim.hl or vim.highlight).on_yank {
 			timeout=200,
 		}
-	end
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'gitcommit' },
 	callback = function()
 		vim.opt_local.colorcolumn = "73"
-	end
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -20,7 +20,15 @@ vim.api.nvim_create_autocmd('FileType', {
 		-- Gleams built-in formatter insists on soft tabs
 		require('usermod.whitespace').softtabs(2, true)
 		vim.opt_local.commentstring = "// %s"
-	end
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'yaml' },
+	callback = function()
+		-- YAML doesn't work with hard tabs
+		require('usermod.whitespace').softtabs(2, true)
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -28,5 +36,5 @@ vim.api.nvim_create_autocmd('FileType', {
 	callback = function()
 		vim.opt_local.colorcolumn = ""
 		vim.opt_local.spell = false
-	end
+	end,
 })
