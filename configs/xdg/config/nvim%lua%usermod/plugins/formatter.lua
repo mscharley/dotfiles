@@ -17,6 +17,7 @@ return {
 					graphql = prettier,
 					json = prettier,
 					markdown = prettier,
+					toml = prettier,
 					yaml = prettier,
 				},
 			})
