@@ -16,6 +16,7 @@ return {
 					css = prettier,
 					graphql = prettier,
 					json = prettier,
+					jsonc = prettier,
 					markdown = prettier,
 					toml = prettier,
 					yaml = prettier,
