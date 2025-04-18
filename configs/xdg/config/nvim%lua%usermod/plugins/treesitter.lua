@@ -10,7 +10,7 @@ return {
 					'lua', 'vim', 'vimdoc',
 					'graphql',
 					'perl',
-					'javascript', 'typescript',
+					'javascript', 'typescript', 'tsx',
 					'gleam', 'rust',
 				},
 				highlight = { enable = true },
