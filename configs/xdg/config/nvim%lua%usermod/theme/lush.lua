@@ -440,6 +440,10 @@ local theme = lush(function(injected_functions)
 		sym"@variable.builtin"         { TSVariableBuiltin },
 		sym"@variable.member"          { TSField },
 		sym"@variable.parameter"       { TSParameter },
+
+		sym"@tag.html"                 { TSTag },
+		sym"@_jsx_element"             { sym"@tag.html" },
+		sym"@tag.builtin.tsx"          { PurpleItalic },
 		-- }}}
 
 		-- LSP {{{
