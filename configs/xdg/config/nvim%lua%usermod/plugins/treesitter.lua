@@ -11,6 +11,7 @@ return {
 					'graphql',
 					'perl',
 					'javascript', 'typescript', 'tsx',
+					'html', 'css',
 					'gleam', 'rust',
 				},
 				highlight = { enable = true },
