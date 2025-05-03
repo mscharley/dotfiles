@@ -9,11 +9,13 @@ if test $(uname -s) = "Linux"
 		if test -e /usr/sbin/transactional-update
 			sudo transactional-update -d --continue pkg install \
 				kitty wl-clipboard kdeconnect-kde \
-				fira-code-fonts symbols-only-nerd-fonts google-noto-sans-cjk-fonts rubjo-victormono-fonts
+				fira-code-fonts symbols-only-nerd-fonts rubjo-victormono-fonts \
+				google-noto-fonts google-noto-serif-cjk-fonts google-noto-sans-cjk-fonts google-noto-coloremoji-fonts
 		else if type zypper &> /dev/null
 			sudo zypper install \
 				kitty wl-clipboard kdeconnect-kde \
-				fira-code-fonts symbols-only-nerd-fonts google-noto-sans-cjk-fonts rubjo-victormono-fonts
+				fira-code-fonts symbols-only-nerd-fonts rubjo-victormono-fonts \
+				google-noto-fonts google-noto-serif-cjk-fonts google-noto-sans-cjk-fonts google-noto-coloremoji-fonts
 		end
 		sudo -K
 
