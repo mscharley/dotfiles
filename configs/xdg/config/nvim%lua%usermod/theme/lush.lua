@@ -33,25 +33,25 @@ local theme = lush(function(injected_functions)
 		Grey               { fg=palette.grey, },
 		Red                { fg=palette.red, },
 		RedSign            { fg=palette.red_sign, },
-		RedItalic          { fg=palette.red, gui='italic' },
+		RedItalic          { fg=palette.red, italic = true },
 		Green              { fg=palette.green, },
 		GreenSign          { fg=palette.green_sign, },
-		GreenItalic        { fg=palette.green, gui='italic' },
+		GreenItalic        { fg=palette.green, italic = true },
 		Yellow             { fg=palette.yellow, },
 		YellowSign         { fg=palette.yellow_sign, },
-		YellowItalic       { fg=palette.yellow, gui='italic' },
+		YellowItalic       { fg=palette.yellow, italic = true },
 		Orange             { fg=palette.orange, },
 		OrangeSign         { fg=palette.orange_sign, },
-		OrangeItalic       { fg=palette.orange, gui='italic' },
+		OrangeItalic       { fg=palette.orange, italic = true },
 		Blue               { fg=palette.blue, },
 		BlueSign           { fg=palette.blue_sign, },
-		BlueItalic         { fg=palette.blue, gui='italic' },
+		BlueItalic         { fg=palette.blue, italic = true },
 		Purple             { fg=palette.purple, },
 		PurpleSign         { fg=palette.purple_sign, },
-		PurpleItalic       { fg=palette.purple, gui='italic' },
+		PurpleItalic       { fg=palette.purple, italic = true },
 		Cyan               { fg=palette.cyan, },
 		CyanSign           { fg=palette.cyan, },
-		CyanItalic         { fg=palette.cyan, gui='italic', },
+		CyanItalic         { fg=palette.cyan, italic = true },
 		Added              { Green },
 		Removed            { Red },
 		Changed            { Cyan },
@@ -201,11 +201,11 @@ local theme = lush(function(injected_functions)
 
 		-- Syntax highlighting {{{
 		-- Builtin highlighting {{{
-		Type           { fg=palette.blue, gui="italic", },
-		Structure      { fg=palette.blue, gui="italic", },
-		StorageClass   { fg=palette.blue, gui="italic", },
-		Identifier     { fg=palette.orange, gui="italic", },
-		Constant       { fg=palette.orange, gui="italic", },
+		Type           { fg=palette.blue, italic=true },
+		Structure      { fg=palette.blue, italic=true },
+		StorageClass   { fg=palette.blue, italic=true },
+		Identifier     { fg=palette.orange, italic=true },
+		Constant       { fg=palette.orange, italic=true },
 		PreProc        { fg=palette.red, },
 		PreCondit      { fg=palette.red, },
 		Include        { fg=palette.red, },
@@ -228,23 +228,24 @@ local theme = lush(function(injected_functions)
 		Float          { fg=palette.purple, },
 		Function       { fg=palette.green, },
 		Operator       { fg=palette.red, },
-		Title          { fg=palette.red, gui="bold", },
+		Title          { fg=palette.red, bold=true },
 		Tag            { fg=palette.orange, },
 		Delimiter      { fg=palette.fg, },
-		Todo           { fg=palette.bg0, bg=palette.blue, gui="bold", },
+		Todo           { fg=palette.bg0, bg=palette.blue, bold=true },
 		Comment        { fg=palette.grey, },
-		SpecialComment { fg=palette.grey, gui="italic", },
+		SpecialComment { fg=palette.grey, italic=true },
 		Ignore         { fg=palette.grey, },
 		Underlined     { gui="underline", },
 		-- }}}
 
 		-- Treesitter {{{
-		TSStrong                       { gui="bold", },
-		TSEmphasis                     { gui="italic", },
-		TSUnderline                    { gui="underline", },
-		TSDanger                       { fg=palette.bg0, bg=palette.red, gui="bold", },
-		TSWarning                      { fg=palette.bg0, bg=palette.yellow, gui="bold", },
-		TSNote                         { fg=palette.bg0, bg=palette.green, gui="bold", },
+		TSEmphasis                     { italic=true },
+		TSStrong                       { bold=true },
+		TSStrike                       { Grey },
+		TSUnderline                    { underline=true },
+		TSDanger                       { fg=palette.bg0, bg=palette.red, bold=true },
+		TSWarning                      { fg=palette.bg0, bg=palette.yellow, bold=true },
+		TSNote                         { fg=palette.bg0, bg=palette.green, bold=true },
 		TSTodo                         { Todo },
 		TSAnnotation                   { BlueItalic },
 		TSAttribute                    { BlueItalic },
@@ -293,7 +294,6 @@ local theme = lush(function(injected_functions)
 		TSRepeat                       { Red },
 		TSStorageClass                 { Red },
 		TSStorageClassLifetime         { Red },
-		TSStrike                       { Grey },
 		TSString                       { Yellow },
 		TSStringEscape                 { Green },
 		TSStringRegex                  { Green },
@@ -309,7 +309,7 @@ local theme = lush(function(injected_functions)
 		TSTypeBuiltin                  { BlueItalic },
 		TSTypeDefinition               { BlueItalic },
 		TSTypeQualifier                { Red },
-		TSURI                          { fg=palette.blue, gui="underline", },
+		TSURI                          { fg=palette.blue, underline=true },
 		TSVariable                     { Fg },
 		TSVariableBuiltin              { PurpleItalic },
 		TSModuleInfoBad                { Red },
@@ -376,9 +376,9 @@ local theme = lush(function(injected_functions)
 		sym"@markup.quote"             { Grey },
 		sym"@markup.raw"               { TSLiteral },
 		sym"@markup.strike"            { TSStrike },
-		sym"@markup.strikethrough"     { gui="strikethrough", },
-		sym"@markup.strong"            { TSStrong },
-		sym"@markup.underline"         { TSUnderline },
+		sym"@markup.strikethrough"     { strikethrough = true, },
+		sym"@markup.strong"            { bold = true },
+		sym"@markup.underline"         { underline = true },
 		sym"@math"                     { TSMath },
 		sym"@method"                   { TSMethod },
 		sym"@method.call"              { TSMethodCall },
@@ -440,10 +440,6 @@ local theme = lush(function(injected_functions)
 		sym"@variable.builtin"         { TSVariableBuiltin },
 		sym"@variable.member"          { TSField },
 		sym"@variable.parameter"       { TSParameter },
-
-		sym"@tag.html"                 { TSTag },
-		sym"@_jsx_element"             { sym"@tag.html" },
-		sym"@tag.builtin.tsx"          { PurpleItalic },
 		-- }}}
 
 		-- LSP {{{
@@ -483,12 +479,21 @@ local theme = lush(function(injected_functions)
 		gitcommitFile        { Green },
 		-- }}}
 
+		-- html {{{
+		sym"@tag.html"                 { TSTag },
+		-- }}}
+
 		-- json {{{
 		sym"@property.json" { Orange },
 		-- }}}
 
 		-- toml {{{
 		sym"@property.toml" { Orange },
+		-- }}}
+
+		-- typescript {{{
+		sym"@_jsx_element"             { sym"@tag.html" },
+		sym"@tag.builtin.tsx"          { PurpleItalic },
 		-- }}}
 
 		-- yaml {{{
