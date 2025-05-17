@@ -37,17 +37,23 @@ if test (uname -s) = "Linux"
 
 		echo ">> $(set_color green)Ensuring GUI applications...$(set_color reset)"
 		if test -e /usr/sbin/transactional-update
+			if ! test -e /etc/zypp/repos.d/M17N_fonts.repo
+				sudo zypper ar -g -r https://download.opensuse.org/repositories/M17N:/fonts/openSUSE_Tumbleweed/M17N:fonts.repo
+			end
 			sudo transactional-update -d --continue pkg install \
 				kitty wl-clipboard kdeconnect-kde \
 				qsyncthingtray syncthing \
 				fira-code-fonts symbols-only-nerd-fonts rubjo-victormono-fonts \
-				google-noto-fonts google-noto-serif-cjk-fonts google-noto-sans-cjk-fonts google-noto-coloremoji-fonts
+				google-noto-fonts google-noto-sans-cjk-fonts google-noto-coloremoji-fonts
 		else if type zypper &> /dev/null
+			if ! test -e /etc/zypp/repos.d/M17N_fonts.repo
+				sudo zypper ar -g -r https://download.opensuse.org/repositories/M17N:/fonts/openSUSE_Tumbleweed/M17N:fonts.repo
+			end
 			sudo zypper install \
 				kitty wl-clipboard kdeconnect-kde \
 				qsyncthingtray syncthing \
 				fira-code-fonts symbols-only-nerd-fonts rubjo-victormono-fonts \
-				google-noto-fonts google-noto-serif-cjk-fonts google-noto-sans-cjk-fonts google-noto-coloremoji-fonts
+				google-noto-fontsgoogle-noto-sans-cjk-fonts google-noto-coloremoji-fonts
 		end
 		sudo -K
 
