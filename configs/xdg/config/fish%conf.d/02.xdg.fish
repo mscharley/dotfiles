@@ -17,9 +17,9 @@ set -p fish_function_path "$XDG_CONFIG_HOME/fish/functions.local"
 
 # Backport XDG into applications that can support it implicitly through configuration.
 
-if test -d $HOME/Library/Android/sdk; then
+if test -d $HOME/Library/Android/sdk
 	export ANDROID_HOME="$HOME/Library/Android/sdk"
-else if test -d $HOME/Android/Sdk; then
+else if test -d $HOME/Android/Sdk
 	export ANDROID_HOME="$HOME/Android/Sdk"
 else
 	set -q ANDROID_HOME || set ANDROID_HOME "$XDG_CONFIG_HOME/android"
