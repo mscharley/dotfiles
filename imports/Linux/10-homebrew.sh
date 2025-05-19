@@ -2,7 +2,7 @@
 
 if ! command -v brew &> /dev/null; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	eval "$(/opt/homebrew/bin/brew shellenv)"
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 brew bundle --file=configs/xdg/config/homebrew%Brewfile --no-upgrade

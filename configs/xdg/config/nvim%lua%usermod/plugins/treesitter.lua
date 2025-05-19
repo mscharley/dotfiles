@@ -9,7 +9,7 @@ return {
 					'yaml', 'json', 'json5', 'markdown', 'toml',
 					'lua', 'vim', 'vimdoc',
 					'graphql',
-					'perl',
+					'perl', 'ruby',
 					'javascript', 'typescript', 'tsx',
 					'html', 'css',
 					'gleam', 'rust',

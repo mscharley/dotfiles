@@ -53,7 +53,7 @@ if test (uname -s) = "Linux"
 				kitty wl-clipboard kdeconnect-kde \
 				qsyncthingtray syncthing \
 				fira-code-fonts symbols-only-nerd-fonts rubjo-victormono-fonts \
-				google-noto-fontsgoogle-noto-sans-cjk-fonts google-noto-coloremoji-fonts
+				google-noto-fonts google-noto-sans-cjk-fonts google-noto-coloremoji-fonts
 		end
 		sudo -K
 

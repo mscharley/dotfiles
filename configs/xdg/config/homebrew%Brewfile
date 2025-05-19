@@ -1,0 +1,41 @@
+# vim: ft=ruby:
+
+# Fonts
+cask 'font-fira-code'
+cask 'font-symbols-only-nerd-font'
+cask 'font-victor-mono'
+
+# Neovim + dependencies
+brew 'neovim'
+brew 'ack'
+brew 'bat'
+brew 'fd'
+brew 'fzf'
+
+# CLI utilities
+brew 'asdf'
+brew 'jq'
+brew 'ripgrep'
+brew 'starship'
+brew 'yq'
+
+# AWS CLI (OSX only for now - session-manager-plugin)
+brew 'awscli' if OS.mac?
+cask 'session-manager-plugin' if OS.mac?
+
+# OS X apps
+brew 'coreutils' if OS.mac?
+brew 'fish' if OS.mac?
+brew 'git' if OS.mac?
+brew 'git-lfs' if OS.mac?
+brew 'gnu-sed' if OS.mac?
+brew 'most' if OS.mac?
+brew 'watch' if OS.mac?
+brew 'xz' if OS.mac?
+brew 'zsh' if OS.mac?
+brew 'zsh-completions' if OS.mac?
+
+cask 'alfred' if OS.mac?
+cask 'cyberduck' if OS.mac?
+cask 'docker' if OS.mac?
+cask 'kitty' if OS.mac?
