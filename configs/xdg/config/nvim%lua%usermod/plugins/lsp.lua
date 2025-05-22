@@ -46,19 +46,6 @@ return {
 		},
 	},
 	{
-		'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-		name = 'lsp_lines',
-		event = 'BufReadPost',
-		config = function()
-			-- Disable virtual_text since it's redundant due to lsp_lines.
-			vim.diagnostic.config({
-				virtual_text = false,
-			})
-
-			require("lsp_lines").setup({})
-		end,
-	},
-	{
 		'neovim/nvim-lspconfig',
 		version = '*',
 		dependencies = { 'williamboman/mason-lspconfig.nvim' },
@@ -67,6 +54,13 @@ return {
 			local lspconfig = require('lspconfig')
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local flatEslint = vim.fs.find('eslint.config.js', { path = "./", type = "file", upward = true })
+
+			vim.diagnostic.config({
+				-- virtual_text = false,
+				virtual_lines = {
+					current_line = true,
+				},
+			})
 
 			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 			lspconfig.eslint.setup({
