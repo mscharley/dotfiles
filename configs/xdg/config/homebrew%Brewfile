@@ -15,6 +15,7 @@ brew 'fzf'
 # CLI utilities
 brew 'asdf'
 brew 'jq'
+brew 'kubernetes-cli'
 brew 'ripgrep'
 brew 'starship'
 brew 'yq'
