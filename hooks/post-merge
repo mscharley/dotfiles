@@ -3,3 +3,7 @@
 if which nvim &> /dev/null; then
 	nvim --headless "+Lazy! restore" +qa
 fi
+
+if which brew &> /dev/null; then
+	brew bundle --file=${XDG_CONFIG_HOME:-~/.config}/homebrew/Brewfile --no-upgrade
+fi
