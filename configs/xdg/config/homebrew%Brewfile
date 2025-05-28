@@ -14,8 +14,11 @@ brew 'fzf'
 
 # CLI utilities
 brew 'asdf'
+brew 'git'
+brew 'git-lfs'
 brew 'jq'
 brew 'kubernetes-cli'
+brew 'most'
 brew 'ripgrep'
 brew 'starship'
 brew 'yq'
@@ -27,10 +30,7 @@ cask 'session-manager-plugin' if OS.mac?
 # OS X apps
 brew 'coreutils' if OS.mac?
 brew 'fish' if OS.mac?
-brew 'git' if OS.mac?
-brew 'git-lfs' if OS.mac?
 brew 'gnu-sed' if OS.mac?
-brew 'most' if OS.mac?
 brew 'watch' if OS.mac?
 brew 'xz' if OS.mac?
 brew 'zsh' if OS.mac?
