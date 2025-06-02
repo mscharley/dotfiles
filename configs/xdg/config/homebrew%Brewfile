@@ -23,6 +23,10 @@ brew 'ripgrep'
 brew 'starship'
 brew 'yq'
 
+# fetch
+brew 'fastfetch'
+brew 'hyfetch'
+
 # AWS CLI (OSX only for now - session-manager-plugin)
 brew 'awscli' if OS.mac?
 cask 'session-manager-plugin' if OS.mac?
