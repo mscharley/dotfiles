@@ -1,0 +1,19 @@
+{
+    "preset": "nonbinary",
+    "mode": "rgb",
+    "light_dark": "dark",
+    "lightness": 0.59,
+    "color_align": {
+        "mode": "horizontal",
+        "custom_colors": [],
+        "fore_back": [
+            2,
+            1
+        ]
+    },
+    "backend": "fastfetch",
+    "args": null,
+    "distro": null,
+    "pride_month_shown": [],
+    "pride_month_disable": false
+}
