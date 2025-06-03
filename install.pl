@@ -91,10 +91,7 @@ sub process_files {
 			}
 		}
 		elsif (-e $target) {
-			if (compare($target, $_) == 0) {
-				print("identical $target\n");
-			}
-			elsif ($replace_all) {
+			if ($replace_all) {
 				print("replace $target\n");
 				replace_file($_, $target);
 			}
