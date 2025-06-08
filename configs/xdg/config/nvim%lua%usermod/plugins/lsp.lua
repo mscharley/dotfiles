@@ -31,7 +31,7 @@ return {
 	{
 		'ravibrock/spellwarn.nvim',
 		event = 'VeryLazy',
-		dependencies = { 'lsp_lines' },
+		dependencies = {},
 		opts = {
 			enable = false,
 			severity = {
