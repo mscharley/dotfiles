@@ -6,7 +6,7 @@ return {
 		config = function()
 			require('nvim-treesitter.configs').setup({
 				ensure_installed = {
-					'yaml', 'json', 'json5', 'markdown', 'toml',
+					'yaml', 'json', 'json5', 'markdown', 'toml', 'nix',
 					'lua', 'vim', 'vimdoc',
 					'graphql',
 					'perl', 'ruby',
