@@ -59,7 +59,7 @@ if test (uname -s) = "Linux"
 
 		function ensure-flatpak
 			if ! flatpak info --user "$argv[1]" &> /dev/null
-				flatpak install --user "$argv[1]"
+				flatpak install --user -y "$argv[1]"
 			end
 		end
 
@@ -67,6 +67,8 @@ if test (uname -s) = "Linux"
 		flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 		ensure-flatpak com.github.tchx84.Flatseal
 		ensure-flatpak dev.deedles.Trayscale
+		ensure-flatpak com.github.zocker_160.SyncThingy
+		ensure-flatpak com.valvesoftware.Steam
 
 		init-syncthing
 	end
