@@ -2,14 +2,11 @@
     "preset": "nonbinary",
     "mode": "rgb",
     "light_dark": "dark",
-    "lightness": 0.59,
+    "lightness": 0.65,
     "color_align": {
         "mode": "horizontal",
         "custom_colors": [],
-        "fore_back": [
-            2,
-            1
-        ]
+        "fore_back": null
     },
     "backend": "fastfetch",
     "args": null,
