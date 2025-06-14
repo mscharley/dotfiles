@@ -13,7 +13,7 @@ if test (uname -s) = "Linux"
 						mv "$HOME/$dir_name" "$HOME/$dir_name.bak"
 					end
 					echo ">>> $(set_color green)Linking $dir_name folder...$(set_color reset)"
-					ln -rTs "./Sync/$dir_name" "$HOME/$dir_name"
+					ln -Ts "./Sync/$dir_name" "$HOME/$dir_name"
 				end
 				echo ">>> $(set_color green)Updating XDG folder $dir_id...$(set_color reset)"
 				xdg-user-dirs-update --set $dir_id "$HOME/Sync/$dir_name"
