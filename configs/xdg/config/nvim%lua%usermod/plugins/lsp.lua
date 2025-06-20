@@ -80,6 +80,7 @@ return {
 				},
 			})
 			lspconfig.gleam.setup({ capabilities = capabilities })
+			lspconfig.nixd.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
