@@ -42,5 +42,6 @@ brew 'zsh-completions' if OS.mac?
 
 cask 'alfred' if OS.mac?
 cask 'cyberduck' if OS.mac?
-cask 'docker' if OS.mac?
+cask 'docker-desktop' if OS.mac?
+brew 'docker-credential-helper' if OS.mac?
 cask 'kitty' if OS.mac?
