@@ -80,6 +80,12 @@ return {
 		dependencies = { 'williamboman/mason-lspconfig.nvim' },
 		event = "BufReadPost",
 		config = function()
+			-- Strip out some default keybindings
+			vim.keymap.del('n', 'gra')
+			vim.keymap.del('n', 'gri')
+			vim.keymap.del('n', 'grn')
+			vim.keymap.del('n', 'grr')
+
 			local lspconfig = require('lspconfig')
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local flatEslint = vim.fs.find('eslint.config.js', { path = "./", type = "file", upward = true })
@@ -193,7 +199,7 @@ return {
 		keys = {
 			-- LSP interactions
 			{
-				'<leader>qf',
+				'<leader>fq',
 				function()
 					vim.lsp.buf.code_action({
 						filter = function(a) return a.isPreferred end,
@@ -203,6 +209,9 @@ return {
 				desc = "Quick fix",
 			},
 			{ '<leader>ff', function() vim.lsp.buf.code_action() end, desc = "Show code fix menu" },
+			{ '<leader>gi', function() vim.lsp.buf.implementation() end, desc = "Jump to implementation" },
+			{ '<leader>gr', function() vim.lsp.buf.references() end, desc = "Show all references" },
+			{ '<leader>fn', function() vim.lsp.buf.rename() end, desc = "Rename" },
 
 			-- Diagnostics
 			{ '<leader>e', function() vim.diagnostic.open_float() end, desc = "Show error details" },
