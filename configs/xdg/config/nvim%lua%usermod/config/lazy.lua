@@ -21,6 +21,7 @@ require("lazy").setup({
 		{ "folke/lazy.nvim", tag = "stable" },
 		-- import your plugins
 		{ import = "usermod.plugins" },
+		{ import = "userlocal.plugins" },
 	},
 	branch = "stable",
 	-- Configure any other settings here. See the documentation for more details.
