@@ -2,6 +2,16 @@ return {
 	{
 		'mfussenegger/nvim-dap',
 		config = function()
+			require("dap").adapters["pwa-node"] = {
+				type = "server",
+				host = "localhost",
+				port = "${port}",
+				executable = {
+					-- This is the wrapper executable that Nix installs, equivalent to `node dapDebugServer.js`
+					command = "js-debug",
+					args = {"${port}"},
+				}
+			}
 		end,
 	},
 	{
