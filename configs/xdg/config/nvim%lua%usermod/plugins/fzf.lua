@@ -2,7 +2,12 @@
 return {
 	{
 		'ibhagwan/fzf-lua',
-		opts = { 'fzf-native' },
+		lazy = false,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require('fzf-lua').setup({ 'fzf-native' })
+			require('fzf-lua').register_ui_select()
+		end,
 		keys = {
 			{ '<leader>rg', function() require('fzf-lua').files({}) end, desc = "Fuzzy find files" },
 			{ '<leader>rr', function() require('fzf-lua').live_grep({ resume = true }) end, desc = "Search project" },
