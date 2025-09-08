@@ -2,16 +2,32 @@ return {
 	{
 		'mfussenegger/nvim-dap',
 		config = function()
-			require("dap").adapters["pwa-node"] = {
-				type = "server",
-				host = "localhost",
-				port = "${port}",
-				executable = {
-					-- This is the wrapper executable that Nix installs, equivalent to `node dapDebugServer.js`
-					command = "js-debug",
-					args = {"${port}"},
+			local dap = require("dap")
+
+			if vim.fn.executable("js-debug") == 1 then
+				-- Nix or anything else that packages a js-debug wrapper for running the dap provider using node
+				dap.adapters["pwa-node"] = {
+					type = "server",
+					host = "localhost",
+					port = "${port}",
+					executable = {
+						-- This is the wrapper executable that Nix installs, equivalent to `node dapDebugServer.js`
+						command = "js-debug",
+						args = {"${port}"},
+					}
 				}
-			}
+			elseif vim.fn.isdirectory(vim.fn.expand("$HOME/opt/js-debug")) == 1 then
+				-- Manually installed vscode-js-debug from https://github.com/microsoft/vscode-js-debug/releases
+				require('dap').adapters['pwa-node'] = {
+					type = "server",
+					host = "localhost",
+					port = "${port}",
+					executable = {
+						command = "node",
+						args = { vim.fn.expand("$HOME/opt/js-debug/src/dapDebugServer.js"), "${port}" },
+					},
+				}
+			end
 		end,
 	},
 	{
