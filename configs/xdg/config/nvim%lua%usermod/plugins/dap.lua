@@ -18,7 +18,7 @@ return {
 				}
 			elseif vim.fn.isdirectory(vim.fn.expand("$HOME/opt/js-debug")) == 1 then
 				-- Manually installed vscode-js-debug from https://github.com/microsoft/vscode-js-debug/releases
-				require('dap').adapters['pwa-node'] = {
+				dap.adapters['pwa-node'] = {
 					type = "server",
 					host = "localhost",
 					port = "${port}",
