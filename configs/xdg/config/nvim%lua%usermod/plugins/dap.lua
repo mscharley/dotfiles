@@ -62,7 +62,28 @@ return {
 			-- 	dapui.close()
 			-- end
 
-			dapui.setup{}
+			dapui.setup({
+				layouts = {
+					{
+						elements = {
+							{ id = 'scopes', size = 0.2 },
+							{ id = 'breakpoints', size = 0.2 },
+							{ id = 'stacks', size = 0.25 },
+							{ id = 'watches', size = 0.25 },
+							{ id = 'repl', size = 0.1 },
+						},
+						position = "left",
+						size = 40,
+					},
+					{
+						elements = {
+							{ id = 'console', size = 1.0 },
+						},
+						position = "bottom",
+						size = 20,
+					},
+				}
+			})
 		end,
 	},
 }
