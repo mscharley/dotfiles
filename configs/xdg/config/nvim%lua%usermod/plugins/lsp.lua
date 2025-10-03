@@ -98,6 +98,19 @@ return {
 			})
 
 			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+			vim.lsp.config.eslint.filetypes = {
+				'javascript',
+				'javascriptreact',
+				'javascript.jsx',
+				'typescript',
+				'typescriptreact',
+				'typescript.tsx',
+				'graphql',
+				'vue',
+				'svelte',
+				'astro',
+				'htmlangular',
+			}
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
@@ -111,7 +124,7 @@ return {
 					rulesCustomizations = {
 						{ rule = "@stylistic/*", fixable = true, severity = "off" },
 						{ rule = "prettier/prettier", fixable = true, severity = "off" },
-					}
+					},
 				},
 			})
 			lspconfig.gleam.setup({ capabilities = capabilities })
