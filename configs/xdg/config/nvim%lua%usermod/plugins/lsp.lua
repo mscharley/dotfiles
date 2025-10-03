@@ -77,8 +77,8 @@ return {
 	{
 		'neovim/nvim-lspconfig',
 		version = '*',
-		dependencies = { 'williamboman/mason-lspconfig.nvim' },
-		event = 'BufReadPost',
+		dependencies = { 'hrsh7th/cmp-nvim-lsp', 'williamboman/mason-lspconfig.nvim' },
+		lazy = false,
 		config = function()
 			-- Strip out some default keybindings
 			vim.keymap.del('n', 'gra')
@@ -86,7 +86,6 @@ return {
 			vim.keymap.del('n', 'grn')
 			vim.keymap.del('n', 'grr')
 
-			local lspconfig = require('lspconfig')
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local flatEslint = vim.fs.find('eslint.config.js', { path = "./", type = "file", upward = true })
 
@@ -98,21 +97,21 @@ return {
 			})
 
 			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-			vim.lsp.config.eslint.filetypes = {
-				'javascript',
-				'javascriptreact',
-				'javascript.jsx',
-				'typescript',
-				'typescriptreact',
-				'typescript.tsx',
-				'graphql',
-				'vue',
-				'svelte',
-				'astro',
-				'htmlangular',
-			}
-			lspconfig.eslint.setup({
+			vim.lsp.config('eslint', {
 				capabilities = capabilities,
+				filetypes = {
+					'javascript',
+					'javascriptreact',
+					'javascript.jsx',
+					'typescript',
+					'typescriptreact',
+					'typescript.tsx',
+					'graphql',
+					'vue',
+					'svelte',
+					'astro',
+					'htmlangular',
+				},
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						buffer = bufnr,
@@ -127,15 +126,15 @@ return {
 					},
 				},
 			})
-			lspconfig.gleam.setup({ capabilities = capabilities })
-			lspconfig.nixd.setup({ capabilities = capabilities })
-			lspconfig.rust_analyzer.setup({
+			vim.lsp.config('gleam', { capabilities = capabilities })
+			vim.lsp.config('nixd', { capabilities = capabilities })
+			vim.lsp.config('rust_analyzer', {
 				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 				end
 			})
-			lspconfig.jsonls.setup({
+			vim.lsp.config('jsonls', {
 				capabilities = capabilities,
 				settings = {
 					json = {
@@ -144,7 +143,7 @@ return {
 					}
 				}
 			})
-			lspconfig.yamlls.setup({
+			vim.lsp.config('yamlls', {
 				capabilities = capabilities,
 				settings = {
 					yaml = {
@@ -160,11 +159,16 @@ return {
 				}
 			})
 
+			-- Enable common LSPs and LSPs that may be needed outside a project folder
+			vim.lsp.enable('nixd')
+			vim.lsp.enable('jsonls')
+			vim.lsp.enable('yamlls')
+
 			-- Autoformat code for LSP's that support it
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				pattern = {
-					"*.gleam",
-					"*.rs",
+					'gleam',
+					'rust',
 				},
 				callback = function() vim.lsp.buf.format({}) end,
 			})

@@ -13,6 +13,7 @@ return {
 					'javascript', 'typescript', 'tsx',
 					'html', 'css',
 					'gleam', 'rust',
+					'diff'
 				},
 				highlight = { enable = true },
 			})
