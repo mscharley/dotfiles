@@ -115,14 +115,28 @@ return {
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						buffer = bufnr,
-						command = "EslintFixAll",
+						callback = function()
+							-- Imported from the upstream definition of the EslintFixAll command as it doesn't seem to be available
+							local eslint_lsp_client = vim.lsp.get_clients({ bufnr = bufnr, name = 'eslint' })[1]
+							if eslint_lsp_client == nil then
+								vim.notify("[lspconfig] ESLint LSP client was expected but not found", vim.log.levels.WARN)
+								return
+							end
+
+							eslint_lsp_client.request_sync('workspace/executeCommand', {
+								command = 'eslint.applyAllFixes',
+								arguments = {
+									{ uri = vim.uri_from_bufnr(bufnr), version = vim.lsp.util.buf_versions[bufnr] },
+								},
+							}, nil, bufnr)
+						end,
 					})
 				end,
 				settings = {
 					experimental = { useFlatConfig = #flatEslint > 0 },
 					rulesCustomizations = {
-						{ rule = "@stylistic/*", fixable = true, severity = "off" },
-						{ rule = "prettier/prettier", fixable = true, severity = "off" },
+						{ rule = '@stylistic/*', fixable = true, severity = "off" },
+						{ rule = 'prettier/prettier', fixable = true, severity = "off" },
 					},
 				},
 			})
