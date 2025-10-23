@@ -9,6 +9,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+	pattern = { '*.json' },
+	command = "set filetype=json5",
+})
+
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'gitcommit' },
 	callback = function()
