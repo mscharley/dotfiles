@@ -150,6 +150,7 @@ return {
 			})
 			vim.lsp.config('jsonls', {
 				capabilities = capabilities,
+				filetypes = { 'json', 'jsonc', 'json5' },
 				settings = {
 					json = {
 						schemas = require('schemastore').json.schemas(),
