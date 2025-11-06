@@ -487,6 +487,7 @@ local theme = lush(function(injected_functions)
 
 		-- json {{{
 		sym"@property.json" { Orange },
+		sym"@keyword.json5" { Orange },
 		-- }}}
 
 		-- toml {{{
