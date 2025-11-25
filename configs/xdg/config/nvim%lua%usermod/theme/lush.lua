@@ -349,6 +349,7 @@ local theme = lush(function(injected_functions)
 		sym"@include"                  { TSInclude },
 		sym"@keyword"                  { TSKeyword },
 		sym"@keyword.conditional"      { TSConditional },
+		sym"@keyword.coroutine"        { TSKeywordReturn },
 		sym"@keyword.debug"            { TSDebug },
 		sym"@keyword.directive"        { TSPreProc },
 		sym"@keyword.directive.define" { TSDefine },
