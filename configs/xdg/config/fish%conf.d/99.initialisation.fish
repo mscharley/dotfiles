@@ -35,28 +35,6 @@ if test (uname -s) = "Linux"
 	function init-desktop
 		init-terminal
 
-		echo ">> $(set_color green)Ensuring GUI applications...$(set_color reset)"
-		if test -e /usr/sbin/transactional-update
-			if ! test -e /etc/zypp/repos.d/M17N_fonts.repo
-				sudo zypper ar -g -r https://download.opensuse.org/repositories/M17N:/fonts/openSUSE_Tumbleweed/M17N:fonts.repo
-			end
-			sudo transactional-update -d --continue pkg install \
-				kitty wl-clipboard kdeconnect-kde \
-				qsyncthingtray syncthing \
-				fira-code-fonts symbols-only-nerd-fonts rubjo-victormono-fonts \
-				google-noto-fonts google-noto-sans-cjk-fonts google-noto-coloremoji-fonts
-		else if type zypper &> /dev/null
-			if ! test -e /etc/zypp/repos.d/M17N_fonts.repo
-				sudo zypper ar -g -r https://download.opensuse.org/repositories/M17N:/fonts/openSUSE_Tumbleweed/M17N:fonts.repo
-			end
-			sudo zypper install \
-				kitty wl-clipboard kdeconnect-kde \
-				qsyncthingtray syncthing \
-				fira-code-fonts symbols-only-nerd-fonts rubjo-victormono-fonts \
-				google-noto-fonts google-noto-sans-cjk-fonts google-noto-coloremoji-fonts
-		end
-		sudo -K
-
 		function ensure-flatpak
 			if ! flatpak info --user "$argv[1]" &> /dev/null
 				flatpak install --user -y "$argv[1]"
@@ -66,9 +44,7 @@ if test (uname -s) = "Linux"
 		echo ">> $(set_color green)Configuring Flatpak...$(set_color reset)"
 		flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 		ensure-flatpak com.github.tchx84.Flatseal
-		ensure-flatpak dev.deedles.Trayscale
 		ensure-flatpak com.github.zocker_160.SyncThingy
-		ensure-flatpak com.valvesoftware.Steam
 
 		init-syncthing
 	end
