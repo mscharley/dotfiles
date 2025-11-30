@@ -21,6 +21,8 @@ return {
 					markdown = prettier,
 					toml = prettier,
 					yaml = prettier,
+
+					rust = require('formatter.filetypes.rust').rustfmt,
 				},
 			})
 			vim.api.nvim_create_augroup("__formatter__", { clear = true })
