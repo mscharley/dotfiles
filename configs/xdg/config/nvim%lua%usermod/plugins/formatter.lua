@@ -4,7 +4,7 @@ return {
 		event = 'VimEnter',
 		config = function()
 			local prettier = {}
-			local prettierrc = vim.fs.find('.prettierrc', { path = "./", type = "file", upward = true })
+			local prettierrc = vim.fs.find('.prettierrc', { path = './', type = 'file', upward = true })
 			if #prettierrc > 0 then
 				table.insert(prettier, require('formatter.defaults.prettier'))
 			end
@@ -23,6 +23,13 @@ return {
 					yaml = prettier,
 
 					rust = require('formatter.filetypes.rust').rustfmt,
+					qml = {
+						{
+							exe = 'qmlformat',
+							args = { '-i' },
+							stdin = false,
+						}
+					},
 				},
 			})
 			vim.api.nvim_create_augroup("__formatter__", { clear = true })

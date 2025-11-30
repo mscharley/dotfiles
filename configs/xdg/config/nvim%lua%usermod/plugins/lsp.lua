@@ -97,8 +97,8 @@ return {
 			})
 
 			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+			vim.lsp.config('*', { capabilities = capabilities })
 			vim.lsp.config('eslint', {
-				capabilities = capabilities,
 				filetypes = {
 					'javascript',
 					'javascriptreact',
@@ -140,16 +140,12 @@ return {
 					},
 				},
 			})
-			vim.lsp.config('gleam', { capabilities = capabilities })
-			vim.lsp.config('nixd', { capabilities = capabilities })
 			vim.lsp.config('rust_analyzer', {
-				capabilities = capabilities,
 				on_attach = function(client, bufnr)
 					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 				end
 			})
 			vim.lsp.config('jsonls', {
-				capabilities = capabilities,
 				filetypes = { 'json', 'jsonc', 'json5' },
 				settings = {
 					json = {
@@ -159,7 +155,6 @@ return {
 				}
 			})
 			vim.lsp.config('yamlls', {
-				capabilities = capabilities,
 				settings = {
 					yaml = {
 						schemaStore = {
