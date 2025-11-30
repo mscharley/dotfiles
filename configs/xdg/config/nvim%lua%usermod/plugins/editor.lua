@@ -1,20 +1,20 @@
 return {
 	{
 		'tpope/vim-commentary',
-		event = 'BufReadPost',
+		event = 'VimEnter',
 		config = function()
 		end
 	},
 	{
 		'kylechui/nvim-surround',
 		version = '*',
-		event = 'BufReadPost',
+		event = 'VimEnter',
 		opts = {},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
 		version = '*',
-		event = "BufReadPost",
+		event = "VimEnter",
 		opts = {
 			numhl = true,
 		}

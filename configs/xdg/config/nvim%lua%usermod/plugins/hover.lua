@@ -3,7 +3,7 @@ vim.o.mousemoveevent = true
 return {
 	{
 		'lewis6991/hover.nvim',
-		event = 'BufReadPost',
+		event = 'VimEnter',
 		config = function()
 			require('hover').setup({
 				init = function()

@@ -1,7 +1,7 @@
 return {
 	{
 		'mhartington/formatter.nvim',
-		event = 'BufReadPost',
+		event = 'VimEnter',
 		config = function()
 			local prettier = {}
 			local prettierrc = vim.fs.find('.prettierrc', { path = "./", type = "file", upward = true })

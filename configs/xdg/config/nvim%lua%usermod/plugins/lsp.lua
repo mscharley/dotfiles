@@ -5,7 +5,7 @@ return {
 	},
 	{
 		'pmizio/typescript-tools.nvim',
-		event = 'BufReadPost',
+		event = 'VimEnter',
 		opts = {},
 	},
 	{
@@ -25,7 +25,7 @@ return {
 	},
 	{
 		'antosha417/nvim-lsp-file-operations',
-		event = 'BufReadPost',
+		event = 'VimEnter',
 		opts = {},
 	},
 	{
