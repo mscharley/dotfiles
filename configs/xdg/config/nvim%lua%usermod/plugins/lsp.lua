@@ -20,7 +20,7 @@ return {
 		dependencies = { 'williamboman/mason.nvim' },
 		event = 'VimEnter',
 		opts = {
-			ensure_installed = { 'eslint', 'rust_analyzer', 'lua_ls', 'jsonls', 'yamlls' },
+			ensure_installed = { 'eslint', 'lua_ls', 'jsonls', 'yamlls' },
 		}
 	},
 	{
@@ -183,7 +183,6 @@ return {
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				pattern = {
 					'gleam',
-					'rust',
 				},
 				callback = function() vim.lsp.buf.format({}) end,
 			})
