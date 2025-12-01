@@ -45,6 +45,7 @@ if test (uname -s) = "Linux"
 		flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 		ensure-flatpak com.github.tchx84.Flatseal
 		ensure-flatpak com.github.zocker_160.SyncThingy
+		ensure-flatpak io.github.giantpinkrobots.flatsweep
 
 		init-syncthing
 	end
