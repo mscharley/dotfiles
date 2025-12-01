@@ -1,21 +1,5 @@
 vim.g.barbar_auto_setup = false
 
--- Define a function to check the status and return the corresponding icon
-local function ollama_status()
-	local available = package.loaded["ollama"] and require("ollama").status ~= nil
-	if not available then
-		return "🦙⛔"
-	else
-		local status = require("ollama").status()
-
-		if status == "IDLE" then
-			return "🦙🟢"
-		elseif status == "WORKING" then
-			return "🦙🟡"
-		end
-	end
-end
-
 return {
 	{
 		'Shatur/neovim-session-manager',

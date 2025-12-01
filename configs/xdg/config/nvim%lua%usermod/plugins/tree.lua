@@ -65,9 +65,10 @@ return {
 				git_ignored = false,
 				git_clean = false,
 				custom = {
-					"^.git$",
-					"^.turbo$",
-					"node_modules$"
+					"^\\.git$",
+					"^\\.turbo$",
+					"^\\.direnv$",
+					"^node_modules$"
 				}
 			},
 			diagnostics = {
