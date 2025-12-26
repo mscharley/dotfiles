@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	callback = function()
 		vim.opt_local.colorcolumn = "73"
 		-- This hides the tabline, even if another tab is opened. This is usually ok for git commits.
-		vim.opt.showtabline = 0;
+		vim.opt.showtabline = 0
 	end,
 })
 
