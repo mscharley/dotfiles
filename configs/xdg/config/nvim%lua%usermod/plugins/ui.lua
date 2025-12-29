@@ -1,4 +1,3 @@
-vim.g.barbar_auto_setup = false
 
 return {
 	{
@@ -42,13 +41,20 @@ return {
 		},
 	},
 	{
+		'andrewferrier/wrapping.nvim',
+		config = function()
+			require('wrapping').setup{}
+		end
+	},
+	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = {
 			'sainnhe/sonokai',
+			'andrewferrier/wrapping.nvim',
 			'nvim-tree/nvim-web-devicons',
 		},
 		config = function()
-			require('lualine').setup{
+			require('lualine').setup {
 				options = {
 					icons_enabled = true,
 					theme = require'usermod.theme.lualine',
@@ -61,7 +67,7 @@ return {
 					lualine_a = { 'mode' },
 					lualine_b = { 'branch', 'diff' },
 					lualine_c = { 'lsp_status', 'filename', 'diagnostics' },
-					lualine_x = { 'encoding', 'fileformat', 'filetype' },
+					lualine_x = { 'encoding', require('usermod.lualine.fileformat'), 'filetype' },
 					lualine_y = { 'progress' },
 					lualine_z = { 'location' }
 				},
