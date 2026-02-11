@@ -43,8 +43,15 @@ return {
 	{
 		'andrewferrier/wrapping.nvim',
 		config = function()
-			require('wrapping').setup{}
-		end
+			require('wrapping').setup {
+				create_keymaps = false,
+			}
+		end,
+		keys = {
+			{ "[ow", function() require('wrapping').soft_wrap_mode() end, silent = true, desc = 'Switch to soft wrapping mode' },
+			{ "]ow", function() require('wrapping').hard_wrap_mode() end, silent = true, desc = 'Switch to hard wrapping mode' },
+			{ "<leader>ow", function() require('wrapping').toggle_wrap_mode() end, silent = true, desc = 'Toggle wrapping mode' },
+		},
 	},
 	{
 		'nvim-lualine/lualine.nvim',
