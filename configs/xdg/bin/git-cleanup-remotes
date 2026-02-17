@@ -4,7 +4,7 @@ require 'shellwords'
 puts "=> git fetch --all --prune"
 system 'git fetch --all --prune'
 localBranches = `git branch`.lines.map{|b| b[2..-1]}.map(&:chomp)
-mainBranch = localBranches.include?('main') ? 'main' : 'master'
+mainBranch = `git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`.map(&:chomp)
 
 branches = [
   *`git branch -r --merged #{mainBranch}`.lines.map(&:chomp).select{|b| !(b =~ /master$|main$|develop$|HEAD/)},

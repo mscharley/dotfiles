@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 setopt shwordsplit
 
-main=$(if git branch | grep '^[ *] main$' &> /dev/null; then echo "main"; else echo "master"; fi)
+main=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 potential_branches=$(git branch | grep -v "$main" | grep -v '^*')
 for b in $potential_branches; do
 	echo "Checking branch $b."
