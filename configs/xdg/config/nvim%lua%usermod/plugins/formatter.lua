@@ -35,7 +35,7 @@ return {
 			vim.api.nvim_create_augroup("__formatter__", { clear = true })
 			vim.api.nvim_create_autocmd("BufWritePost", {
 				group = "__formatter__",
-				command = ":FormatWriteLock",
+				command = ":FormatWrite",
 			})
 			-- Attempt to work around monorepos with node_modules at multiple levels and prettier installed in the root
 			vim.api.nvim_create_autocmd("BufEnter", {
