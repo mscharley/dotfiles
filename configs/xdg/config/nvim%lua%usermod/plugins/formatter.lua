@@ -22,7 +22,12 @@ return {
 					toml = prettier,
 					yaml = prettier,
 
-					rust = require('formatter.filetypes.rust').rustfmt,
+					rust = {
+						exe = "rustfmt",
+						-- Upstream defines a specific edition. You can specify this in rustfmt.toml if needed instead.
+						args = { },
+						stdin = true,
+					},
 					qml = {
 						{
 							exe = 'qmlformat',
