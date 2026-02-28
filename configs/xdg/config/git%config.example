@@ -11,6 +11,9 @@
 [commit]
   # Enable to sign all commits
   gpgsign = true
+[tag]
+  # Enable to sign all commits
+  gpgsign = true
 [core]
   eol = lf
   autocrlf = false
