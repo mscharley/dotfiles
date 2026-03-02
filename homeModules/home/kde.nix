@@ -23,12 +23,12 @@
 				notoSans = { family = "Noto Sans"; pointSize = 11; };
 				notoSerif = notoSans // { family = "Noto Serif"; };
 			in {
-				general = notoSerif;
-				fixedWidth = firaCode;
-				small = notoSerif // { pointSize = 8; };
-				toolbar = notoSans;
-				menu = notoSans;
-				windowTitle = notoSans // { pointSize = 12; };
+				general = lib.mkDefault notoSerif;
+				fixedWidth = lib.mkDefault firaCode;
+				small = lib.mkDefault (notoSerif // { pointSize = 8; });
+				toolbar = lib.mkDefault notoSans;
+				menu = lib.mkDefault notoSans;
+				windowTitle = lib.mkDefault (notoSans // { pointSize = 12; });
 			};
 
 			configFile = {

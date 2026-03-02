@@ -1,6 +1,6 @@
 { ... }:
 {
-	config.vim = {
+	vim = {
 		fzf-lua = {
 			enable = true;
 			profile = "fzf-native";

@@ -1,4 +1,4 @@
-{ lib, pkgs, desktop, ... }:
+{ lib, desktop, ... }:
 {
 	imports = [ ./kde.nix ];
 
@@ -17,9 +17,6 @@
 				"io.github.giantpinkrobots.flatsweep"
 				"io.podman_desktop.PodmanDesktop"
 				"io.github.dvlv.boxbuddyrs"
-
-				# Desktop apps
-				"com.github.zocker_160.SyncThingy"
 			];
 		};
 

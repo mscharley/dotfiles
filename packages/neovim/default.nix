@@ -2,9 +2,11 @@
 {
 	imports = [
 		./fzf-lua.nix
+		./nvim-tree.nix
+		./ui.nix
 	];
 
-	config.vim = {
+	vim = {
 		# Disable default aliases until we have a valid configuration worth using
 		viAlias = false;
 		vimAlias = false;
@@ -18,8 +20,45 @@
 			ack bat fd fzf ripgrep
 		];
 
+		globals = {
+			# Setup leader
+			mapleader = " ";
+			maplocalleader = "\\";
+		};
+
 		options = {
+			# Enable mouse support
 			mouse = "a";
+
+			# Styling
+			cursorline = true;
+			textwidth = 120;
+			wrapmargin = 0;
+			colorcolumn = "121";
+			number = true;
+			relativenumber = true;
+			numberwidth = 4;
+			termguicolors = true;
+			scrolloff = 5;
+			showtabline = 2; # 2 = always
+
+			# Folding options
+			foldmethod = "marker";
+
+			# Enable spell checking
+			spell = true;
+			spelllang = "en_au,cjk";
+
+			# Tab/whitespace configuration
+			# require('usermod.whitespace').hardtabs(4);
+			list = true;
+
+			# Backups
+			backup = true;
+
+			# Allow project-specific settings
+			exrc = true;
+			modelines = 20;
 		};
 
 		lsp.enable = true;
@@ -55,6 +94,7 @@
 			diff
 		];
 
+		binds.whichKey.enable = true;
 		git.enable = true;
 	};
 }

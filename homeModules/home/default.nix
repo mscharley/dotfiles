@@ -11,9 +11,6 @@
 		asdf-vm
 		most
 		starship
-
-		# Other apps
-		skrooge
 	];
 
 	programs.neovim = {
