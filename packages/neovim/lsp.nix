@@ -7,7 +7,7 @@ in {
 			setupOpts = {
 				enable = false;
 				severity = {
-					spellbad   = "HINT";
+					spellbad   = "WARN";
 					spellrare  = "HINT";
 					spellcap   = "HINT";
 					spelllocal = "HINT";

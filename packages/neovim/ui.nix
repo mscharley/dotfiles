@@ -3,8 +3,8 @@
 	inherit (lib.nvim.lua) toLuaObject;
 in {
 	imports = [
-		./nvim-tree.nix
-		./theme.nix
+		./ui/nvim-tree.nix
+		./ui/theme.nix
 	];
 
 	vim = {
@@ -71,6 +71,12 @@ in {
 			setupOpts = {
 				autoload_mode = mkLuaInline '' { sm.AutoloadMode.GitSession, sm.AutoloadMode.CurrentDir } '';
 				autosave_only_in_session = true;
+			};
+			mappings = {
+				deleteSession = null;
+				loadLastSession = null;
+				loadSession = null;
+				saveCurrentSession = null;
 			};
 		};
 
