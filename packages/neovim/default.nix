@@ -30,6 +30,8 @@ in {
 			mapleader = " ";
 			maplocalleader = "\\";
 		};
+		clipboard.enable = true;
+		clipboard.providers.wl-copy.enable = true;
 
 		options = {
 			# Enable mouse support
