@@ -69,6 +69,7 @@ in {
 
 		languages = {
 			enableTreesitter = true;
+			enableDAP = true;
 
 			# Enable Nix support since we're clearly a nix user...
 			nix.enable = true;
@@ -76,6 +77,7 @@ in {
 			# Markup file support
 			html.enable = true;
 			markdown.enable = true;
+			tailwind.enable = true;
 
 			# Full language support
 			gleam.enable = true;

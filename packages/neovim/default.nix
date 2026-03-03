@@ -2,6 +2,7 @@
 	inherit (lib.generators) mkLuaInline;
 in {
 	imports = [
+		./dap.nix
 		./fzf-lua.nix
 		./lsp.nix
 		./ui.nix
@@ -15,9 +16,6 @@ in {
 
 		withNodeJs = true;
 		extraPackages = with pkgs; [
-			# LSP packages
-			vscode-js-debug
-
 			# Other helper utilities used by plugins
 			ack bat fd fzf ripgrep
 		];
@@ -52,10 +50,6 @@ in {
 			# Folding options
 			foldmethod = "marker";
 
-			# Enable spell checking
-			spell = true;
-			spelllang = "en_au,en_us,cjk";
-
 			# Tab/whitespace configuration
 			list = true;
 
@@ -70,6 +64,11 @@ in {
 			# Title
 			title = true;
 			titlestring = "%{luaeval('require(\"title\").generate()')}";
+		};
+		spellcheck = {
+			enable = true;
+			languages = [ "en" "cjk" ];
+			programmingWordlist.enable = true;
 		};
 		luaConfigPost = "require('whitespace').hardtabs(4)";
 
