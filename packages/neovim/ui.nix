@@ -3,6 +3,7 @@
 	inherit (lib.nvim.lua) toLuaObject;
 in {
 	imports = [
+		./nvim-tree.nix
 		./theme.nix
 	];
 
@@ -37,6 +38,33 @@ in {
 			package = pkgs.vimPlugins.barbar-nvim;
 			setup = "require('barbar').setup(${toLuaObject setupOpts})";
 		};
+		extraPlugins.wrapping = {
+			package = pkgs.vimPlugins.wrapping-nvim;
+			setup = "require('wrapping').setup { create_keymaps = false }";
+		};
+		keymaps = [
+			{
+				desc = "Switch to soft wrapping mode";
+				key = "[ow";
+				mode = "n";
+				lua = true;
+				action = "function() require('wrapping').soft_wrap_mode() end";
+			}
+			{
+				desc = "Switch to hard wrapping mode";
+				key = "]ow";
+				mode = "n";
+				lua = true;
+				action = "function() require('wrapping').hard_wrap_mode() end";
+			}
+			{
+				desc = "Toggle wrapping mode";
+				key = "<leader>ow";
+				mode = "n";
+				lua = true;
+				action = "function() require('wrapping').toggle_wrap_mode() end";
+			}
+		];
 
 		session.nvim-session-manager = {
 			enable = true;

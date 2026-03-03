@@ -3,8 +3,9 @@
 in {
 	imports = [
 		./fzf-lua.nix
-		./nvim-tree.nix
+		./lsp.nix
 		./ui.nix
+		./utility.nix
 	];
 
 	vim = {
@@ -22,9 +23,7 @@ in {
 		];
 
 		additionalRuntimePaths = [ ./runtime ];
-		extraPlugins.plenary = {
-			package = pkgs.vimPlugins.plenary-nvim;
-		};
+		startPlugins = [ "plenary-nvim" ];
 
 		globals = {
 			# Setup leader
@@ -53,10 +52,9 @@ in {
 
 			# Enable spell checking
 			spell = true;
-			spelllang = "en_au,cjk";
+			spelllang = "en_au,en_us,cjk";
 
 			# Tab/whitespace configuration
-			# require('usermod.whitespace').hardtabs(4);
 			list = true;
 
 			# Backups
@@ -66,40 +64,12 @@ in {
 			# Allow project-specific settings
 			exrc = true;
 			modelines = 20;
+
+			# Title
+			title = true;
+			titlestring = "%{luaeval('require(\"title\").generate()')}";
 		};
-
-		lsp.enable = true;
-		languages = {
-			enableTreesitter = true;
-
-			# Enable Nix support since we're clearly a nix user...
-			nix.enable = true;
-
-			# Markup file support
-			html.enable = true;
-			markdown.enable = true;
-
-			# Full language support
-			gleam.enable = true;
-			lua.enable = true;
-			ruby.enable = true;
-			rust.enable = true;
-			ts.enable = true;
-
-			# Shell script support
-			bash.enable = true;
-		};
-
-		# Prefer using the enable option under languages if there is one available
-		treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-			yaml json json5 toml
-			fish
-			vim vimdoc
-			graphql
-			perl
-			css
-			diff
-		];
+		luaConfigPost = "require('whitespace').hardtabs(4)";
 
 		binds.whichKey.enable = true;
 		git.enable = true;
