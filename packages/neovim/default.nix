@@ -1,5 +1,6 @@
-{ pkgs, ... }:
-{
+{ lib, pkgs, ... }: let
+	inherit (lib.generators) mkLuaInline;
+in {
 	imports = [
 		./fzf-lua.nix
 		./nvim-tree.nix
@@ -19,6 +20,11 @@
 			# Other helper utilities used by plugins
 			ack bat fd fzf ripgrep
 		];
+
+		additionalRuntimePaths = [ ./runtime ];
+		extraPlugins.plenary = {
+			package = pkgs.vimPlugins.plenary-nvim;
+		};
 
 		globals = {
 			# Setup leader
@@ -55,6 +61,7 @@
 
 			# Backups
 			backup = true;
+			backupdir = mkLuaInline "vim.env.XDG_STATE_HOME .. '/nvim/backup'";
 
 			# Allow project-specific settings
 			exrc = true;

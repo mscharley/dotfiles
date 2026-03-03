@@ -30,6 +30,7 @@
 		perSystem = { pkgs, ... }: {
 			packages.neovim = (inputs.nvf.lib.neovimConfiguration {
 				inherit pkgs;
+				extraSpecialArgs = { pkg-inputs = inputs; };
 				modules = [ ./packages/neovim ];
 			}).neovim;
 		};
