@@ -41,6 +41,7 @@
   ff = pull --ff-only
   ff-merge = merge --ff-only
   recommit = commit --amend
+  resign = commit --amend --gpg-sign
   workdir-or-cwd = !echo $PWD
   workdir = rev-parse --show-toplevel
   prune = fetch --all --prune
