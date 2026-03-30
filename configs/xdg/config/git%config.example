@@ -12,7 +12,7 @@
   # Enable to sign all commits
   gpgsign = true
 [tag]
-  # Enable to sign all commits
+  # Enable to sign all tags
   gpgsign = true
 [core]
   eol = lf

@@ -2,7 +2,7 @@
 setopt shwordsplit
 
 main=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
-potential_branches=$(git branch | grep -v "$main" | grep -v '^*')
+potential_branches=$(git branch | grep -v -Ev '^. '"$main"'$' | grep -v '^*')
 for b in $potential_branches; do
 	echo "Checking branch $b."
 	# Smartly check whether the branches changes are on main rather than trust git's simple merge check. This also catches rebases.
