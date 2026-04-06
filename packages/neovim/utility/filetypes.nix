@@ -58,6 +58,16 @@ in {
 		}
 		{
 			event = [ "FileType" ];
+			pattern = [ "nix" ];
+			callback = mkLuaInline /* lua */ ''
+				function()
+					-- Rescripts built-in formatter insists on soft tabs
+					require("whitespace").softtabs(2, true)
+				end
+			'';
+		}
+		{
+			event = [ "FileType" ];
 			pattern = [ "rescript" ];
 			callback = mkLuaInline /* lua */ ''
 				function()
