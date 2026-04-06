@@ -29,6 +29,7 @@ in {
 
 		lsp = {
 			enable = true;
+			lspconfig.enable = true;
 			formatOnSave = true;
 
 			mappings = {
@@ -97,9 +98,11 @@ in {
 			fish
 			vim vimdoc
 			graphql
-			perl
 			css
 			diff
+
+			rescript
+			perl
 		];
 	};
 }
