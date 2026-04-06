@@ -13,19 +13,6 @@
 		starship
 	];
 
-	programs.neovim = {
-		enable = true;
-		extraPackages = with pkgs; [
-			ack bat fd fzf ripgrep
-
-			# Some neovim packages need a global version of nodejs, not via asdf
-			nodejs
-
-			# Other packages used indirectly
-			vscode-js-debug nixd
-		];
-	};
-
 	# This value determines the Home Manager release that your
 	# configuration is compatible with. This helps avoid breakage
 	# when a new Home Manager release introduces backwards
