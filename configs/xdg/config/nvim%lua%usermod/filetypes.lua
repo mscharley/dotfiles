@@ -42,6 +42,14 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'rescript' },
+	callback = function()
+		-- Rescripts built-in formatter insists on soft tabs
+		whitespace.softtabs(2, true)
+	end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'rust' },
 	callback = function()
 		whitespace.hardtabs(4, true)
