@@ -1,14 +1,14 @@
 { ... }:
 {
-	imports = [
-		./utility/filetypes.nix
-		./utility/keybindings.nix
-	];
+  imports = [
+    ./utility/filetypes.nix
+    ./utility/keybindings.nix
+  ];
 
-	vim = {
-		utility.surround = {
-			enable = true;
-			useVendoredKeybindings = false;
-		};
-	};
+  vim = {
+    utility.surround = {
+      enable = true;
+      useVendoredKeybindings = false;
+    };
+  };
 }
