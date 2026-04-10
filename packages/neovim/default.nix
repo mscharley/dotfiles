@@ -4,6 +4,7 @@ let
 in
 {
   imports = [
+    ./completion.nix
     ./dap.nix
     ./fzf-lua.nix
     ./lsp.nix

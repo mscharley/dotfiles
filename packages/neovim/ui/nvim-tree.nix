@@ -29,6 +29,7 @@ in
         highlight_opened_files = "name";
         icons = {
           git_placement = "after";
+          show.git = true;
           glyphs = {
             git = {
               # don't call out staged changes explicitly
@@ -112,4 +113,14 @@ in
       };
     };
   };
+
+  vim.lazy.plugins.nvim-tree-lua.beforeSetup = ''
+    local original_setup = require('nvim-tree').setup
+    require('nvim-tree').setup = function(opts)
+      opts = opts or {}
+      opts.filters = opts.filters or {}
+      opts.filters.custom = { "^\\.git$", "^\\.turbo$", "^\\.direnv$", "^node_modules$" }
+      original_setup(opts)
+    end
+  '';
 }
