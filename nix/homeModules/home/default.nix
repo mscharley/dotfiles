@@ -6,6 +6,7 @@
 	home.preferXdgDirectories = true;
 
 	home.packages = with pkgs; [
+		dotfiles.git-extensions
 		# Terminal apps
 		jq yq-go
 		asdf-vm

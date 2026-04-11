@@ -1,32 +1,55 @@
-#!/usr/bin/env ruby
-require 'shellwords'
+#!/usr/bin/env bash
 
-puts "=> git fetch --all --prune"
-system 'git fetch --all --prune'
-localBranches = `git branch`.lines.map{|b| b[2..-1]}.map(&:chomp)
-mainBranch = `git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`.map(&:chomp)
+echo "=> git fetch --all --prune"
+git fetch --all --prune
 
-branches = [
-  *`git branch -r --merged #{mainBranch}`.lines.map(&:chomp).select{|b| !(b =~ /master$|main$|develop$|HEAD/)},
-  *`git branch -r`.lines.map(&:chomp).select{|b| b =~ /greenkeeper\//}
-].map{|b| b[2..-1].split('/', 2)}
-remotes = branches.reduce(Hash.new{|h, k| h[k] = []}) {|h, b| h[b[0]].push b[1];h }
+main_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 
-remotes.each do |remote, branches|
-  next if `git config --get remote.#{Shellwords.escape remote}.skipcleanup`.chomp == 'true'
-  print "=> Cleaning remote '#{remote}', continue? [y,n,s] "
-  input = STDIN.gets.chomp
+# Collect remote branches merged into main (excluding permanent branches) and greenkeeper branches
+mapfile -t branches < <(
+  {
+    git branch -r --merged "$main_branch" | grep -Ev 'master$|main$|develop$|HEAD'
+    git branch -r | grep 'greenkeeper/'
+  } | sed 's/^[[:space:]]*//' | sort -u
+)
 
-  if input =~ /^y(?:es)?$/i
-    puts "=> git push --no-verify #{remote} --delete #{branches.join(' ')}"
-    system 'git', 'push', '--no-verify', remote, '--delete', *branches
-  elsif input =~ /^no?$/i
-    puts "=> Skipped."
-  elsif input =~ /^s(?:kip)?$/i
-    puts "=> git config remote.#{remote}.skipcleanup true"
-    system 'git', 'config', "remote.#{remote}.skipcleanup", 'true'
-    puts "=> Skipped (permanent)."
+# Group branch names by remote
+declare -A remote_branches
+for branch in "${branches[@]}"; do
+  remote="${branch%%/*}"
+  name="${branch#*/}"
+  [[ -z "$remote" || -z "$name" ]] && continue
+  if [[ -v "remote_branches[$remote]" ]]; then
+    remote_branches["$remote"]+=" $name"
   else
-    redo
-  end
-end
+    remote_branches["$remote"]="$name"
+  fi
+done
+
+for remote in "${!remote_branches[@]}"; do
+  skip=$(git config --get "remote.${remote}.skipcleanup" 2>/dev/null || true)
+  [[ "$skip" == "true" ]] && continue
+
+  read -ra branches_to_delete <<< "${remote_branches[$remote]}"
+
+  while true; do
+    read -rp "=> Cleaning remote '$remote', continue? [y,n,s] " input
+    case "${input,,}" in
+      y|yes)
+        echo "=> git push --no-verify $remote --delete ${branches_to_delete[*]}"
+        git push --no-verify "$remote" --delete "${branches_to_delete[@]}"
+        break
+        ;;
+      n|no)
+        echo "=> Skipped."
+        break
+        ;;
+      s|skip)
+        echo "=> git config remote.${remote}.skipcleanup true"
+        git config "remote.${remote}.skipcleanup" 'true'
+        echo "=> Skipped (permanent)."
+        break
+        ;;
+    esac
+  done
+done

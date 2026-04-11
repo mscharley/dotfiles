@@ -20,6 +20,9 @@
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
       { ... }:
+      let
+        overlay = import ./nix/overlays/default.nix inputs;
+      in
       {
         imports = [
           inputs.home-manager.flakeModules.home-manager
@@ -35,20 +38,20 @@
         flake =
           { ... }:
           {
-            homeModules.home = ./homeModules/home;
+            homeModules.home = ./nix/homeModules/home;
+            overlays.default = overlay;
           };
 
         perSystem =
-          { pkgs, ... }:
+          { system, ... }:
+          let
+            pkgs = import inputs.nixpkgs {
+              inherit system;
+              overlays = [ overlay ];
+            };
+          in
           {
-            packages.neovim =
-              (inputs.nvf.lib.neovimConfiguration {
-                inherit pkgs;
-                extraSpecialArgs = {
-                  pkg-inputs = inputs;
-                };
-                modules = [ ./packages/neovim ];
-              }).neovim;
+            packages = pkgs.dotfiles;
           };
       }
     );
