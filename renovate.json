@@ -1,0 +1,10 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"github>mscharley/renovate-config",
+		":pinDependencies"
+	],
+	"nix": {
+		"enabled": true
+	}
+}
