@@ -1,8 +1,8 @@
 { ... }:
 {
   imports = [
-    ./utility/filetypes.nix
-    ./utility/keybindings.nix
+    ./filetypes.nix
+    ./keybindings.nix
   ];
 
   vim = {

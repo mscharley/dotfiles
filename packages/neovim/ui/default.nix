@@ -5,8 +5,8 @@ let
 in
 {
   imports = [
-    ./ui/nvim-tree.nix
-    ./ui/theme.nix
+    ./nvim-tree.nix
+    ./theme.nix
   ];
 
   vim = {

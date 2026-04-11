@@ -8,14 +8,14 @@ in
     ./dap.nix
     ./fzf-lua.nix
     ./lsp.nix
-    ./ui.nix
-    ./utility.nix
+    ./ui
+    ./utility
   ];
 
   vim = {
     # Disable default aliases until we have a valid configuration worth using
     viAlias = false;
-    vimAlias = false;
+    vimAlias = true;
 
     withNodeJs = true;
     extraPackages = with pkgs; [
