@@ -122,7 +122,29 @@ in
     require('nvim-tree').setup = function(opts)
       opts = opts or {}
       opts.filters = opts.filters or {}
-      opts.filters.custom = { "^\\.git$", "^\\.turbo$", "^\\.direnv$", "^node_modules$" }
+      opts.filters.custom = function(path)
+        local name = vim.fn.fnamemodify(path, ":t")
+        local dir = vim.fn.fnamemodify(path, ":h")
+        local hidden_patterns = { "^%.git$", "^%.turbo$", "^%.direnv$", "^node_modules$" }
+        for _, pattern in ipairs(hidden_patterns) do
+          if name:match(pattern) then return true end
+        end
+        -- Hide .js if a corresponding .ts exists alongside it
+        if name:match("%.js$") then
+          local ts_name = name:gsub("%.js$", ".ts")
+          if vim.fn.filereadable(dir .. "/" .. ts_name) == 1 then
+            return true
+          end
+        end
+        -- Hide .res.mjs if the corresponding .res exists alongside it
+        if name:match("%.res%.mjs$") then
+          local res_name = name:gsub("%.mjs$", "")
+          if vim.fn.filereadable(dir .. "/" .. res_name) == 1 then
+            return true
+          end
+        end
+        return false
+      end
       original_setup(opts)
     end
   '';
