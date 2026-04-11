@@ -35,3 +35,5 @@ atlassian-ide-plugin.xml
 .versions.conf
 .kateproject
 .kateproject.d
+
+**/.claude/settings.local.json
