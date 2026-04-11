@@ -7,8 +7,8 @@ in
     enable = true;
     openOnSetup = false;
     mappings = {
-      findFile = "<leader>s";
-      toggle = "<leader>S";
+      findFile = null;
+      toggle = "<leader>s";
       focus = null;
       refresh = null;
     };
@@ -55,7 +55,7 @@ in
           };
         };
       };
-      on_attach = mkLuaInline ''
+      on_attach = mkLuaInline /* lua */ ''
         function(bufnr)
           local api = require('nvim-tree.api')
           local function opts(desc)
@@ -76,19 +76,22 @@ in
 
           -- Automatically open file on creation
           api.events.subscribe(api.events.Event.FileCreated, function(file)
-            vim.cmd("edit " .. vim.fn.fnameescape(file.fname))
+            api.tree.close()
+            vim.schedule(function()
+              vim.cmd("edit " .. vim.fn.fnameescape(file.fname))
+            end)
           end)
         end
       '';
       view = {
-        width = mkLuaInline ''
+        width = mkLuaInline /* lua */ ''
           function()
             return math.floor(vim.opt.columns:get() * 0.5)
           end
         '';
         float = {
           enable = true;
-          open_win_config = mkLuaInline ''
+          open_win_config = mkLuaInline /* lua */ ''
             function()
               local screen_w = vim.opt.columns:get()
               local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
@@ -114,7 +117,7 @@ in
     };
   };
 
-  vim.lazy.plugins.nvim-tree-lua.beforeSetup = ''
+  vim.lazy.plugins.nvim-tree-lua.beforeSetup = /* lua */ ''
     local original_setup = require('nvim-tree').setup
     require('nvim-tree').setup = function(opts)
       opts = opts or {}
