@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+export PATH=@coreutils@/bin:@git@/bin:@sed@/bin
+
+main=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+git checkout $main

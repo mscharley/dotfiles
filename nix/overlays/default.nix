@@ -1,8 +1,6 @@
 inputs: final: _: {
   dotfiles = {
-    git-extensions = final.callPackage ../packages/git-extensions {
-      rev = inputs.self.shortRev or inputs.self.dirtyShortRev or "unknown";
-    };
+    git-extensions = final.callPackage ../packages/git-extensions { };
     neovim =
       (inputs.nvf.lib.neovimConfiguration {
         pkgs = final;

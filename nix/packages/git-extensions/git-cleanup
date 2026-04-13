@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+export PATH=@coreutils@/bin:@git@/bin:@grep@/bin:@sed@/bin
+
+main=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+potential_branches=$(git branch | grep -v -Ev '^. '"$main"'$' | grep -v '^\*')
+for b in $potential_branches; do
+	echo "Checking branch $b."
+	# Smartly check whether the branches changes are on main rather than trust git's simple merge check. This also catches rebases.
+	commits=$(git range-diff --no-patch --right-only $main...$b | grep -Ev '^[[:blank:]]*[[:digit:]]+:[[:blank:]]+[0-9a-f]+[[:blank:]]+=')
+	if [[ $(echo -n "$commits" | wc -l) -eq 0 ]]; then
+		git branch -vD "$b"
+	else
+		echo "Found unmerged commits:"
+		echo "$commits"
+	fi
+done
