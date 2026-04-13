@@ -7,6 +7,7 @@ in
     ./completion.nix
     ./dap.nix
     ./fzf-lua.nix
+    ./lint.nix
     ./lsp.nix
     ./ui
     ./utility
