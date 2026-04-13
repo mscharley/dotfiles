@@ -78,7 +78,9 @@ in
         "en"
         "cjk"
       ];
-      programmingWordlist.enable = true;
+      ignoredFiletypes = [
+        "help"
+      ];
     };
     luaConfigPost = "require('whitespace').hardtabs(4)";
 

@@ -57,7 +57,6 @@ in
       callback = mkLuaInline /* lua */ ''
         function()
           vim.opt_local.colorcolumn = ""
-          vim.opt_local.spell = false
         end
       '';
     }
