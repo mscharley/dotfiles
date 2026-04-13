@@ -91,6 +91,10 @@ in
       ruby.enable = true;
       rust.enable = true;
       ts.enable = true;
+      ts.extraDiagnostics = {
+        enable = true;
+        types = [ "eslint_d" ];
+      };
 
       # Shell script support
       bash.enable = true;
