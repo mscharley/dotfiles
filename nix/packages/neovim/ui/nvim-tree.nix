@@ -21,6 +21,10 @@ in
         show_on_dirs = false;
         show_on_open_dirs = true;
       };
+      update_focused_file = {
+        enable = true;
+        update_root = false;
+      };
       filters = {
         git_ignored = false;
         git_clean = false;
@@ -136,9 +140,15 @@ in
             return true
           end
         end
-        -- Hide .res.mjs if the corresponding .res exists alongside it
+        -- Hide generated rescript outputs if the corresponding .res exists alongside it
         if name:match("%.res%.mjs$") then
           local res_name = name:gsub("%.mjs$", "")
+          if vim.fn.filereadable(dir .. "/" .. res_name) == 1 then
+            return true
+          end
+        end
+        if name:match("%.gen%.tsx?$") then
+          local res_name = name:gsub("%.gen%.tsx?$", ".res")
           if vim.fn.filereadable(dir .. "/" .. res_name) == 1 then
             return true
           end
