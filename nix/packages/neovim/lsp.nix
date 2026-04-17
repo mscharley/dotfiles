@@ -5,6 +5,11 @@ let
 in
 {
   vim = {
+    extraPlugins.schemastore = {
+      package = pkgs.vimPlugins.SchemaStore-nvim;
+      setup = "";
+    };
+
     extraPlugins.spellwarn =
       let
         setupOpts = {
@@ -35,6 +40,24 @@ in
       enable = true;
       lspconfig.enable = true;
       formatOnSave = true;
+
+      servers."yamlls" = {
+        settings.yaml = {
+          schemaStore = {
+            enable = false;
+            url = "";
+          };
+          schemas = mkLuaInline "require('schemastore').yaml.schemas()";
+        };
+      };
+
+      servers."jsonls" = {
+        filetypes = [ "json" "jsonc" "json5" ];
+        settings.json = {
+          schemas = mkLuaInline "require('schemastore').json.schemas()";
+          validate.enable = true;
+        };
+      };
 
       mappings = {
         addWorkspaceFolder = null;
@@ -98,6 +121,10 @@ in
 
       # Shell script support
       bash.enable = true;
+
+      # Data format support
+      yaml.enable = true;
+      json.enable = true;
     };
 
     # Prefer using the enable option under languages if there is one available
