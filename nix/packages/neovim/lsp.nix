@@ -41,6 +41,10 @@ in
       lspconfig.enable = true;
       formatOnSave = true;
 
+      presets = {
+        tailwindcss-language-server.enable = true;
+      };
+
       servers."yamlls" = {
         settings.yaml = {
           schemaStore = {
@@ -52,7 +56,11 @@ in
       };
 
       servers."jsonls" = {
-        filetypes = [ "json" "jsonc" "json5" ];
+        filetypes = [
+          "json"
+          "jsonc"
+          "json5"
+        ];
         settings.json = {
           schemas = mkLuaInline "require('schemastore').json.schemas()";
           validate.enable = true;
@@ -105,7 +113,6 @@ in
       # Markup file support
       html.enable = true;
       markdown.enable = true;
-      tailwind.enable = true;
 
       # Full language support
       gleam.enable = true;
@@ -113,8 +120,8 @@ in
       lua.lsp.lazydev.enable = true;
       ruby.enable = true;
       rust.enable = true;
-      ts.enable = true;
-      ts.extraDiagnostics = {
+      typescript.enable = true;
+      typescript.extraDiagnostics = {
         enable = true;
         types = [ "eslint_d" ];
       };
