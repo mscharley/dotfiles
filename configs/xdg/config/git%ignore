@@ -37,3 +37,4 @@ atlassian-ide-plugin.xml
 .kateproject.d
 
 **/.claude/settings.local.json
+**/.claude/scheduled_tasks.lock
