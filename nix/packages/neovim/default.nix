@@ -26,6 +26,9 @@ in
       fd
       fzf
       ripgrep
+
+      # LSPs
+      yaml-language-server
     ];
 
     additionalRuntimePaths = [ ./runtime ];
