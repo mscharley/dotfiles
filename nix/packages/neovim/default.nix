@@ -29,6 +29,7 @@ in
 
       # LSPs
       yaml-language-server
+      vscode-json-languageserver
     ];
 
     additionalRuntimePaths = [ ./runtime ];
