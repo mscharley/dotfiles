@@ -147,8 +147,9 @@ in
       css
       diff
 
-      rescript
       perl
+      rescript
+      rhai
     ];
   };
 }
