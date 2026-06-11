@@ -5,6 +5,11 @@ let
 in
 {
   vim = {
+    extraPlugins.rhai = {
+      package = pkgs.vimPlugins.vim-rhai;
+      setup = "";
+    };
+
     extraPlugins.schemastore = {
       package = pkgs.vimPlugins.SchemaStore-nvim;
       setup = "";
@@ -149,7 +154,6 @@ in
 
       perl
       rescript
-      rhai
     ];
   };
 }
