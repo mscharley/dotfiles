@@ -38,3 +38,4 @@ atlassian-ide-plugin.xml
 
 **/.claude/settings.local.json
 **/.claude/scheduled_tasks.lock
+*.local.md
