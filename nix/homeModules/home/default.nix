@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-	imports = [ ./desktop.nix ];
-
 	home.shell.enableShellIntegration = true;
 	home.preferXdgDirectories = true;
 

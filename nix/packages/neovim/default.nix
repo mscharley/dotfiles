@@ -41,7 +41,9 @@ in
       maplocalleader = "\\";
     };
     clipboard.enable = true;
-    clipboard.providers.wl-copy.enable = true;
+    # wl-clipboard is Linux-only (meta.platforms = linux); pulling it in unconditionally
+    # breaks evaluation of packages.aarch64-darwin.neovim.
+    clipboard.providers.wl-copy.enable = pkgs.stdenv.isLinux;
 
     options = {
       # Enable mouse support
@@ -67,7 +69,7 @@ in
 
       # Backups
       backup = true;
-      backupdir = mkLuaInline "vim.env.XDG_STATE_HOME .. '/nvim/backup'";
+      backupdir = mkLuaInline "vim.fn.stdpath('state') .. '/backup'";
 
       # Allow project-specific settings
       exrc = true;

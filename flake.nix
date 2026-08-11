@@ -39,6 +39,7 @@
           { ... }:
           {
             homeModules.home = ./nix/homeModules/home;
+            homeModules.linux-desktop = ./nix/homeModules/linux-desktop;
             overlays.default = overlay;
           };
 
