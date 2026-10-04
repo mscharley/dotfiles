@@ -43,7 +43,7 @@ in
     clipboard.enable = true;
     # wl-clipboard is Linux-only (meta.platforms = linux); pulling it in unconditionally
     # breaks evaluation of packages.aarch64-darwin.neovim.
-    clipboard.providers.wl-copy.enable = pkgs.stdenv.isLinux;
+    clipboard.providers.wl-copy.enable = pkgs.stdenv.hostPlatform.isLinux;
 
     options = {
       # Enable mouse support
