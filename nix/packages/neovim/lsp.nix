@@ -122,7 +122,7 @@ in
       # Full language support
       gleam.enable = true;
       lua.enable = true;
-      lua.lsp.lazydev.enable = true;
+      lua.extensions.lazydev.enable = true;
       ruby.enable = true;
       rust.enable = true;
       typescript.enable = true;

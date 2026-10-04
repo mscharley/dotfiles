@@ -95,44 +95,48 @@ in
 
     statusline.lualine = {
       enable = true;
-      icons.enable = true;
-      componentSeparator = {
-        left = "";
-        right = "";
-      };
-      sectionSeparator = {
-        left = "";
-        right = "";
-      };
-      globalStatus = true;
-      ignoreFocus = [ "help" ];
+      setupOpts = {
+        options = {
+          icons_enabled = true;
+          component_separators = {
+            left = "";
+            right = "";
+          };
+          section_separators = {
+            left = "";
+            right = "";
+          };
+          globalstatus = true;
+          ignore_focus = [ "help" ];
+        };
 
-      activeSection = {
-        a = [ "'mode'" ];
-        b = [
-          "'branch'"
-          "'diff'"
-        ];
-        c = [
-          "'lsp_status'"
-          "'filename'"
-          "'diagnostics'"
-        ];
-        x = [
-          "'encoding'" # "require('usermod.lualine.fileformat')"
-          "'filetype'"
-        ];
-        y = [ "'progress'" ];
-        z = [ "'location'" ];
-      };
+        sections = {
+          lualine_a = [ "mode" ];
+          lualine_b = [
+            "branch"
+            "diff"
+          ];
+          lualine_c = [
+            "lsp_status"
+            "filename"
+            "diagnostics"
+          ];
+          lualine_x = [
+            "encoding" # "require('usermod.lualine.fileformat')"
+            "filetype"
+          ];
+          lualine_y = [ "progress" ];
+          lualine_z = [ "location" ];
+        };
 
-      inactiveSection = {
-        a = [ ];
-        b = [ ];
-        c = [ "'filename'" ];
-        x = [ "'location'" ];
-        y = [ ];
-        z = [ ];
+        inactive_sections = {
+          lualine_a = [ ];
+          lualine_b = [ ];
+          lualine_c = [ "filename" ];
+          lualine_x = [ "location" ];
+          lualine_y = [ ];
+          lualine_z = [ ];
+        };
       };
     };
   };
