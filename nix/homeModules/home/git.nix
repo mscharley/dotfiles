@@ -99,7 +99,13 @@
 	programs.delta = {
 		enable = true;
 		enableGitIntegration = true;
-		options.navigate = true;
+		options = {
+			navigate = true;
+			# In `--color-only` mode (interactive.diffFilter, ie. `git add -p`) delta passes tabs through
+			# untouched, and terminals don't paint background colour across the cells a tab skips. Expanding
+			# them explicitly keeps the +/- highlighting continuous in hard-tab files.
+			tabs = 4;
+		};
 	};
 
 	assertions = let
