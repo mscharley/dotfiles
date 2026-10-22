@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+	imports = [ ./git.nix ];
+
 	home.shell.enableShellIntegration = true;
 	home.preferXdgDirectories = true;
 
