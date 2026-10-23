@@ -50,9 +50,31 @@
               inherit system;
               overlays = [ overlay ];
             };
+            # Evaluates the home module on its own. Zsh is opt-in, so nothing else type-checks it.
+            homeCheck =
+              extra:
+              (inputs.home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                modules = [
+                  ./nix/homeModules/home
+                  {
+                    home.username = "check";
+                    home.homeDirectory = "/home/check";
+                    programs.git.settings.user = {
+                      name = "Check";
+                      email = "check@example.com";
+                    };
+                  }
+                  extra
+                ];
+              }).activationPackage;
           in
           {
             packages = pkgs.dotfiles;
+            checks = {
+              home-default = homeCheck { };
+              home-zsh = homeCheck { programs.zsh.enable = true; };
+            };
           };
       }
     );

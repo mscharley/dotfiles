@@ -1,26 +1,35 @@
 { pkgs, ... }:
 {
-	imports = [ ./git.nix ./legacy.nix ];
+  imports = [
+    ./git.nix
+    ./legacy.nix
+    ./shell.nix
+    ./bash.nix
+    ./fish.nix
+    ./zsh.nix
+  ];
 
-	home.shell.enableShellIntegration = true;
-	home.preferXdgDirectories = true;
+  home.shell.enableShellIntegration = true;
+  home.preferXdgDirectories = true;
 
-	home.packages = with pkgs; [
-		dotfiles.git-extensions
-		# Terminal apps
-		jq yq-go
-		asdf-vm
-		most
-		starship
-	];
+  home.packages = with pkgs; [
+    dotfiles.git-extensions
+    dotfiles.neovim
+    # Terminal apps
+    jq
+    yq-go
+    asdf-vm
+    most
+    starship
+  ];
 
-	# This value determines the Home Manager release that your
-	# configuration is compatible with. This helps avoid breakage
-	# when a new Home Manager release introduces backwards
-	# incompatible changes.
-	#
-	# You can update Home Manager without changing this value. See
-	# the Home Manager release notes for a list of state version
-	# changes in each release.
-	home.stateVersion = "25.05";
+  # This value determines the Home Manager release that your
+  # configuration is compatible with. This helps avoid breakage
+  # when a new Home Manager release introduces backwards
+  # incompatible changes.
+  #
+  # You can update Home Manager without changing this value. See
+  # the Home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "25.05";
 }
