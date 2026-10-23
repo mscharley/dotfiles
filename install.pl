@@ -8,6 +8,15 @@ use File::Basename;
 use File::Compare;
 use File::Path qw(make_path);
 
+# home-manager (homeModules.home) installs the same files, use one or the other.
+my $hm_marker = ($ENV{"XDG_CONFIG_HOME"} || $ENV{"HOME"} . "/.config") . "/dotfiles/home-manager";
+if (-e $hm_marker) {
+	print("\x1b[31m");
+	print("These dotfiles are managed by home-manager ($hm_marker exists), refusing to run install.pl.\n");
+	print("\x1b[0m");
+	exit(1);
+}
+
 if (-e $ENV{"HOME"} . '/.zshrc.local') {
 	print("\x1b[31m");
 	print("Detected a pre-XDG installation! The following update is potentially destructive and makes no attempt at a migration.\n");
