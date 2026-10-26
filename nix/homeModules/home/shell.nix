@@ -15,8 +15,8 @@ in
   home.sessionVariables = {
     TZ = "Australia/Melbourne";
     LANG = "en_US.UTF-8";
-    PAGER = "most";
-    EDITOR = lib.mkDefault (lib.getExe pkgs.dotfiles.neovim);
+    PAGER = lib.getExe config.dotfiles.pager;
+    EDITOR = lib.getExe config.dotfiles.editor;
     GIT_EDITOR = "$EDITOR";
     CODE_HOME = lib.mkDefault "$HOME/Code";
 

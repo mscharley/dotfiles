@@ -1,8 +1,14 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
+    ./editor.nix
     ./git.nix
     ./legacy.nix
+    ./pager.nix
     ./shell.nix
     ./bash.nix
     ./fish.nix
@@ -12,16 +18,20 @@
   home.shell.enableShellIntegration = true;
   home.preferXdgDirectories = true;
 
-  home.packages = with pkgs; [
-    dotfiles.git-extensions
-    dotfiles.neovim
-    # Terminal apps
-    jq
-    yq-go
-    asdf-vm
-    most
-    starship
-  ];
+  home.packages =
+    with pkgs;
+    [
+      dotfiles.git-extensions
+      # Terminal apps
+      jq
+      yq-go
+      asdf-vm
+      starship
+    ]
+    ++ [
+      config.dotfiles.editor
+      config.dotfiles.pager
+    ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

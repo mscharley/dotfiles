@@ -101,6 +101,9 @@
     enableGitIntegration = true;
     options = {
       navigate = true;
+      # delta refuses to use `most` from $PAGER or $DELTA_PAGER and silently falls back to `less`. Only
+      # its own `pager` option is honoured.
+      pager = lib.getExe config.dotfiles.pager;
       # In `--color-only` mode (interactive.diffFilter, ie. `git add -p`) delta passes tabs through
       # untouched, and terminals don't paint background colour across the cells a tab skips. Expanding
       # them explicitly keeps the +/- highlighting continuous in hard-tab files.
