@@ -27,6 +27,10 @@
       yq-go
       asdf-vm
       starship
+
+      # Referenced by the symbol_map entries in kitty.conf
+      noto-fonts-color-emoji
+      symbola
     ]
     ++ [
       config.dotfiles.editor
