@@ -12,7 +12,11 @@ let
   xdg = config.xdg;
 in
 {
-  home.sessionVariables = {
+  home.sessionVariables = lib.optionalAttrs isDarwin {
+    # Node (and so Claude Code) doesn't read the system keychain; point it at the nix-darwin managed bundle, which is
+    # the same file as NIX_SSL_CERT_FILE. Spelled out because that variable may not be set yet when this is sourced.
+    NODE_EXTRA_CA_CERTS = "/etc/ssl/certs/ca-certificates.crt";
+  } // {
     TZ = "Australia/Melbourne";
     LANG = "en_US.UTF-8";
     PAGER = lib.getExe config.dotfiles.pager;
