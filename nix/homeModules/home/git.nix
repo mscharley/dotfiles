@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.git = {
     enable = true;
@@ -101,17 +106,14 @@
     enableGitIntegration = true;
     options = {
       navigate = true;
-      # delta refuses to use `most` from $PAGER or $DELTA_PAGER and silently falls back to `less`. Only
-      # its own `pager` option is honoured.
-      pager = lib.getExe config.dotfiles.pager;
+      # delta refuses to use `most` from $PAGER or $DELTA_PAGER, and only honours its own `pager` option. Use
+      # `less` here regardless of dotfiles.pager: `most` prints delta's ESC[0K line fill literally, loses the
+      # background colour whenever the foreground changes mid-line, and doesn't support `navigate`.
+      pager = "${lib.getExe pkgs.less} -R";
       # In `--color-only` mode (interactive.diffFilter, ie. `git add -p`) delta passes tabs through
       # untouched, and terminals don't paint background colour across the cells a tab skips. Expanding
       # them explicitly keeps the +/- highlighting continuous in hard-tab files.
       tabs = 4;
-      # delta extends highlighted lines to the terminal edge with the ANSI erase-to-end-of-line sequence
-      # (`ESC[0K`), which `most` doesn't interpret and prints as a literal `^[[0K`. `line-fill-method` only
-      # affects side-by-side mode, so the only way to stop it is to not extend the background at all.
-      width = "variable";
     };
   };
 
