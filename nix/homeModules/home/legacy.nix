@@ -83,7 +83,7 @@ let
   # step with the template handling in install.pl.
   vars = {
     # CoreText can't load Noto's CBDT bitmap font, so macOS gets its native colour emoji instead.
-    emoji_font = if pkgs.stdenv.isDarwin then "Apple Color Emoji" else "Noto Color Emoji";
+    emoji_font = if pkgs.stdenv.hostPlatform.isDarwin then "Apple Color Emoji" else "Noto Color Emoji";
   };
 
   templates = lib.mapAttrsToList (name: _: name) (

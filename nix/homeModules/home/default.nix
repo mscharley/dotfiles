@@ -33,7 +33,7 @@
       symbola
     ]
     # macOS uses Apple Color Emoji, CoreText can't load Noto's bitmaps
-    ++ lib.optional pkgs.stdenv.isLinux noto-fonts-color-emoji
+    ++ lib.optional pkgs.stdenv.hostPlatform.isLinux noto-fonts-color-emoji
     ++ [
       config.dotfiles.editor
       config.dotfiles.pager
