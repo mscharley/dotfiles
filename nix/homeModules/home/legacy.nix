@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 # Lays down everything `install.pl` would, so a machine uses home-manager *or* `install.pl`, never both.
 #
 # Mirrors install.pl directly: every top-level entry under `configs/` becomes a single symlink (not a
@@ -58,7 +63,8 @@ let
           "fish%"
           "zsh%"
         ]
-        || name == "dircolors";
+        || name == "dircolors"
+        || lib.hasSuffix ".tmpl" name;
     }
     {
       dir = "xdg/data";
@@ -72,6 +78,25 @@ let
         ];
     }
   ];
+
+  # `.tmpl` entries are rendered per platform instead of linked, with `@name@` replaced from `vars`. Keep in
+  # step with the template handling in install.pl.
+  vars = {
+    # CoreText can't load Noto's CBDT bitmap font, so macOS gets its native colour emoji instead.
+    emoji_font = if pkgs.stdenv.isDarwin then "Apple Color Emoji" else "Noto Color Emoji";
+  };
+
+  templates = lib.mapAttrsToList (name: _: name) (
+    lib.filterAttrs (name: _: lib.hasSuffix ".tmpl" name) (builtins.readDir (configs + "/xdg/config"))
+  );
+
+  renderTemplate =
+    name:
+    lib.nameValuePair "${config.xdg.configHome}/${targetName (lib.removeSuffix ".tmpl" name)}" {
+      text = lib.replaceStrings (map (k: "@${k}@") (lib.attrNames vars)) (lib.attrValues vars) (
+        builtins.readFile (configs + "/xdg/config/${name}")
+      );
+    };
 
   # Same as get_filename in install.pl.
   targetName = name: lib.replaceStrings [ "%" ] [ "/" ] (lib.removeSuffix ".example" name);
@@ -131,6 +156,7 @@ in
     lib.listToAttrs (
       map (e: lib.nameValuePair e.target { inherit (e) source; }) (lib.filter (e: !e.seeded) entries)
     )
+    // lib.listToAttrs (map renderTemplate templates)
     // {
       # Checked by install.pl, which refuses to run once home-manager manages these files.
       "${config.xdg.configHome}/dotfiles/home-manager".text = ''

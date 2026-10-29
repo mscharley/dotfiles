@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -28,10 +29,11 @@
       asdf-vm
       starship
 
-      # Referenced by the symbol_map entries in kitty.conf
-      noto-fonts-color-emoji
+      # Referenced by the symbol_map entries in kitty's emoji.conf
       symbola
     ]
+    # macOS uses Apple Color Emoji, CoreText can't load Noto's bitmaps
+    ++ lib.optional pkgs.stdenv.isLinux noto-fonts-color-emoji
     ++ [
       config.dotfiles.editor
       config.dotfiles.pager

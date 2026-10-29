@@ -130,15 +130,35 @@ my $xdgData = $ENV{"XDG_DATA_HOME"} || $ENV{"HOME"} . "/.local/share";
 
 my @files = glob('configs/home/{*,.??*}');
 my @xdgBin = glob('configs/xdg/bin/{*,.??*}');
-my @xdgConfig = glob('configs/xdg/config/{*,.??*}');
+my @xdgConfig = grep { !/\.tmpl$/ } glob('configs/xdg/config/{*,.??*}');
+my @xdgConfigTemplates = glob('configs/xdg/config/{*,.??*}.tmpl');
 my @xdgData = glob('configs/xdg/data/{*,.??*}');
 process_files(\@files, 'configs/home/', $ENV{"HOME"} . "/."); # trailing slash on the directory is intentional
 process_files(\@xdgBin, 'configs/xdg/bin', $xdgBin);
 process_files(\@xdgConfig, 'configs/xdg/config', $xdgConfig);
 process_files(\@xdgData, 'configs/xdg/data', $xdgData);
 
+# Templates are rendered instead of linked. Keep the variables in step with nix/homeModules/home/legacy.nix.
 my $uname = `uname -s`;
 chomp($uname);
+my %template_vars = (
+	# CoreText can't load Noto's CBDT bitmap font, so macOS gets its native colour emoji instead.
+	emoji_font => $uname eq 'Darwin' ? 'Apple Color Emoji' : 'Noto Color Emoji',
+);
+for my $template (@xdgConfigTemplates) {
+	my $target = get_filename($template =~ s/\.tmpl$//r) =~ s!^configs/xdg/config!${xdgConfig}!r;
+	open(my $in, '<', $template) or die("Unable to read $template");
+	my $content = do { local $/; <$in> };
+	close($in);
+	$content =~ s/\@(\w+)\@/exists $template_vars{$1} ? $template_vars{$1} : "\@$1\@"/ge;
+	make_path(dirname($target));
+	system('rm', '-f', $target);
+	print("rendering $target\n");
+	open(my $out, '>', $target) or die("Unable to write $target");
+	print $out $content;
+	close($out);
+}
+
 my @imports = glob('imports/' . $uname . '/*');
 
 for my $import (@imports) {
