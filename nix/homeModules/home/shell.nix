@@ -64,13 +64,18 @@ in
     "${xdg.cacheHome}/asdf/shims"
   ];
 
-  # On darwin the BSD tools stay the named tools. GNU coreutils is deliberately not put on PATH.
-  home.shellAliases = {
-    ls = if isDarwin then "ls -GF" else "ls --color=auto -F";
-    ll = if isDarwin then "ls -la@h" else "ls -lAh";
-    la = "ls -A";
-    nix-gc = "nix-collect-garbage --delete-older-than 14d";
-  };
+  # GNU ls everywhere (coloured via LS_COLORS from programs.dircolors). On darwin the system profile already puts GNU
+  # coreutils ahead of the BSD tools, where -G/-@ mean something else, so pin it rather than depend on PATH order.
+  home.shellAliases =
+    let
+      ls = lib.getExe' pkgs.coreutils "ls";
+    in
+    {
+      ls = "${ls} --color=auto -F";
+      ll = "${ls} --color=auto -lAh";
+      la = "${ls} --color=auto -A";
+      nix-gc = "nix-collect-garbage --delete-older-than 14d";
+    };
 
   home.file.".bashenv".text = ''
     PS4='+ '

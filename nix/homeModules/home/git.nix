@@ -108,6 +108,10 @@
       # untouched, and terminals don't paint background colour across the cells a tab skips. Expanding
       # them explicitly keeps the +/- highlighting continuous in hard-tab files.
       tabs = 4;
+      # delta extends highlighted lines to the terminal edge with the ANSI erase-to-end-of-line sequence
+      # (`ESC[0K`), which `most` doesn't interpret and prints as a literal `^[[0K`. `line-fill-method` only
+      # affects side-by-side mode, so the only way to stop it is to not extend the background at all.
+      width = "variable";
     };
   };
 
