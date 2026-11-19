@@ -13,6 +13,7 @@ pkgs.stdenv.mkDerivation {
     export git=${pkgs.git}
     export sed=${pkgs.gnused}
     export grep=${pkgs.gnugrep}
+    export openssh=${pkgs.openssh}
     install -m755 ${./git-cleanup} $out/bin/git-cleanup
     substituteAllInPlace $out/bin/git-cleanup
     install -m755 ${./git-cleanup-remotes} $out/bin/git-cleanup-remotes

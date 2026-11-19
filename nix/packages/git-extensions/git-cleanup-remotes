@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-export PATH=@coreutils@/bin:@git@/bin:@grep@/bin:@sed@/bin
+export PATH=@coreutils@/bin:@git@/bin:@grep@/bin:@openssh@/bin:@sed@/bin
 
 echo "=> git fetch --all --prune"
-git fetch --all --prune
+git fetch --all --prune || exit 1
 
 main_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 
